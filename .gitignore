@@ -1,0 +1,30 @@
+# Environment variables (CRITICAL: NEVER PUSH THIS TO GITHUB)
+.env
+
+# Python caching
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# Local databases & persistent storage
+*.db
+graphrag_data/
+temp_uploads/
+temp_audio/
+
+# Virtual Environments
+venv/
+.venv/
+env/
+ENV/
+
+# IDE configurations
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp

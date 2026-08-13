@@ -1,0 +1,36 @@
+version: "3.8"
+
+services:
+  redis:
+    image: redis:7-alpine
+    container_name: omnibrain-redis
+    ports:
+      - "6379:6379"
+    restart: always
+    volumes:
+      - redis_data:/data
+
+  omnibrain-core:
+    build: .
+    container_name: omnibrain-core-service
+    ports:
+      - "8000:8000"
+    restart: always
+    depends_on:
+      - redis
+    env_file:
+      - .env
+    environment:
+      - OMNIBRAIN_REDIS_URL=redis://redis:6379
+    volumes:
+      - ./graphrag_data:/app/graphrag_data
+      - ./semantic_cache.db:/app/semantic_cache.db
+      - ./metrics.db:/app/metrics.db
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+volumes:
+  redis_data:
