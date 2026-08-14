@@ -1,6 +1,9 @@
 # Environment variables (CRITICAL: NEVER PUSH THIS TO GITHUB)
 .env
 
+# Excluded custom web application clients (LMS test site)
+ictu-lms-backend/
+
 # Python caching
 __pycache__/
 *.pyc
@@ -13,6 +16,8 @@ __pycache__/
 graphrag_data/
 temp_uploads/
 temp_audio/
+scratch/
+*.log
 
 # Virtual Environments
 venv/

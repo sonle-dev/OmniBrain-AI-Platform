@@ -1,36 +1,42 @@
-version: "3.8"
+version: "3.9"
 
 services:
+  # ── OmniBrain AI Core ─────────────────────────────────────────────
+  omnibrain-core:
+    build: .
+    container_name: omnibrain-core
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    volumes:
+      - ./graphrag_data:/app/graphrag_data   # Persist Knowledge Graph index
+      - ./semantic_cache.db:/app/semantic_cache.db
+      - ./metrics.db:/app/metrics.db
+    depends_on:
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+    extra_hosts:
+      - "host.docker.internal:host-gateway"  # Allow access to host Ollama
+    environment:
+      - OLLAMA_BASE_URL=http://host.docker.internal:11434  # Ollama on host machine
+
+  # ── Redis (Semantic Cache) ─────────────────────────────────────────
   redis:
     image: redis:7-alpine
     container_name: omnibrain-redis
     ports:
       - "6379:6379"
-    restart: always
+    command: redis-server --maxmemory 256mb --maxmemory-policy allkeys-lru
     volumes:
       - redis_data:/data
-
-  omnibrain-core:
-    build: .
-    container_name: omnibrain-core-service
-    ports:
-      - "8000:8000"
-    restart: always
-    depends_on:
-      - redis
-    env_file:
-      - .env
-    environment:
-      - OMNIBRAIN_REDIS_URL=redis://redis:6379
-    volumes:
-      - ./graphrag_data:/app/graphrag_data
-      - ./semantic_cache.db:/app/semantic_cache.db
-      - ./metrics.db:/app/metrics.db
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "10m"
-        max-file: "3"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    restart: unless-stopped
 
 volumes:
   redis_data:

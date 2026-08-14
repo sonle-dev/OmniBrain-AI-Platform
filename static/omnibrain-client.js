@@ -1,172 +1,269 @@
 /**
- * OmniBrain AI Core Universal Client SDK
- * Lightweight wrapper for LMS, E-commerce, Tourism web apps to interface with the centralized AI Brain.
+ * OmniBrain AI Core — Universal Client SDK v2.0 (Speed-Optimized)
+ * =================================================================
+ * Lightweight, zero-dependency JavaScript client for any web application.
+ * Features: Fast-Path Chat, Typewriter SSE Streaming, GraphRAG, Quiz Generator, Vision, Audio.
+ *
+ * Usage:
+ *   const ai = new OmniBrainClient('http://localhost:8000', 'demo_key');
+ *   await ai.streamChatTypewriter([{role:'user', content:'Hello'}], 'chatBox');
+ *
+ * Embed: <script src="http://localhost:8000/static/omnibrain-client.js"></script>
  */
 class OmniBrainClient {
     /**
      * @param {string} baseURL - Root URL of the OmniBrain Core service (e.g., http://localhost:8000)
-     * @param {string} apiKey - The authorization X-API-Key
+     * @param {string} apiKey  - The X-API-Key for authorization
      */
     constructor(baseURL, apiKey) {
-        this.baseURL = baseURL.replace(/\/$/, ""); // Strip trailing slash
-        this.apiKey = apiKey;
+        this.baseURL = baseURL.replace(/\/$/, '');
+        this.apiKey  = apiKey;
     }
 
-    /**
-     * Helper to make HTTP POST requests
-     * @private
-     */
-    async _request(path, body, isBlob = false) {
-        const headers = {
-            "Content-Type": "application/json",
-            "X-API-Key": this.apiKey
-        };
+    // =========================================================================
+    // Private Helpers
+    // =========================================================================
 
-        const response = await fetch(`${this.baseURL}${path}`, {
-            method: "POST",
-            headers: headers,
+    /** @private */
+    _headers(extra = {}) {
+        return { 'Content-Type': 'application/json', 'X-API-Key': this.apiKey, ...extra };
+    }
+
+    /** @private */
+    async _post(path, body) {
+        const res = await fetch(`${this.baseURL}${path}`, {
+            method: 'POST',
+            headers: this._headers(),
             body: JSON.stringify(body)
         });
-
-        if (!response.ok) {
-            const errDetail = await response.text();
-            throw new Error(`OmniBrain Error [${response.status}]: ${errDetail || response.statusText}`);
+        if (!res.ok) {
+            const detail = await res.text().catch(() => res.statusText);
+            throw new Error(`OmniBrain [${res.status}] ${path}: ${detail}`);
         }
-
-        if (isBlob) {
-            return await response.blob();
-        }
-        return await response.json();
+        return res.json();
     }
 
-    /**
-     * Helper to handle file uploads (multipart/form-data)
-     * @private
-     */
-    async _uploadRequest(path, file, formField = "file") {
-        const headers = {
-            "X-API-Key": this.apiKey
-            // Let the browser set Content-Type with multipart boundaries automatically
-        };
-
-        const formData = new FormData();
-        formData.append(formField, file);
-
-        const response = await fetch(`${this.baseURL}${path}`, {
-            method: "POST",
-            headers: headers,
-            body: formData
+    /** @private */
+    async _upload(path, file, fieldName = 'file') {
+        const form = new FormData();
+        form.append(fieldName, file);
+        const res = await fetch(`${this.baseURL}${path}`, {
+            method: 'POST',
+            headers: { 'X-API-Key': this.apiKey },
+            body: form
         });
-
-        if (!response.ok) {
-            const errDetail = await response.text();
-            throw new Error(`OmniBrain Upload Error [${response.status}]: ${errDetail || response.statusText}`);
+        if (!res.ok) {
+            const detail = await res.text().catch(() => res.statusText);
+            throw new Error(`OmniBrain Upload [${res.status}] ${path}: ${detail}`);
         }
-
-        return await response.json();
+        return res.json();
     }
 
+    // =========================================================================
+    // Chat
+    // =========================================================================
+
     /**
-     * Standard Chat Completions
-     * @param {Array<{role: string, content: string}>} messages - Conversation history
-     * @param {Object} [options] - Optional parameters: model, temperature, max_tokens, bypass_cache
+     * Standard (non-streaming) chat completion.
+     * @param {Array<{role:string, content:string}>} messages - Conversation history
+     * @param {Object} [options]
+     * @param {string}  [options.task='chat']       - 'chat' | 'reasoning' | 'graph_rag' | 'vision'
+     * @param {string}  [options.model]             - Override model slug
+     * @param {number}  [options.temperature=0.2]   - 0.0 – 2.0
+     * @param {number}  [options.max_tokens]        - Max output tokens
+     * @param {boolean} [options.bypass_cache=false] - Skip cache for fresh response
+     * @returns {Promise<{status, text, model, usage, cached}>}
      */
     async chat(messages, options = {}) {
-        return this._request("/api/v1/chat/completions", {
+        return this._post('/api/v1/chat/completions', {
             messages,
-            model: options.model || null,
-            temperature: options.temperature !== undefined ? options.temperature : 0.2,
-            max_tokens: options.max_tokens || null,
-            bypass_cache: !!options.bypass_cache
+            task:         options.task          || 'chat',
+            model:        options.model         || null,
+            temperature:  options.temperature   !== undefined ? options.temperature : 0.2,
+            max_tokens:   options.max_tokens    || null,
+            bypass_cache: !!options.bypass_cache,
+            stream:       false
         });
     }
 
     /**
-     * Queries internal documents using GraphRAG (Knowledge Graph)
-     * @param {string} query - Natural language question
-     * @param {string} [mode="local"] - Query mode: 'local' or 'global'
+     * Streaming chat via Server-Sent Events (Sub-Second TTFT).
+     * @param {Array<{role:string, content:string}>} messages
+     * @param {function(string):void} onChunk  - Called with each text chunk as it arrives
+     * @param {function():void}       [onDone] - Called when stream ends
+     * @param {Object} [options]               - Same options as chat()
+     * @returns {Promise<void>}
      */
-    async queryGraphRAG(query, mode = "local") {
-        return this._request("/api/v1/graph-rag/query", {
-            query,
-            mode
+    async streamChat(messages, onChunk, onDone, options = {}) {
+        const res = await fetch(`${this.baseURL}/api/v1/chat/completions`, {
+            method:  'POST',
+            headers: this._headers(),
+            body: JSON.stringify({
+                messages,
+                task:         options.task        || 'chat',
+                model:        options.model       || null,
+                temperature:  options.temperature !== undefined ? options.temperature : 0.2,
+                max_tokens:   options.max_tokens  || null,
+                bypass_cache: !!options.bypass_cache,
+                stream:       true
+            })
         });
+
+        if (!res.ok) {
+            const detail = await res.text().catch(() => res.statusText);
+            throw new Error(`OmniBrain Stream [${res.status}]: ${detail}`);
+        }
+
+        const reader = res.body.getReader();
+        const decoder = new TextDecoder();
+        let buffer = '';
+
+        while (true) {
+            const { done, value } = await reader.read();
+            if (done) break;
+
+            buffer += decoder.decode(value, { stream: true });
+            const lines = buffer.split('\n');
+            buffer = lines.pop(); // Keep incomplete line in buffer
+
+            for (const line of lines) {
+                const trimmed = line.trim();
+                if (!trimmed || !trimmed.startsWith('data:')) continue;
+                const payload = trimmed.slice(5).trim();
+                if (payload === '[DONE]') {
+                    if (typeof onDone === 'function') onDone();
+                    return;
+                }
+                try {
+                    const parsed = JSON.parse(payload);
+                    if (parsed.chunk && typeof onChunk === 'function') {
+                        onChunk(parsed.chunk);
+                    }
+                } catch (_) { /* skip malformed chunks */ }
+            }
+        }
+        if (typeof onDone === 'function') onDone();
     }
 
     /**
-     * Uploads a document (PDF, Slides PPTX, Text) to update the Knowledge Graph GraphRAG index
-     * @param {File|Blob} file - The file to upload
+     * Typewriter DOM Streaming Helper.
+     * Renders incoming stream chunks directly to a target DOM element with smooth typewriter effect.
+     * @param {Array<{role:string, content:string}>} messages
+     * @param {HTMLElement|string} targetElement - DOM element or element ID string
+     * @param {function():void} [onDone]
+     * @param {Object} [options]
      */
+    async streamChatTypewriter(messages, targetElement, onDone, options = {}) {
+        const el = typeof targetElement === 'string' ? document.getElementById(targetElement) : targetElement;
+        if (!el) throw new Error('Target DOM element for typewriter stream not found.');
+
+        el.innerText = '';
+        await this.streamChat(
+            messages,
+            (chunk) => {
+                el.innerText += chunk;
+                if (options.autoScroll && el.parentElement) {
+                    el.parentElement.scrollTop = el.parentElement.scrollHeight;
+                }
+            },
+            onDone,
+            options
+        );
+    }
+
+    // =========================================================================
+    // Quiz Generation
+    // =========================================================================
+
+    /**
+     * Generate a structured multiple-choice quiz.
+     */
+    async generateQuiz(topic, options = {}) {
+        return this._post('/api/v1/quiz/generate', {
+            topic,
+            difficulty:    options.difficulty    || 'medium',
+            count:         options.count         || 5,
+            language:      options.language      || 'vi',
+            question_type: options.question_type || 'multiple_choice',
+            context:       options.context       || null
+        });
+    }
+
+    // =========================================================================
+    // GraphRAG — Document Knowledge Base
+    // =========================================================================
+
+    async queryGraphRAG(query, mode = 'local') {
+        return this._post('/api/v1/graph-rag/query', { query, mode });
+    }
+
     async uploadDocument(file) {
-        return this._uploadRequest("/api/v1/graph-rag/upload", file, "file");
+        return this._upload('/api/v1/graph-rag/upload', file, 'file');
     }
 
-    /**
-     * Searches live web data using Nara/Tavily Search Engine
-     * @param {string} query - Natural language query
-     * @param {number} [maxResults=5] - Number of results to fetch
-     */
+    // =========================================================================
+    // Web Search
+    // =========================================================================
+
     async searchWeb(query, maxResults = 5) {
-        return this._request("/api/v1/search/query", {
-            query,
-            max_results: maxResults
-        });
+        return this._post('/api/v1/search/query', { query, max_results: maxResults });
     }
 
-    /**
-     * Runs an AI Agent loop that dynamically executes tools
-     * @param {string} prompt - Instructions/goal for the agent
-     * @param {Array<{role: string, content: string}>} [history=[]] - Previous conversations
-     * @param {string} [model] - Override model (e.g. gemini/gemini-2.0-flash)
-     */
+    // =========================================================================
+    // AI Agent
+    // =========================================================================
+
     async executeAgent(prompt, history = [], model = null) {
-        return this._request("/api/v1/agent/run", {
-            prompt,
-            history,
-            model
-        });
+        return this._post('/api/v1/agent/run', { prompt, history, model });
     }
 
-    /**
-     * Analyzes an image with vision OCR or semantic analysis
-     * @param {string} prompt - Prompt instruction (e.g. "read the text")
-     * @param {Object} source - Either { image_url } or { image_b64 }
-     */
+    // =========================================================================
+    // Vision
+    // =========================================================================
+
     async analyzeImage(prompt, source = {}) {
-        return this._request("/api/v1/vision/analyze", {
+        return this._post('/api/v1/vision/analyze', {
             prompt,
             image_url: source.image_url || null,
             image_b64: source.image_b64 || null
         });
     }
 
-    /**
-     * Transcribes audio speech to text (STT)
-     * @param {File|Blob} audioFile - Audio file payload (e.g., mp3, wav, m4a)
-     */
+    // =========================================================================
+    // Audio
+    // =========================================================================
+
     async transcribeAudio(audioFile) {
-        return this._uploadRequest("/api/v1/audio/transcribe", audioFile, "file");
+        return this._upload('/api/v1/audio/transcribe', audioFile, 'file');
     }
 
-    /**
-     * Synthesizes text to audio speech (TTS)
-     * @param {string} text - Text to convert to speech
-     * @param {string} [voice="alloy"] - Voice character
-     * @param {number} [speed=1.0] - Speech velocity
-     * @returns {Promise<Blob>} - Returns standard audio file Blob
-     */
-    async synthesizeSpeech(text, voice = "alloy", speed = 1.0) {
-        return this._request("/api/v1/audio/synthesize", {
-            text,
-            voice,
-            speed
-        }, true);
+    async synthesizeSpeech(text, voice = 'alloy', speed = 1.0) {
+        const res = await fetch(`${this.baseURL}/api/v1/audio/synthesize`, {
+            method:  'POST',
+            headers: this._headers(),
+            body:    JSON.stringify({ text, voice, speed })
+        });
+        if (!res.ok) throw new Error(`OmniBrain TTS [${res.status}]: ${res.statusText}`);
+        return res.blob();
+    }
+
+    // =========================================================================
+    // Health Check
+    // =========================================================================
+
+    async isOnline() {
+        try {
+            const res = await fetch(`${this.baseURL}/health`, { method: 'GET' });
+            return res.ok;
+        } catch (_) {
+            return false;
+        }
     }
 }
 
-// Export for ES Modules/Browser compatibility
-if (typeof module !== "undefined" && module.exports) {
+// Universal export — works in browser (global) and Node.js (CommonJS)
+if (typeof module !== 'undefined' && module.exports) {
     module.exports = OmniBrainClient;
-} else {
+} else if (typeof window !== 'undefined') {
     window.OmniBrainClient = OmniBrainClient;
 }

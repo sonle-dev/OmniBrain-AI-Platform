@@ -1,15 +1,23 @@
 import json
 import logging
+import asyncio
 from typing import Dict, Any, List, Optional, Callable
-from app.services.llm_factory import LLMFactory
+from app.services.llm_factory import LLMFactory, _build_model_chain, _get_api_key_for_model
+from app.core.config import settings
+from app.services.tools.lms_tools import (
+    get_lecturer_info,
+    get_course_schedule,
+    get_exam_schedule,
+    LMS_TOOLS_SCHEMA
+)
 
 logger = logging.getLogger(__name__)
+
 
 # Sample Tools Implementations
 def get_database_records(table_name: str, query: str) -> str:
     """Queries the internal database tables like 'products', 'courses', 'users'."""
     logger.info(f"Executing Tool 'get_database_records' on table '{table_name}' with query: '{query}'")
-    # Mock data
     if "course" in table_name.lower() or "lms" in table_name.lower():
         return json.dumps([
             {"course_id": "CS101", "title": "Introduction to Artificial Intelligence", "instructor": "Dr. Sarah Connor", "enrolled": 152},
@@ -22,6 +30,7 @@ def get_database_records(table_name: str, query: str) -> str:
         ])
     return json.dumps({"status": "success", "message": f"Query executed on {table_name}. Found 0 records matching '{query}'."})
 
+
 def schedule_calendar_event(title: str, date_time: str, attendee_email: str) -> str:
     """Schedules a calendar event for a user or meeting."""
     logger.info(f"Executing Tool 'schedule_calendar_event' with title '{title}', time '{date_time}' for '{attendee_email}'")
@@ -33,6 +42,7 @@ def schedule_calendar_event(title: str, date_time: str, attendee_email: str) -> 
         "attendee": attendee_email,
         "hangout_link": "https://meet.google.com/abc-defg-hij"
     })
+
 
 def dispatch_notification(channel: str, recipient: str, message: str) -> str:
     """Dispatches a notification email, SMS, or Slack message."""
@@ -58,7 +68,17 @@ class AgentService:
         self._tool_schemas.append(schema)
 
     def _register_default_tools(self):
-        # 1. Database records tool schema
+        # 1. LMS Tools
+        for schema in LMS_TOOLS_SCHEMA:
+            tool_name = schema["function"]["name"]
+            if tool_name == "get_lecturer_info":
+                self.register_tool(tool_name, lambda subject_name: json.dumps(get_lecturer_info(subject_name), ensure_ascii=False), schema)
+            elif tool_name == "get_course_schedule":
+                self.register_tool(tool_name, lambda subject_name, class_id=None: json.dumps(get_course_schedule(subject_name, class_id), ensure_ascii=False), schema)
+            elif tool_name == "get_exam_schedule":
+                self.register_tool(tool_name, lambda student_id=None, subject_code=None: json.dumps(get_exam_schedule(student_id, subject_code), ensure_ascii=False), schema)
+
+        # 2. Database records tool schema
         self.register_tool(
             name="get_database_records",
             func=get_database_records,
@@ -85,7 +105,7 @@ class AgentService:
             }
         )
 
-        # 2. Schedule calendar event tool schema
+        # 3. Schedule calendar event tool schema
         self.register_tool(
             name="schedule_calendar_event",
             func=schedule_calendar_event,
@@ -116,7 +136,7 @@ class AgentService:
             }
         )
 
-        # 3. Notification tool schema
+        # 4. Notification tool schema
         self.register_tool(
             name="dispatch_notification",
             func=dispatch_notification,
@@ -159,17 +179,15 @@ class AgentService:
         and returns the final reasoning answer.
         """
         import litellm
-        from app.services.llm_factory import LLMFactory
-        from app.core.config import settings
 
         messages = []
         messages.append({
             "role": "system",
             "content": (
-                "You are an advanced AI Agent equipped with tools for database querying, calendar scheduling, "
-                "and notifications. Use your tools whenever appropriate. When you obtain results from a tool, "
-                "synthesize the final answer clearly for the user. Do not explain the inner workings of tools "
-                "unless requested."
+                "You are an advanced AI Agent for the ICTU LMS platform equipped with tools for LMS database querying "
+                "(lecturer details, course schedules, exam dates), calendar scheduling, and notifications. "
+                "Use your tools whenever appropriate to retrieve real live facts. When you obtain results from a tool, "
+                "synthesize the final answer clearly in Vietnamese for the user. Do not explain technical tool details unless asked."
             )
         })
 
@@ -178,72 +196,75 @@ class AgentService:
                 messages.append(item)
 
         messages.append({"role": "user", "content": prompt})
-        
-        selected_model = model or settings.DEFAULT_CHAT_MODEL
-        
-        # Max steps in agent loop
+
+        # Build dynamic model chain for reasoning/agent task
+        models_to_try = await _build_model_chain("chat", override_model=model)
+        if not models_to_try:
+            return {
+                "text": "Hệ thống AI chưa sẵn sàng. Vui lòng kiểm tra lại cấu hình.",
+                "trace": [],
+                "usage": {"prompt_tokens": 0, "completion_tokens": 0, "total_tokens": 0}
+            }
+
+        selected_model = models_to_try[0]
         max_steps = 5
         step = 0
-        
-        # Keep track of executed tools for transparency in response
         execution_trace = []
         total_tokens = {"prompt_tokens": 0, "completion_tokens": 0, "total_tokens": 0}
 
         while step < max_steps:
             step += 1
             logger.info(f"Agent Loop Step {step} with model {selected_model}")
-            
+
             try:
-                # Call LiteLLM Router with our registered tool schemas
-                # acompletion takes tools parameter
-                response = await litellm.acompletion(
-                    model=selected_model,
-                    messages=messages,
-                    tools=self._tool_schemas,
-                    tool_choice="auto"
-                )
+                call_kwargs = {
+                    "model": selected_model,
+                    "messages": messages,
+                    "tools": self._tool_schemas,
+                    "tool_choice": "auto"
+                }
+                api_key = _get_api_key_for_model(selected_model)
+                if api_key:
+                    call_kwargs["api_key"] = api_key
+                if selected_model.startswith("ollama/"):
+                    call_kwargs["api_base"] = settings.OLLAMA_BASE_URL
+
+                response = await litellm.acompletion(**call_kwargs)
             except Exception as e:
-                # Fall back to default completion if tool formatting fails
-                logger.error(f"LiteLLM tool call failed: {e}. Falling back...")
+                logger.error(f"LiteLLM tool call failed for {selected_model}: {e}. Executing direct fallback...")
                 fallback_res = await LLMFactory.chat_completion(messages=messages, model=selected_model)
                 return {
-                    "text": fallback_res["text"],
+                    "text": fallback_res.get("text", ""),
                     "trace": execution_trace,
-                    "usage": fallback_res["usage"]
+                    "usage": fallback_res.get("usage", {})
                 }
-            
+
             choice = response.choices[0]
             message = choice.message
-            
-            # Accumulate token usage
-            for k in total_tokens:
-                total_tokens[k] += response.usage.get(k, 0)
 
-            # Append assistant message to context (critical for tool chain)
-            # litellm returns Message objects that we need to convert to dict or pass directly
+            if getattr(response, "usage", None):
+                total_tokens["prompt_tokens"] += getattr(response.usage, "prompt_tokens", 0) or 0
+                total_tokens["completion_tokens"] += getattr(response.usage, "completion_tokens", 0) or 0
+                total_tokens["total_tokens"] += getattr(response.usage, "total_tokens", 0) or 0
+
             messages.append(message)
 
-            # Check if model wants to call a tool
             if getattr(message, "tool_calls", None):
                 for tool_call in message.tool_calls:
                     tool_name = tool_call.function.name
-                    tool_args = json.loads(tool_call.function.arguments)
+                    tool_args = json.loads(tool_call.function.arguments) if isinstance(tool_call.function.arguments, str) else tool_call.function.arguments
                     tool_call_id = tool_call.id
-                    
+
                     logger.info(f"Model requested tool '{tool_name}' with args {tool_args}")
-                    
-                    # Execute tool
+
                     if tool_name in self._tools:
                         try:
                             tool_func = self._tools[tool_name]
-                            
-                            # Support sync and async tool execution
-                            import asyncio
                             if asyncio.iscoroutinefunction(tool_func):
                                 tool_result = await tool_func(**tool_args)
                             else:
                                 tool_result = await asyncio.to_thread(tool_func, **tool_args)
-                                
+
                             execution_trace.append({
                                 "tool": tool_name,
                                 "arguments": tool_args,
@@ -261,21 +282,18 @@ class AgentService:
                             })
                     else:
                         tool_result = json.dumps({"status": "error", "detail": f"Tool '{tool_name}' not found."})
-                    
-                    # Append tool result to messages (role must be 'tool' or 'function')
+
                     messages.append({
                         "role": "tool",
                         "name": tool_name,
                         "tool_call_id": tool_call_id,
-                        "content": tool_result
+                        "content": str(tool_result)
                     })
-                
-                # Loop continues to feed tool results back to model
+
                 continue
             else:
-                # No more tool calls; the assistant has provided the final response
                 return {
-                    "text": message.content,
+                    "text": message.content or "",
                     "trace": execution_trace,
                     "usage": total_tokens
                 }
@@ -285,6 +303,7 @@ class AgentService:
             "trace": execution_trace,
             "usage": total_tokens
         }
+
 
 # Singleton Instance
 agent_service = AgentService()
