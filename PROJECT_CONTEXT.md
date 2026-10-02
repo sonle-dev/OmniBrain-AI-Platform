@@ -58,6 +58,7 @@ d:/OmniBrain AI Platform/
 ├── requirements.txt            # Danh sách thư viện Python (FastAPI, LiteLLM, NetworkX, SQLAlchemy...)
 ├── static/
 │   └── omnibrain-client.js     # Universal JavaScript Client SDK (Tích hợp cho mọi Web Client)
+├── tests/                      # Bộ Unit & Integration Tests tự động (22 test cases cho FastAPI Core)
 └── app/
     ├── main.py                 # FastAPI Entrypoint, Middleware CORS & Route Registration
     ├── core/

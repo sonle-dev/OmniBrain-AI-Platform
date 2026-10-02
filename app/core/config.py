@@ -31,6 +31,7 @@ class Settings(BaseSettings):
     SQLITE_METRICS_DB: str = "metrics.db"
 
     # ── Ollama (Local) & Custom Fine-Tuned LoRA Adapters ──
+    DEFAULT_CHAT_MODEL: str = Field(default="ollama/qwen2.5:7b", alias="DEFAULT_CHAT_MODEL")
     OLLAMA_BASE_URL: str = Field(default="http://localhost:11434", alias="OLLAMA_BASE_URL")
     LORA_CHAT_ADAPTER: str = Field(default="ollama/qwen2.5:7b-academic", alias="LORA_CHAT_ADAPTER")
     LORA_REASONING_ADAPTER: str = Field(default="ollama/deepseek-r1:8b-pedagogical", alias="LORA_REASONING_ADAPTER")
