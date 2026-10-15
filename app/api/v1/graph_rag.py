@@ -1,5 +1,6 @@
 import os
 import shutil
+from typing import Optional
 from fastapi import APIRouter, Depends, Request, UploadFile, File, HTTPException, status
 from app.core.security import verify_api_key, enforce_rate_limit
 from app.schemas.requests import GraphRAGQueryRequest
@@ -12,15 +13,20 @@ router = APIRouter(prefix="/graph-rag", tags=["GraphRAG"])
 async def upload_document_endpoint(
     request: Request,
     file: UploadFile = File(...),
+    namespace: Optional[str] = None,
     app_id: str = Depends(verify_api_key)
 ):
     """
-    Uploads a document (PDF, PowerPoint Slides, Text) to construct or update the GraphRAG index.
+    Uploads a document (PDF, PowerPoint Slides, Text) to construct or update the GraphRAG index
+    under a specific partition/namespace (defaults to 'lms').
     """
     # 1. Rate Limit Check
     client_ip = request.client.host if request.client else "127.0.0.1"
     rpm_limit = settings.api_keys_map.get(request.headers.get("X-API-Key"), {}).get("rate_limit_rpm", 60)
     enforce_rate_limit(app_id, client_ip, rpm_limit)
+
+    # Resolve target namespace from form body, query param, or fallback to 'lms'
+    target_namespace = namespace or request.query_params.get("namespace") or "lms"
 
     # Validate file extension
     filename = file.filename or "uploaded_document"
@@ -40,13 +46,14 @@ async def upload_document_endpoint(
         with open(temp_filepath, "wb") as buffer:
             shutil.copyfileobj(file.file, buffer)
 
-        # 3. Ingest via GraphRAG Service (lazy-loaded inside endpoint or service method)
+        # 3. Ingest via GraphRAG Service into specified namespace
         from app.services.graph_rag_service import graph_rag_service
-        await graph_rag_service.insert_document(temp_filepath)
+        await graph_rag_service.insert_document(temp_filepath, namespace=target_namespace)
         
         return {
             "status": "success",
-            "message": f"Document '{filename}' successfully parsed and ingested into GraphRAG."
+            "namespace": target_namespace,
+            "message": f"Document '{filename}' successfully parsed and ingested into GraphRAG namespace '{target_namespace}'."
         }
     except Exception as e:
         raise HTTPException(
@@ -68,17 +75,21 @@ async def query_graph_endpoint(
     app_id: str = Depends(verify_api_key)
 ):
     """
-    Grounded Query over the GraphRAG Knowledge Graph. Strictly respects local context.
+    Grounded Query over the GraphRAG Knowledge Graph partition for the given namespace. Strictly respects local context.
     """
     # 1. Rate Limit Check
     client_ip = request.client.host if request.client else "127.0.0.1"
     rpm_limit = settings.api_keys_map.get(request.headers.get("X-API-Key"), {}).get("rate_limit_rpm", 60)
     enforce_rate_limit(app_id, client_ip, rpm_limit)
 
-    # 2. Invoke GraphRAG Service query
+    # 2. Invoke GraphRAG Service query with namespace
     from app.services.graph_rag_service import graph_rag_service
     try:
-        answer = await graph_rag_service.query_graph(payload.query, mode=payload.mode)
+        answer = await graph_rag_service.query_graph(
+            payload.query,
+            mode=payload.mode,
+            namespace=payload.namespace
+        )
         return GraphRAGQueryResponse(
             status="success",
             cached=False,
@@ -89,3 +100,30 @@ async def query_graph_endpoint(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"GraphRAG query execution failed: {str(e)}"
         )
+
+@router.get("/namespaces")
+async def list_namespaces_endpoint(
+    app_id: str = Depends(verify_api_key)
+):
+    """
+    Lists all active Knowledge Base partitions (namespaces) and their graph metrics.
+    """
+    from app.services.graph_rag_service import graph_rag_service
+    namespaces = graph_rag_service.list_namespaces()
+    return {
+        "status": "success",
+        "total_namespaces": len(namespaces),
+        "namespaces": namespaces
+    }
+
+@router.post("/reset")
+async def reset_namespace_endpoint(
+    request: Request,
+    namespace: str = "lms",
+    app_id: str = Depends(verify_api_key)
+):
+    """
+    Resets a specific knowledge base partition without impacting other web partitions.
+    """
+    from app.services.graph_rag_service import graph_rag_service
+    return graph_rag_service.reset_namespace(namespace)

@@ -124,16 +124,64 @@ Import `omnibrain-client.js` in any web application (React, Vue, HTML/JS) to int
 
 ---
 
+## 🧠 Multi-Tenant & Partitioned Knowledge Base (GraphRAG Namespaces)
+
+OmniBrain Core is designed as a centralized multi-app gateway. To prevent **Knowledge Cross-Pollution** across different websites (e.g., an LMS university portal vs. an E-commerce store), the Knowledge Graph is partitioned into isolated **namespaces**:
+
+```text
+graphrag_data/
+├── lms/          # Dedicated knowledge partition for LMS (curriculum, exams, slides)
+│   └── graph.json
+├── ecommerce/    # Dedicated knowledge partition for Shop (products, refund policies)
+│   └── graph.json
+└── custom_web/   # Any other web application partition
+    └── graph.json
+```
+
+### Key Capabilities:
+- **Default Partition**: Uploads and queries without a specified namespace automatically default to `"lms"`.
+- **Zero Cross-Pollution**: Updating, modifying, or resetting knowledge for one website has **zero impact** on other websites.
+- **Dynamic Creation**: Uploading documents with a new `namespace` automatically creates and indexes that partition without server restart.
+
+### Usage Examples:
+- **Upload Document to a Namespace**:
+  ```bash
+  curl -X POST "http://localhost:8000/api/v1/graph-rag/upload?namespace=lms" \
+       -H "X-API-Key: demo_key" \
+       -F "file=@curriculum.pdf"
+  ```
+- **Query a Specific Namespace**:
+  ```json
+  POST /api/v1/graph-rag/query
+  {
+    "query": "Lịch thi môn Python?",
+    "namespace": "lms",
+    "mode": "local"
+  }
+  ```
+- **List All Active Namespaces & Node Metrics**:
+  ```bash
+  GET /api/v1/graph-rag/namespaces
+  ```
+- **Reset Only a Specific Partition**:
+  ```bash
+  POST /api/v1/graph-rag/reset?namespace=ecommerce
+  ```
+
+---
+
 ## 📑 API Endpoints Summary
 
 | Method | Endpoint | Description |
 | :--- | :--- | :--- |
 | `POST` | `/api/v1/chat/completions` | Unified Chat Completion & SSE Streaming (`stream=true`) |
 | `POST` | `/api/v1/quiz/generate` | Structured Quiz Generator with Self-Correction |
-| `POST` | `/api/v1/graph-rag/query` | Grounded Knowledge Graph Query (PDF/PPTX) |
-| `POST` | `/api/v1/graph-rag/upload` | Document Ingestion into GraphRAG Index |
+| `POST` | `/api/v1/graph-rag/query` | Grounded Knowledge Graph Query (supports `namespace`) |
+| `POST` | `/api/v1/graph-rag/upload` | Document Ingestion into GraphRAG (supports `namespace`) |
+| `GET` | `/api/v1/graph-rag/namespaces` | List all active Knowledge Base partitions & stats |
+| `POST` | `/api/v1/graph-rag/reset` | Reset a specific Knowledge Base partition |
 | `POST` | `/api/v1/agent/run` | Multi-step AI Agent Tool Execution |
-| `POST` | `/api/v1/vision/analyze` | OCR & Image Semantic Analysis |
+| `POST` | `/api/v1/vision/analyze` | OCR & Image Semantic Analysis (Ollama local prioritized) |
 | `POST` | `/api/v1/audio/transcribe` | Audio Speech-to-Text Transcription |
 | `POST` | `/api/v1/audio/synthesize` | Text-to-Speech Synthesis |
 | `GET` | `/health` | Microservice Health & Service Status Check |

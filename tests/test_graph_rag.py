@@ -43,3 +43,43 @@ def test_graph_rag_query(client):
         data = response.json()
         assert data["status"] == "success"
         assert "môn học bắt buộc" in data["text"]
+
+def test_graph_rag_custom_namespace_lifecycle(client):
+    """Test uploading, querying, listing, and resetting a dedicated namespace partition."""
+    file_bytes = io.BytesIO(b"Chinh sach doi tra san pham trong 7 ngay.")
+    
+    with patch("app.services.graph_rag_service.graph_rag_service.insert_document", new_callable=AsyncMock) as mock_ingest:
+        mock_ingest.return_value = True
+        
+        # 1. Upload to namespace 'ecommerce'
+        response = client.post(
+            "/api/v1/graph-rag/upload?namespace=ecommerce",
+            files={"file": ("policy.txt", file_bytes, "text/plain")}
+        )
+        assert response.status_code == 200
+        data = response.json()
+        assert data["status"] == "success"
+        assert data["namespace"] == "ecommerce"
+
+    # 2. Query specific namespace
+    with patch("app.services.graph_rag_service.graph_rag_service.query_graph", new_callable=AsyncMock) as mock_query:
+        mock_query.return_value = "Chính sách đổi trả áp dụng trong vòng 7 ngày."
+        
+        response = client.post("/api/v1/graph-rag/query", json={
+            "query": "Đổi trả hàng trong bao lâu?",
+            "namespace": "ecommerce"
+        })
+        assert response.status_code == 200
+        assert "7 ngày" in response.json()["text"]
+
+    # 3. List namespaces
+    response = client.get("/api/v1/graph-rag/namespaces")
+    assert response.status_code == 200
+    assert "namespaces" in response.json()
+    assert response.json()["status"] == "success"
+
+    # 4. Reset namespace
+    response = client.post("/api/v1/graph-rag/reset?namespace=ecommerce")
+    assert response.status_code == 200
+    assert response.json()["status"] == "success"
+    assert response.json()["namespace"] == "ecommerce"

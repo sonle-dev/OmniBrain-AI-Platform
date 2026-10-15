@@ -58,7 +58,7 @@ d:/OmniBrain AI Platform/
 ├── requirements.txt            # Danh sách thư viện Python (FastAPI, LiteLLM, NetworkX, SQLAlchemy...)
 ├── static/
 │   └── omnibrain-client.js     # Universal JavaScript Client SDK (Tích hợp cho mọi Web Client)
-├── tests/                      # Bộ Unit & Integration Tests tự động (22 test cases cho FastAPI Core)
+├── tests/                      # Bộ Unit & Integration Tests tự động (23 test cases cho FastAPI Core)
 └── app/
     ├── main.py                 # FastAPI Entrypoint, Middleware CORS & Route Registration
     ├── core/
@@ -69,14 +69,14 @@ d:/OmniBrain AI Platform/
     │   └── v1/
     │       ├── chat.py          # API Chat chính (Fast-Path Router, Dynamic Context & SSE Streaming)
     │       ├── quiz.py          # API Sinh đề thi trắc nghiệm có tự sửa lỗi (Self-Correction Loop)
-    │       ├── graph_rag.py     # API Nạp tài liệu & Tra cứu Đồ thị tri thức GraphRAG
+    │       ├── graph_rag.py     # API Nạp & Tra cứu Đồ thị tri thức Phân vùng (Multi-Tenant Namespaces: lms, shop...)
     │       ├── external_search.py # API Tìm kiếm web thời gian thực (Tavily/Nara)
     │       ├── agent.py         # API Multi-step AI Agent Executor (ReAct Loop)
-    │       ├── vision.py        # API Phân tích hình ảnh & OCR
+    │       ├── vision.py        # API Phân tích hình ảnh & OCR (Ưu tiên Ollama Local)
     │       └── audio.py         # API Chuyển giọng nói thành văn bản (STT) & Tổng hợp giọng nói (TTS)
     ├── services/
     │   ├── llm_factory.py       # Bộ điều phối LLM, Real-Time Clock Injection, Connection Pool & VRAM Pinning
-    │   ├── graph_rag_service.py # Dịch vụ Đồ thị tri thức NetworkX & Phân tích tài liệu PDF/PPTX
+    │   ├── graph_rag_service.py # Dịch vụ Đồ thị tri thức NetworkX Đa phân vùng (Multi-Tenant Partitioned GraphRAG)
     │   ├── search_service.py    # Kết nối công cụ Tìm kiếm Web
     │   ├── agent_service.py     # Đăng ký & Thực thi danh sách Tool Calling
     │   └── tools/               # Thư mục Plugin mở rộng tra cứu dữ liệu ứng dụng

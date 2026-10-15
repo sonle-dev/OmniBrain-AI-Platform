@@ -211,7 +211,7 @@ class LLMFactory:
 
                 if current_model.startswith("ollama/"):
                     call_kwargs["api_base"] = settings.OLLAMA_BASE_URL
-                    call_kwargs["timeout"] = 5.0
+                    call_kwargs["timeout"] = 60.0
                     call_kwargs["extra_body"] = {"keep_alive": -1}
                 else:
                     call_kwargs["timeout"] = timeout
@@ -280,7 +280,7 @@ class LLMFactory:
 
                 if current_model.startswith("ollama/"):
                     call_kwargs["api_base"] = settings.OLLAMA_BASE_URL
-                    call_kwargs["timeout"] = 5.0
+                    call_kwargs["timeout"] = 60.0
                     call_kwargs["extra_body"] = {"keep_alive": -1}
                 else:
                     call_kwargs["timeout"] = 10.0

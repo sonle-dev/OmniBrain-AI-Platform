@@ -37,6 +37,7 @@ class QuizGenerateRequest(BaseModel):
 class GraphRAGQueryRequest(BaseModel):
     query: str = Field(..., description="Natural language question targeting uploaded documents")
     mode: str = Field("local", description="Query mode: 'local' (entity/detail) or 'global' (summary/thematic)")
+    namespace: str = Field("lms", description="Target knowledge base namespace partition (e.g. 'lms', 'ecommerce', 'travel')")
 
 
 class SearchQueryRequest(BaseModel):

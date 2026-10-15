@@ -13,18 +13,20 @@ class NetworkXGraphRAG:
     """
     def __init__(self, working_dir: str):
         self.working_dir = working_dir
-        self.graph_path = os.path.join(working_dir, "fallback_graph.json")
+        self.graph_path = os.path.join(working_dir, "graph.json")
+        legacy_path = os.path.join(working_dir, "fallback_graph.json")
         os.makedirs(working_dir, exist_ok=True)
         
         import networkx as nx
-        if os.path.exists(self.graph_path):
+        load_path = self.graph_path if os.path.exists(self.graph_path) else legacy_path
+        if os.path.exists(load_path):
             try:
-                with open(self.graph_path, "r", encoding="utf-8") as f:
+                with open(load_path, "r", encoding="utf-8") as f:
                     data = json.load(f)
                     self.graph = nx.node_link_graph(data)
-                logger.info(f"Loaded existing fallback GraphRAG with {self.graph.number_of_nodes()} nodes.")
+                logger.info(f"Loaded existing GraphRAG at {load_path} with {self.graph.number_of_nodes()} nodes.")
             except Exception as e:
-                logger.error(f"Failed to load fallback graph: {e}. Creating new graph.")
+                logger.error(f"Failed to load graph at {load_path}: {e}. Creating new graph.")
                 self.graph = nx.MultiDiGraph()
         else:
             self.graph = nx.MultiDiGraph()
@@ -37,6 +39,24 @@ class NetworkXGraphRAG:
                 json.dump(data, f, ensure_ascii=False, indent=2)
         except Exception as e:
             logger.error(f"Failed to save fallback graph: {e}")
+
+    def reset(self):
+        """Clears in-memory graph and removes on-disk graph files for this partition."""
+        import networkx as nx
+        self.graph = nx.MultiDiGraph()
+        for p in [self.graph_path, os.path.join(self.working_dir, "fallback_graph.json")]:
+            if os.path.exists(p):
+                try:
+                    os.remove(p)
+                except Exception:
+                    pass
+
+    def get_stats(self) -> Dict[str, Any]:
+        """Returns node and edge metrics for this graph partition."""
+        return {
+            "nodes_count": self.graph.number_of_nodes(),
+            "edges_count": self.graph.number_of_edges()
+        }
 
     async def ainsert(self, text: str):
         """
@@ -176,89 +196,65 @@ class NetworkXGraphRAG:
 
 class GraphRAGService:
     def __init__(self):
-        self._rag_instance = None
-        self._initialized = False
-        self._is_fallback = False
+        self._engines: Dict[str, NetworkXGraphRAG] = {}
 
-    def _lazy_init(self):
-        if self._initialized:
-            return
+    def _clean_namespace(self, namespace: Optional[str]) -> str:
+        if not namespace or not str(namespace).strip():
+            return "lms"
+        cleaned = "".join(c for c in str(namespace).strip().lower() if c.isalnum() or c in ("_", "-"))
+        return cleaned or "lms"
 
-        # Attempt to initialize nano-graphrag
-        try:
-            from nano_graphrag import GraphRAG
-            from nano_graphrag._utils import wrap_embedding_func_with_attrs
-            import numpy as np
-            import litellm
-            
-            os.makedirs(settings.GRAPHRAG_WORKING_DIR, exist_ok=True)
-
-            @wrap_embedding_func_with_attrs(
-                embedding_dim=1536 if "openai" in settings.DEFAULT_CHAT_MODEL else 768,
-                max_token_size=8192,
-            )
-            async def custom_embedding(texts: list[str]) -> np.ndarray:
+    def _get_engine(self, namespace: Optional[str] = "lms") -> NetworkXGraphRAG:
+        ns = self._clean_namespace(namespace)
+        if ns not in self._engines:
+            ns_dir = os.path.join(settings.GRAPHRAG_WORKING_DIR, ns)
+            legacy_root_graph = os.path.join(settings.GRAPHRAG_WORKING_DIR, "fallback_graph.json")
+            target_graph = os.path.join(ns_dir, "graph.json")
+            if not os.path.exists(target_graph) and os.path.exists(legacy_root_graph) and ns in ("lms", "default"):
+                os.makedirs(ns_dir, exist_ok=True)
                 try:
-                    embed_model = "text-embedding-3-small" if "openai" in settings.DEFAULT_CHAT_MODEL else "gemini/text-embedding-004"
-                    response = await litellm.aembedding(
-                        model=embed_model,
-                        input=texts
-                    )
-                    embeddings = [item["embedding"] for item in response.data]
-                    return np.array(embeddings, dtype=np.float32)
+                    import shutil
+                    shutil.copy2(legacy_root_graph, target_graph)
+                    logger.info("Migrated legacy root graph to namespace '%s'", ns)
                 except Exception as e:
-                    logger.error(f"Error in GraphRAG custom embedding: {e}")
-                    response = await litellm.aembedding(
-                        model="openai/text-embedding-ada-002",
-                        input=texts
-                    )
-                    embeddings = [item["embedding"] for item in response.data]
-                    return np.array(embeddings, dtype=np.float32)
+                    logger.warning("Could not copy legacy graph: %s", e)
 
-            async def custom_llm(
-                prompt: str,
-                system_prompt: Optional[str] = None,
-                history_messages: list = [],
-                **kwargs
-            ) -> str:
-                from app.services.llm_factory import LLMFactory
-                messages = []
-                if system_prompt:
-                    messages.append({"role": "system", "content": system_prompt})
-                for msg in history_messages:
-                    messages.append(msg)
-                messages.append({"role": "user", "content": prompt})
+            self._engines[ns] = NetworkXGraphRAG(working_dir=ns_dir)
+            logger.info("Initialized GraphRAG engine for namespace '%s' in %s", ns, ns_dir)
+        return self._engines[ns]
 
-                try:
-                    result = await LLMFactory.chat_completion(
-                        messages=messages,
-                        temperature=kwargs.get("temperature", 0.1),
-                        max_tokens=kwargs.get("max_tokens", 2048)
-                    )
-                    return result["text"]
-                except Exception as e:
-                    logger.error(f"Error in GraphRAG custom LLM call: {e}")
-                    raise e
+    def list_namespaces(self) -> List[Dict[str, Any]]:
+        """Lists all existing knowledge base partitions with node and edge metrics."""
+        results = []
+        os.makedirs(settings.GRAPHRAG_WORKING_DIR, exist_ok=True)
+        detected_ns = set(self._engines.keys())
+        detected_ns.add("lms")
+        for entry in os.listdir(settings.GRAPHRAG_WORKING_DIR):
+            full_path = os.path.join(settings.GRAPHRAG_WORKING_DIR, entry)
+            if os.path.isdir(full_path) and entry not in ("temp_uploads", "temp_audio"):
+                detected_ns.add(entry)
+        
+        for ns in sorted(detected_ns):
+            engine = self._get_engine(ns)
+            stats = engine.get_stats()
+            results.append({
+                "namespace": ns,
+                "nodes_count": stats["nodes_count"],
+                "edges_count": stats["edges_count"]
+            })
+        return results
 
-            self._rag_instance = GraphRAG(
-                working_dir=settings.GRAPHRAG_WORKING_DIR,
-                embedding_func=custom_embedding,
-                llm_func=custom_llm
-            )
-            self._is_fallback = False
-            self._initialized = True
-            logger.info("GraphRAG Engine (nano-graphrag) lazy initialized successfully.")
-            
-        except Exception as e:
-            logger.warning(
-                f"Failed to load nano-graphrag: {e}. "
-                "Activating self-healing fallback: Pure-Python NetworkX GraphRAG."
-            )
-            # Use local fallback GraphRAG
-            self._rag_instance = NetworkXGraphRAG(working_dir=settings.GRAPHRAG_WORKING_DIR)
-            self._is_fallback = True
-            self._initialized = True
-            logger.info("Fallback NetworkX GraphRAG lazy initialized successfully.")
+    def reset_namespace(self, namespace: str = "lms") -> Dict[str, Any]:
+        """Resets a single knowledge base partition without impacting other partitions."""
+        ns = self._clean_namespace(namespace)
+        engine = self._get_engine(ns)
+        engine.reset()
+        logger.info("Reset GraphRAG namespace '%s'", ns)
+        return {
+            "status": "success",
+            "namespace": ns,
+            "message": f"Knowledge base partition '{ns}' has been reset successfully."
+        }
 
     def extract_text(self, file_path: str) -> str:
         """
@@ -302,39 +298,34 @@ class GraphRAGService:
             with open(file_path, "r", encoding="utf-8", errors="ignore") as f:
                 return f.read()
 
-    async def insert_document(self, file_path: str):
+    async def insert_document(self, file_path: str, namespace: str = "lms"):
         """
-        Ingests a document (PDF, Slide, TXT) into the Knowledge Graph database.
+        Ingests a document (PDF, Slide, TXT) into the specified Knowledge Graph namespace partition.
         """
-        self._lazy_init()
+        ns = self._clean_namespace(namespace)
+        engine = self._get_engine(ns)
         text = self.extract_text(file_path)
         if not text.strip():
             raise ValueError("The document contains no readable text.")
         
-        logger.info(f"Ingesting text ({len(text)} chars) from {file_path} into GraphRAG...")
-        await self._rag_instance.ainsert(text)
-        logger.info("Document ingested successfully.")
+        logger.info(f"Ingesting text ({len(text)} chars) from {file_path} into GraphRAG namespace '{ns}'...")
+        await engine.ainsert(text)
+        logger.info(f"Document ingested successfully into namespace '{ns}'.")
 
-    async def query_graph(self, query: str, mode: str = "local") -> str:
+    async def query_graph(self, query: str, mode: str = "local", namespace: str = "lms") -> str:
         """
-        Queries the Knowledge Graph. Adheres to Strict Grounding rule.
+        Queries the Knowledge Graph partition for the given namespace. Strictly respects local context.
         """
-        self._lazy_init()
+        ns = self._clean_namespace(namespace)
+        engine = self._get_engine(ns)
         from app.services.llm_factory import LLMFactory
 
-        logger.info(f"Querying GraphRAG (Fallback: {self._is_fallback}) in {mode} mode: '{query}'")
+        logger.info(f"Querying GraphRAG namespace '{ns}' in {mode} mode: '{query}'")
 
         try:
-            if self._is_fallback:
-                context = await self._rag_instance.aquery(query, param=None)
-            else:
-                from nano_graphrag import QueryParam
-                context = await self._rag_instance.aquery(
-                    query,
-                    param=QueryParam(mode=mode, only_need_context=True)
-                )
+            context = await engine.aquery(query, param=None)
         except Exception as e:
-            logger.error(f"Failed to query GraphRAG context: {e}")
+            logger.error(f"Failed to query GraphRAG context in namespace '{ns}': {e}")
             context = ""
 
         # Programmatic grounding check for empty or very short context
