@@ -48,20 +48,13 @@ async def analyze_image_endpoint(
         }
     ]
 
-    # 3. Call LLM factory (which uses LiteLLM)
+    # 3. Call LLM factory with task='vision' (prioritizes Ollama vision models, fallbacks to cloud)
     from app.services.llm_factory import LLMFactory
-    
-    # Use standard default vision-capable models (e.g. gemini-2.0-flash or gpt-4o-mini)
-    vision_model = settings.DEFAULT_CHAT_MODEL
-    # Quick model mapping check for safety
-    if "ollama" in vision_model:
-        # Fallback to standard multimodal cloud model if ollama is default chat
-        vision_model = "gemini/gemini-2.0-flash"
 
     try:
         completion_res = await LLMFactory.chat_completion(
             messages=messages,
-            model=vision_model,
+            task="vision",
             temperature=0.2
         )
         
