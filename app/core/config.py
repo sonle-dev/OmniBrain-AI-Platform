@@ -60,14 +60,14 @@ class Settings(BaseSettings):
     def SPECIALIST_MODELS(self) -> Dict[str, List[str]]:
         """Returns ordered model list per task. Ollama LoRA adapters & local models first, cloud fallbacks after."""
         cloud_chat = self._build_cloud_chain([
-            ("openrouter/google/gemma-4-26b-a4b-it:free", self.OPENROUTER_API_KEY),
-            ("openrouter/openai/gpt-oss-20b:free", self.OPENROUTER_API_KEY),
+            ("openrouter/nvidia/nemotron-3.5-lightning:free", self.OPENROUTER_API_KEY),
+            ("openrouter/minimax/minimax-m3.1-flash:free", self.OPENROUTER_API_KEY),
             ("gemini/gemini-2.0-flash", self.GEMINI_API_KEY),
             ("deepseek/deepseek-chat", self.DEEPSEEK_API_KEY),
             ("openai/gpt-4o-mini", self.OPENAI_API_KEY),
         ])
         cloud_reasoning = self._build_cloud_chain([
-            ("openrouter/openai/gpt-oss-20b:free", self.OPENROUTER_API_KEY),
+            ("openrouter/nvidia/nemotron-3.5-lightning:free", self.OPENROUTER_API_KEY),
             ("gemini/gemini-2.0-flash", self.GEMINI_API_KEY),
             ("deepseek/deepseek-reasoner", self.DEEPSEEK_API_KEY),
             ("openai/gpt-4o", self.OPENAI_API_KEY),
@@ -77,9 +77,9 @@ class Settings(BaseSettings):
             ("openai/gpt-4o", self.OPENAI_API_KEY),
         ])
         return {
-            "chat":      [self.LORA_CHAT_ADAPTER, "ollama/qwen2.5:7b", "ollama/llama3"] + cloud_chat,
-            "reasoning": [self.LORA_REASONING_ADAPTER, "ollama/deepseek-r1:8b", "ollama/llama3"] + cloud_reasoning,
-            "graph_rag": ["ollama/nomic-embed-text", "ollama/llama3"] + cloud_chat,
+            "chat":      ["openrouter/nvidia/nemotron-3.5-lightning:free", self.LORA_CHAT_ADAPTER, "ollama/deepseek-r1:1.5b", "ollama/qwen2.5:7b", "ollama/llama3"] + cloud_chat,
+            "reasoning": ["openrouter/nvidia/nemotron-3.5-lightning:free", self.LORA_REASONING_ADAPTER, "ollama/deepseek-r1:1.5b", "ollama/deepseek-r1:8b", "ollama/llama3"] + cloud_reasoning,
+            "graph_rag": ["openrouter/nvidia/nemotron-3.5-lightning:free", "ollama/nomic-embed-text", "ollama/deepseek-r1:1.5b", "ollama/llama3"] + cloud_chat,
             "vision":    ["ollama/llama3.2-vision", "ollama/llava", "ollama/llama3"] + cloud_vision,
             "embedding": ["ollama/nomic-embed-text"],
         }

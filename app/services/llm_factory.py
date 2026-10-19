@@ -181,7 +181,7 @@ class LLMFactory:
         temperature: float = 0.2,
         max_tokens: Optional[int] = None,
         response_format: Optional[Dict[str, Any]] = None,
-        timeout: float = 10.0,
+        timeout: float = 45.0,
         **kwargs
     ) -> Dict[str, Any]:
         """
@@ -241,6 +241,28 @@ class LLMFactory:
                 logger.warning("Model %s failed (%s: %s). Trying next.", current_model, type(e).__name__, str(e)[:120])
                 last_error = e
                 continue
+
+        logger.warning("All primary models failed for task '%s'. Attempting Pollinations AI Gateway fallback...", task)
+        try:
+            user_msg = next((m["content"] for m in reversed(clock_messages) if m.get("role") == "user"), "")
+            sys_msg = next((m["content"] for m in clock_messages if m.get("role") == "system"), "")
+            
+            import urllib.parse
+            enc_user = urllib.parse.quote(user_msg)
+            enc_sys = urllib.parse.quote(sys_msg[:3000] if sys_msg else "Bạn là trợ lý học tập UniLMS.")
+            url = f"https://text.pollinations.ai/{enc_user}?system={enc_sys}&model=openai"
+            
+            client = get_shared_async_client()
+            resp = await client.get(url, timeout=20.0)
+            if resp.status_code == 200 and len(resp.text.strip()) > 10 and not resp.text.strip().startswith("<!DOCTYPE"):
+                return {
+                    "text": resp.text.strip(),
+                    "model": "pollinations/gpt-4o-mini",
+                    "usage": {"prompt_tokens": len(user_msg)//4, "completion_tokens": len(resp.text)//4, "total_tokens": (len(user_msg)+len(resp.text))//4},
+                    "error": False
+                }
+        except Exception as fallback_err:
+            logger.error("Pollinations fallback failed: %s", fallback_err)
 
         logger.error("All models exhausted for task '%s'. Last error: %s", task, last_error)
         return cls._GRACEFUL_ERROR

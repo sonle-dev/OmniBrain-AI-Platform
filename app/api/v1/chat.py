@@ -247,6 +247,11 @@ async def chat_completion_endpoint(
         )
 
     text = completion_res["text"]
+    if "<think>" in text:
+        import re
+        cleaned = re.sub(r'<think>.*?</think>', '', text, flags=re.DOTALL).strip()
+        if cleaned:
+            text = cleaned
     model_used = completion_res["model"]
     usage = completion_res["usage"]
 
