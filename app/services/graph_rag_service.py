@@ -14,6 +14,7 @@ class NetworkXGraphRAG:
     def __init__(self, working_dir: str):
         self.working_dir = working_dir
         self.graph_path = os.path.join(working_dir, "graph.json")
+        self.store_path = os.path.join(working_dir, "knowledge_store.json")
         legacy_path = os.path.join(working_dir, "fallback_graph.json")
         os.makedirs(working_dir, exist_ok=True)
         
@@ -30,6 +31,15 @@ class NetworkXGraphRAG:
                 self.graph = nx.MultiDiGraph()
         else:
             self.graph = nx.MultiDiGraph()
+
+        self.knowledge_store = []
+        if os.path.exists(self.store_path):
+            try:
+                with open(self.store_path, "r", encoding="utf-8") as f:
+                    self.knowledge_store = json.load(f)
+                logger.info(f"Loaded knowledge store at {self.store_path} with {len(self.knowledge_store)} chunks.")
+            except Exception as e:
+                logger.warning(f"Could not load knowledge store: {e}")
 
     def _save_graph(self):
         import networkx as nx
@@ -120,78 +130,100 @@ class NetworkXGraphRAG:
 
     async def aquery(self, query: str, param=None) -> str:
         """
-        Extracts key entities from query, performs local-search in the NetworkX graph,
-        and returns matching relationships as text context.
+        Extracts key entities, performs hybrid search across the Knowledge Graph
+        and the rich lecture knowledge store, returning fully grounded context.
         """
-        if self.graph.number_of_nodes() == 0:
+        if self.graph.number_of_nodes() == 0 and not self.knowledge_store:
             return ""
 
-        from app.services.llm_factory import LLMFactory
+        import re
 
-        # Step 1: Extract keywords / entities from the user query
-        extract_prompt = (
-            "Trích xuất các thực thể hoặc từ khóa chính xuất hiện trong câu hỏi sau dưới dạng JSON list của các chuỗi.\n"
-            f"CÂU HỎI: \"{query}\"\n"
-            "Ví dụ: [\"FastAPI\", \"OmniBrain\"]\n"
-            "Chỉ trả về JSON list hợp lệ. Nếu không trích xuất được gì, trả về []."
-        )
+        clean_q = query.strip()
+        lower_q = clean_q.lower()
 
-        def parser_fn(x: str):
-            cleaned = x.strip().replace("```json", "").replace("```", "").strip()
-            return json.loads(cleaned)
+        # Step 1: Fast keyword extraction (acronyms, technical phrases, words > 2 chars)
+        candidate_keywords = set()
+        # Find capitalized terms or acronyms (e.g. MVCC, JWT, B-Tree, Spring Boot)
+        for m in re.finditer(r'\b[A-Za-z0-9\-\_]{2,}\b', clean_q):
+            candidate_keywords.add(m.group(0))
 
-        try:
-            keywords, _ = await LLMFactory.chat_completion_with_self_correction(
-                messages=[{"role": "user", "content": extract_prompt}],
-                parser_fn=parser_fn,
-                temperature=0.1
-            )
-        except Exception:
-            keywords = []
+        # Also add full query phrases
+        for w in clean_q.split():
+            cw = w.strip(",.!?\"'()[]{}").lower()
+            if len(cw) >= 3:
+                candidate_keywords.add(cw)
 
-        # If LLM extraction failed, use words in query as simple match keys
-        if not keywords:
-            keywords = [word.strip(",.!?\"'") for word in query.split() if len(word) > 3]
-
-        # Step 2: Search graph for matching nodes
+        # Step 2: Search graph nodes
         matched_nodes = []
         all_nodes = list(self.graph.nodes)
         
-        for kw in keywords:
+        for kw in candidate_keywords:
             kw_lower = kw.lower()
             for node in all_nodes:
-                if kw_lower in node.lower() or node.lower() in kw_lower:
+                node_lower = node.lower()
+                if kw_lower == node_lower or kw_lower in node_lower or node_lower in kw_lower:
                     if node not in matched_nodes:
                         matched_nodes.append(node)
 
-        if not matched_nodes:
-            return ""
-
         # Step 3: Retrieve 1-hop subgraph relationships
         subgraph_triples = []
-        for node in matched_nodes:
-            # Outgoing edges
+        for node in matched_nodes[:20]:
             if node in self.graph:
                 for neighbor in self.graph.successors(node):
                     edge_data = self.graph.get_edge_data(node, neighbor)
                     for key in edge_data:
                         rel = edge_data[key].get("relation", "liên kết")
                         subgraph_triples.append(f"- \"{node}\" --({rel})-> \"{neighbor}\"")
-                # Incoming edges
                 for predecessor in self.graph.predecessors(node):
                     edge_data = self.graph.get_edge_data(predecessor, node)
                     for key in edge_data:
                         rel = edge_data[key].get("relation", "liên kết")
                         subgraph_triples.append(f"- \"{predecessor}\" --({rel})-> \"{node}\"")
 
-        # Deduplicate
-        subgraph_triples = list(set(subgraph_triples))
-        
-        # Format context
+        subgraph_triples = list(set(subgraph_triples))[:25]
+
+        # Step 4: Search knowledge chunks from knowledge_store.json
+        scored_chunks = []
+        if self.knowledge_store:
+            for chunk in self.knowledge_store:
+                c_text = chunk.get("text", "")
+                c_text_lower = c_text.lower()
+                score = 0
+                
+                # Check keywords match
+                for kw in candidate_keywords:
+                    kw_lower = kw.lower()
+                    if kw_lower in c_text_lower:
+                        score += 3
+                    if any(kw_lower in str(k).lower() for k in chunk.get("keywords", [])):
+                        score += 5
+                
+                # Boost if session matches (e.g. Buổi 1, Buổi 2)
+                for s_num in range(1, 10):
+                    if f"buổi {s_num}" in lower_q or f"buoi {s_num}" in lower_q or f"bài {s_num}" in lower_q:
+                        if chunk.get("session") == s_num:
+                            score += 15
+
+                if score > 0:
+                    scored_chunks.append((score, chunk))
+
+            scored_chunks.sort(key=lambda x: x[0], reverse=True)
+
+        top_chunks = [item[1] for item in scored_chunks[:3]]
+
+        # Step 5: Format grounded context
+        sections = []
         if subgraph_triples:
-            context_text = "Các thông tin và mối quan hệ tìm thấy trong tài liệu:\n" + "\n".join(subgraph_triples[:40])
-            return context_text
-        return ""
+            sections.append("CẤU TRÚC TRI THỨC VÀ MỐI QUAN HỆ (KNOWLEDGE GRAPH):\n" + "\n".join(subgraph_triples))
+
+        if top_chunks:
+            chunk_texts = []
+            for c in top_chunks:
+                header = f"[{c.get('courseTitle', '')} - Buổi {c.get('session', '')} (Trang {c.get('page', '')})]"
+                chunk_texts.append(f"{header}\n{c.get('text', '')[:1200]}")
+            sections.append("NỘI DUNG CHI TIẾT TỪ GIÁO TRÌNH BÀI GIẢNG CHÍNH THỨC:\n\n" + "\n\n---\n\n".join(chunk_texts))
+
+        return "\n\n".join(sections) if sections else ""
 
 
 class GraphRAGService:
@@ -263,6 +295,20 @@ class GraphRAGService:
         ext = os.path.splitext(file_path)[1].lower()
         if ext == ".pdf":
             try:
+                import pypdfium2 as pdfium
+                doc = pdfium.PdfDocument(file_path)
+                text_list = []
+                for page in doc:
+                    textpage = page.get_textpage()
+                    t = textpage.get_text_range()
+                    if t and t.strip():
+                        text_list.append(t.strip())
+                if text_list:
+                    return "\n\n".join(text_list)
+            except Exception as e:
+                logger.warning(f"pypdfium2 extraction failed, trying fallback: {e}")
+
+            try:
                 import pdfplumber
                 text_list = []
                 with pdfplumber.open(file_path) as pdf:
@@ -271,7 +317,7 @@ class GraphRAGService:
                         if extracted:
                             text_list.append(extracted)
                 return "\n".join(text_list)
-            except ImportError:
+            except Exception:
                 try:
                     from pypdf import PdfReader
                     reader = PdfReader(file_path)

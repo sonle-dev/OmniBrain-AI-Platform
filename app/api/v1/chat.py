@@ -27,6 +27,19 @@ _LMS_KEYWORDS = [
     "bảng điểm", "điểm thi", "điểm chuyên cần", "tx1", "tx2", "tx3", "tx4", "điểm tbc", "kthp"
 ]
 
+# Knowledge base and course keywords for GraphRAG lecture search
+_KNOWLEDGE_KEYWORDS = [
+    "java", "spring", "jpa", "hibernate", "maven", "postgresql", "postgres", "mvcc", "sql",
+    "b-tree", "gin", "gist", "indexing", "sharding", "acid", "csdl", "cơ sở dữ liệu",
+    "hướng đối tượng", "oop", "clean architecture", "solid", "design pattern", "đa hình", "kế thừa",
+    "quản lý dự án", "agile", "scrum", "sprint", "kanban", "waterfall", "gantt", "wbs", "raci",
+    "quản trị hệ thống", "linux", "ubuntu", "systemd", "docker", "nginx", "bash", "shell",
+    "buổi 1", "buổi 2", "buổi 3", "buổi 4", "buổi 5", "buổi 6", "buổi 7", "buổi 8", "buổi 9",
+    "bài 1", "bài 2", "bài 3", "bài 4", "bài 5", "bài 6", "bài 7", "bài 8", "bài 9",
+    "giáo trình", "bài giảng", "slide", "tài liệu", "học gì", "lý thuyết", "khái niệm",
+    "c-101", "c-102", "c-103", "c-104", "c-105"
+]
+
 
 def _is_fast_path_prompt(prompt: str) -> bool:
     """
@@ -39,20 +52,20 @@ def _is_fast_path_prompt(prompt: str) -> bool:
     if _GREETING_REGEX.match(clean_p):
         return True
 
-    # 2. Check if prompt lacks LMS domain keywords and is short
     lower_p = clean_p.lower()
     has_lms_keyword = any(kw in lower_p for kw in _LMS_KEYWORDS)
+    has_kb_keyword = any(kw in lower_p for kw in _KNOWLEDGE_KEYWORDS)
 
-    if not has_lms_keyword and len(clean_p) < 25:
+    if not has_lms_keyword and not has_kb_keyword and len(clean_p) < 25:
         return True
 
     return False
 
 
-def _enrich_lms_context(input_messages: list) -> list:
+async def _enrich_lms_context(input_messages: list) -> list:
     """
-    Detects if user prompt asks for live LMS data.
-    If detected, queries lms_tools and prepends grounded LMS facts to messages.
+    Detects if user prompt asks for live LMS data or Course Knowledge (GraphRAG).
+    If detected, queries lms_tools and GraphRAG knowledge base and prepends grounded facts.
     """
     if not input_messages:
         return input_messages
@@ -61,7 +74,7 @@ def _enrich_lms_context(input_messages: list) -> list:
     if not last_user_msg:
         return input_messages
 
-    # Fast-Path Check: Early exit if prompt is general/greeting
+    # Fast-Path Check: Early exit if prompt is simple greeting
     if _is_fast_path_prompt(last_user_msg):
         logger.info("Fast-Path triggered: Bypassing LMS database enrichment for prompt: '%s'", last_user_msg[:30])
         return input_messages
@@ -69,7 +82,7 @@ def _enrich_lms_context(input_messages: list) -> list:
     lower_msg = last_user_msg.lower()
     lms_facts = []
 
-    # Check lecturer queries
+    # 1. Check lecturer queries
     if any(k in lower_msg for k in ["giảng viên", "dạy môn", "thầy", "cô", "phòng làm việc", "sdt"]):
         for subj in ["marketing", "python", "hướng đối tượng", "oop", "quản lý dự án", "quản trị hệ thống"]:
             if subj in lower_msg:
@@ -77,7 +90,7 @@ def _enrich_lms_context(input_messages: list) -> list:
                 if res.get("found"):
                     lms_facts.append(f"Thông tin giảng viên môn {res['subject_name']}: {res['lecturer_name']} (SĐT: {res.get('phone', 'N/A')}, Email: {res['email']}), Khoa: {res['department']}, Phòng làm việc: {res['office_room']}")
 
-    # Check schedule queries
+    # 2. Check schedule queries
     if any(k in lower_msg for k in ["thời khóa biểu", "lịch học", "học thứ mấy", "tiết mấy", "phòng học"]):
         for subj in ["marketing", "python", "hướng đối tượng", "oop", "quản lý dự án", "quản trị hệ thống"]:
             if subj in lower_msg:
@@ -86,24 +99,56 @@ def _enrich_lms_context(input_messages: list) -> list:
                     for s in res.get("schedules", []):
                         lms_facts.append(f"Lịch học môn {s['subject_name']}: {s['day_of_week']}, {s['period']}, Phòng: {s['room']}, Mã lớp: {s['class_id']}")
 
-    # Check exam schedule queries
+    # 3. Check exam schedule queries
     if any(k in lower_msg for k in ["lịch thi", "ngày thi", "ca thi", "phòng thi"]):
         res = get_exam_schedule(student_id="DTC235200647")
         if res.get("found"):
             for e in res.get("exams", []):
                 lms_facts.append(f"Lịch thi môn {e['subject_name']} ({e['subject_code']}): Ngày {e['exam_date']}, Ca thi {e['exam_time']}, {e['exam_room']}")
 
-    # Check transcripts queries
+    # 4. Check transcripts queries
     if any(k in lower_msg for k in ["bảng điểm", "điểm thi", "điểm chuyên cần", "tx1", "tx2", "tx3", " điểm tbc"]):
         res = get_transcripts()
         if res.get("found"):
             for t in res.get("transcripts", []):
                 lms_facts.append(f"Điểm môn {t['subject_name']} ({t['credits']} TC): C.Cần {t['attendance_score']}, TBCTN {t['process_score']}, TX1 {t['tx1']}, TX2 {t['tx2']}, TX3 {t['tx3']}, TBC {t['avg_score']}, Thi KTHP: {t['exam_eligibility']}")
 
+    # 5. Check Course Knowledge / Lecture Documents via GraphRAG
+    graph_context = ""
+    target_ns = "lms"
+    if any(k in lower_msg for k in ["c-101", "java", "spring", "hibernate", "jpa"]):
+        target_ns = "c-101"
+    elif any(k in lower_msg for k in ["c-102", "postgresql", "postgres", "mvcc", "b-tree", "csdl", "cơ sở dữ liệu"]):
+        target_ns = "c-102"
+    elif any(k in lower_msg for k in ["c-103", "hướng đối tượng", "oop", "clean architecture", "solid", "design pattern"]):
+        target_ns = "c-103"
+    elif any(k in lower_msg for k in ["c-104", "quản lý dự án", "agile", "scrum", "sprint", "kanban", "wbs", "gantt"]):
+        target_ns = "c-104"
+    elif any(k in lower_msg for k in ["c-105", "quản trị hệ thống", "linux", "ubuntu", "systemd", "docker", "bash"]):
+        target_ns = "c-105"
+
+    try:
+        from app.services.graph_rag_service import graph_rag_service
+        graph_context = await graph_rag_service._get_engine(target_ns).aquery(last_user_msg)
+        if not graph_context and target_ns != "lms":
+            graph_context = await graph_rag_service._get_engine("lms").aquery(last_user_msg)
+        if graph_context:
+            logger.info("Retrieved %d chars of grounded GraphRAG lecture context from namespace '%s'", len(graph_context), target_ns)
+    except Exception as e:
+        logger.warning("GraphRAG query during chat enrichment failed: %s", e)
+
+    context_blocks = []
     if lms_facts:
         logger.info("Enriched chat context with %d live LMS DB facts.", len(lms_facts))
-        system_context = "DỮ LIỆU THỰC TẾ TRÍCH XUẤT TỪ HỆ THỐNG LMS:\n" + "\n".join(f"- {f}" for f in lms_facts) + "\n\nHãy sử dụng dữ liệu LMS thực tế ở trên để trả lời người dùng một cách chính xác và ngắn gọn."
-        
+        context_blocks.append("DỮ LIỆU THỰC TẾ TRÍCH XUẤT TỪ HỆ THỐNG LMS:\n" + "\n".join(f"- {f}" for f in lms_facts))
+
+    if graph_context:
+        context_blocks.append("TÀI LIỆU VÀ TRI THỨC BÀI GIẢNG CHÍNH THỨC TỪ KHO KIẾN THỨC LMS (GRAPHRAG):\n" + graph_context)
+
+    if context_blocks:
+        instruction = "\nHãy ưu tiên sử dụng tri thức và dữ liệu chính thức ở trên để giải thích, dẫn chứng và trả lời câu hỏi của người dùng một cách chuẩn xác, mạch lạc và có cơ sở."
+        system_context = "\n\n".join(context_blocks) + "\n\n" + instruction
+
         enriched = list(input_messages)
         if enriched and enriched[0]["role"] == "system":
             enriched[0]["content"] += f"\n\n{system_context}"
@@ -134,7 +179,7 @@ async def chat_completion_endpoint(
 
     # 2. Prepare messages and apply Fast-Path intent classification
     input_messages = [{"role": m.role, "content": m.content} for m in payload.messages]
-    enriched_messages = _enrich_lms_context(input_messages)
+    enriched_messages = await _enrich_lms_context(input_messages)
     serialized = json.dumps(input_messages, sort_keys=True, ensure_ascii=False)
 
     # ── STREAMING PATH (text/event-stream) ──
