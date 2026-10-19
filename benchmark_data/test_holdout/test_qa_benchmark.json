@@ -1,0 +1,2158 @@
+[
+  {
+    "id": "TEST-QA-0001",
+    "courseId": "c-101",
+    "courseTitle": "Lập trình Enterprise với Java 17/21 & Spring Boot 3",
+    "session": 1,
+    "chunkId": "c-101-b1-p1-2",
+    "page": 1,
+    "keywords": [
+      "Spring Security 6",
+      "RabbitMQ",
+      "CI/CD",
+      "Kafka",
+      "Spring Boot 3",
+      "IoC",
+      "Records",
+      "MapStruct",
+      "Prometheus",
+      "JUnit 5",
+      "Clean Architecture",
+      "Grafana",
+      "Spring Cloud",
+      "Hibernate 6",
+      "Spring Data JPA",
+      "Microservices",
+      "Docker Compose",
+      "Virtual Threads",
+      "Redis",
+      "Abstraction",
+      "Java 17",
+      "Locking"
+    ],
+    "question": "Trong môn 'Lập trình Enterprise với Java 17/21 & Spring Boot 3' (Buổi 1), hãy giải thích nguyên lý và đặc điểm chính liên quan đến Spring Security 6, RabbitMQ, CI/CD.",
+    "ground_truth_context": "2. Lộ trình chi tiết 9 buổi: Từ số 0 đến Advanced Enterprise Developer\nĐể đạt năng lực thực chiến, 9 buổi học của học phần Spring Boot 3 được thiết kế đan xen chặt chẽ\ngiữa lý thuyết nền tảng kiến trúc và bài tập code trực tiếp trên dự án thực tế:\nBuổi Tên chủ đề trọng tâm Nội dung chi tiết & Sản phẩm đạt được\n01\nKiến trúc Enterprise & Tổng quan\nSpring Boot 3\nĐịnh hướng 9 buổi, Clean Architecture, Java 17/21 Features\n(Records, Virtual Threads), IoC/DI Core.\n02\nAdvanced Spring Core &\nConfiguration Management\nBean Scopes, Lifecycle Callbacks, Custom Annotations, Profile￾based configuration, `@ConfigurationProperties`.\n03\nSpring Data JPA & Hibernate 6\nDeep Dive\nAdvanced Mapping, Entity Graph, giải quyết triệt để N+1 Query,\nLocking (Optimistic/Pessimistic), Pagination.\n04\nEnterprise RESTful AP",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0002",
+    "courseId": "c-101",
+    "courseTitle": "Lập trình Enterprise với Java 17/21 & Spring Boot 3",
+    "session": 1,
+    "chunkId": "c-101-b1-p17-11",
+    "page": 17,
+    "keywords": [
+      "Microservices",
+      "RabbitMQ",
+      "Docker Compose",
+      "Spring Boot 3",
+      "Redis",
+      "Java 17"
+    ],
+    "question": "Trong môn 'Lập trình Enterprise với Java 17/21 & Spring Boot 3' (Buổi 1), hãy giải thích nguyên lý và đặc điểm chính liên quan đến Microservices, RabbitMQ, Docker Compose.",
+    "ground_truth_context": "18. Chuyên đề bổ trợ: Triển khai Docker, Containerization & DevOps\ncơ bản\nCâu cửa miệng kinh điển trong giới lập trình: \"Nhưng mà máy tôi chạy được!\" (It works on my\nmachine) được giải quyết triệt để bằng công nghệ container hóa Docker.\nĐóng gói ứng dụng Spring Boot với Dockerfile Multi-stage Build\nStage 1 (Build): Sử dụng Maven/Gradle image để tải thư viện và biên dịch mã nguồn thành\nfile .jar.\nStage 2 (Runtime): Chỉ copy file .jar vừa build sang một image JRE gọn nhẹ (Eclipse\nTemurin Alpine), loại bỏ toàn bộ công cụ build nặng nề, giúp dung lượng container tối ưu nhất\nvà bảo mật cao.\nQuản lý đa container với Docker Compose\nChỉ với một lệnh docker-compose up -d, hệ thống toàn diện gồm Spring Boot Backend Service,\nPostgreSQL Database, và Redis Cache Server sẽ được khởi động đồng thời, kết ",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0003",
+    "courseId": "c-101",
+    "courseTitle": "Lập trình Enterprise với Java 17/21 & Spring Boot 3",
+    "session": 2,
+    "chunkId": "c-101-b2-p2-15",
+    "page": 2,
+    "keywords": [
+      "Single Responsibility",
+      "abstraction",
+      "Liskov Substitution",
+      "Spring Boot 3",
+      "Dependency Inversion",
+      "Design Patterns",
+      "Interface Segregation"
+    ],
+    "question": "Trong môn 'Lập trình Enterprise với Java 17/21 & Spring Boot 3' (Buổi 2), hãy giải thích nguyên lý và đặc điểm chính liên quan đến Single Responsibility, abstraction, Liskov Substitution.",
+    "ground_truth_context": "Phan 2: Chuyen de Toan dien ve Kien truc & Ma nguon Enterprise -\nPhan 2\nTrong phan nay, chung ta di sau vao phan tich ly thuyet, mo hinh thiet ke, quy tac ap dung va cac mau thiet\nke (Design Patterns) chuan production danh cho he thong Enterprise lon. No giup lap trinh vien nam vung\nban chat ky thuat tu nen tang den nang cao.\n1. Chi tiet ly thuyet va Nguyen ly thiet ke:\n• Single Responsibility Principle (SRP): Moi class va module chi nen co mot trach nhiem duy nhat va\nthay doi vi mot ly do duy nhat trong he thong doanh nghiep.\n• Open/Closed Principle (OCP): Cac thuc the phan mem ph nen mo cho viec mo rong nhung dong cho\nviec chinh sua truc tiep ma nguon cu.\n• Liskov Substitution Principle (LSP): Cac doi tuong trong chuong trinh co the duoc thay the bang cac\ninstances cua subtype ma khong l",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0004",
+    "courseId": "c-101",
+    "courseTitle": "Lập trình Enterprise với Java 17/21 & Spring Boot 3",
+    "session": 2,
+    "chunkId": "c-101-b2-p1-13",
+    "page": 1,
+    "keywords": [
+      "Single Responsibility",
+      "SPRING BOOT 3",
+      "Microservices",
+      "JAVA 17",
+      "abstraction",
+      "Liskov Substitution",
+      "Spring Boot 3",
+      "Dependency Inversion",
+      "Interface Segregation",
+      "Design Patterns",
+      "Clean Architecture"
+    ],
+    "question": "Trong môn 'Lập trình Enterprise với Java 17/21 & Spring Boot 3' (Buổi 2), hãy giải thích nguyên lý và đặc điểm chính liên quan đến Single Responsibility, SPRING BOOT 3, Microservices.",
+    "ground_truth_context": "LAP TRINH ENTERPRISE VOI JAVA 17/21 &\nSPRING BOOT 3\nBUOI 2: Kien truc Clean Architecture, Microservices & Spring Boot 3 Core\nConfiguration\nTai lieu hoc tap chuyen sau tu co ban den nang cao (15 trang)\nPhan 1: Chuyen de Toan dien ve Kien truc & Ma nguon Enterprise -\nPhan 1\nTrong phan nay, chung ta di sau vao phan tich ly thuyet, mo hinh thiet ke, quy tac ap dung va cac mau thiet\nke (Design Patterns) chuan production danh cho he thong Enterprise lon. No giup lap trinh vien nam vung\nban chat ky thuat tu nen tang den nang cao.\n1. Chi tiet ly thuyet va Nguyen ly thiet ke:\n• Single Responsibility Principle (SRP): Moi class va module chi nen co mot trach nhiem duy nhat va\nthay doi vi mot ly do duy nhat trong he thong doanh nghiep.\n• Open/Closed Principle (OCP): Cac thuc the phan mem ph nen mo cho",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0005",
+    "courseId": "c-101",
+    "courseTitle": "Lập trình Enterprise với Java 17/21 & Spring Boot 3",
+    "session": 2,
+    "chunkId": "c-101-b2-p1-14",
+    "page": 1,
+    "keywords": [
+      "Microservices",
+      "Spring Boot 3",
+      "Java 17"
+    ],
+    "question": "Trong môn 'Lập trình Enterprise với Java 17/21 & Spring Boot 3' (Buổi 2), hãy giải thích nguyên lý và đặc điểm chính liên quan đến Microservices, Spring Boot 3, Java 17.",
+    "ground_truth_context": "2. Ma nguon mau chuan Production (Spring Boot 3 & Java 17/21):\npackage com.sonledev.enterprise.part1;\nimport org.springframework.stereotype.Service;\nimport org.springframework.transaction.annotation.Transactional;\nimport lombok.RequiredArgsConstructor;\nimport lombok.extern.slf4j.Slf4j;\n@Slf4j\n@Service\n@RequiredArgsConstructor\npublic class EnterprisePart1Service {\nprivate final ExternalApiClient apiClient;\nprivate final EnterpriseRepository repository;\n@Transactional(rollbackFor = Exception.class)\npublic BusinessResponse executeEnterpriseProcess(BusinessRequest request) {\nlog.info(\"Starting enterprise execution for process part 1 with ID: {}\", request.getI\nd());\n// Validate domain invariants\nvalidateRequest(request);\n// Execute core business logic\nvar entity = repository.findById(request.ge",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0006",
+    "courseId": "c-101",
+    "courseTitle": "Lập trình Enterprise với Java 17/21 & Spring Boot 3",
+    "session": 3,
+    "chunkId": "c-101-b3-p9-38",
+    "page": 9,
+    "keywords": [
+      "Spring Data JPA"
+    ],
+    "question": "Trong môn 'Lập trình Enterprise với Java 17/21 & Spring Boot 3' (Buổi 3), hãy giải thích nguyên lý và đặc điểm chính liên quan đến Spring Data JPA.",
+    "ground_truth_context": "10. Chuyên đề bổ trợ: DTO Projections & Interface-based Projections\nKhi bạn chỉ cần hiển thị một vài trường dữ liệu lên màn hình báo cáo (thay vì load toàn bộ các cột\nnặng nề của Entity), DTO Projections là giải pháp tối ưu hiệu năng tuyệt vời.\nCác hình thức Projection trong Spring Data JPA\nInterface-based Projections: Định nghĩa một interface với các phương thức getter tương\nứng, Spring Data JPA tự động sinh proxy trả về dữ liệu cực kỳ nhanh gọn.\nClass-based Projections (DTO): Sử dụng constructor expression trực tiếp trong câu lệnh\nJPQL (ví dụ: SELECT new com.dto.UserDto(u.id, u.name) FROM User u) để map trực tiếp\nsang Java DTO.\nDynamic Projections: Cho phép truyền class projection làm tham số trực tiếp vào phương\nthức repository, tái sử dụng method cho nhiều mục đích hiển thị khác nhau.\n",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0007",
+    "courseId": "c-101",
+    "courseTitle": "Lập trình Enterprise với Java 17/21 & Spring Boot 3",
+    "session": 4,
+    "chunkId": "c-101-b4-p11-47",
+    "page": 11,
+    "keywords": [],
+    "question": "Trong môn 'Lập trình Enterprise với Java 17/21 & Spring Boot 3' (Buổi 4), hãy giải thích nguyên lý và đặc điểm chính liên quan đến nội dung kiến thức.",
+    "ground_truth_context": "12. Chuyên đề bổ trợ: API Testing với MockMvc & Postman\nKiểm thử tầng Controller đảm bảo REST API hoạt động đúng đắn với các tham số đầu vào và trả về\nđúng mã trạng thái HTTP mong muốn.\nKiểm thử Controller với MockMvc\nSử dụng @WebMvcTest để cô lập tầng Controller, không cần khởi động toàn bộ database hay\nservice phức tạp.\nDùng MockMvc giả lập HTTP request (GET, POST, PUT, DELETE), kiểm tra kết quả JSON trả về\nbằng JsonPath và xác thực HTTP Status Code.\nKiểm thử thủ công với Postman / Insomnia\nXây dựng bộ sưu tập Postman Collection cho toàn bộ hệ thống API, lưu trữ biến môi trường\n(Environment variables) để dễ dàng test các luồng đăng nhập và gọi API bảo mật.\nBuổi 4: API Testing with MockMvc Trang 12 / 15\n\n13. Chuyên đề bổ trợ: Logging & Request Interceptors trong Spring\nBoot\nViệc ghi nhận ",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0008",
+    "courseId": "c-101",
+    "courseTitle": "Lập trình Enterprise với Java 17/21 & Spring Boot 3",
+    "session": 5,
+    "chunkId": "c-101-b5-p1-50",
+    "page": 1,
+    "keywords": [
+      "Spring Boot 3",
+      "Spring Security 6"
+    ],
+    "question": "Trong môn 'Lập trình Enterprise với Java 17/21 & Spring Boot 3' (Buổi 5), hãy giải thích nguyên lý và đặc điểm chính liên quan đến Spring Boot 3, Spring Security 6.",
+    "ground_truth_context": "2. Chuyên đề 1: Kiến trúc Security Filter Chain trong Spring Security 6\nSpring Security hoạt động dựa trên một chuỗi các Servlet Filters (Security Filter Chain). Mỗi request\nHTTP đi qua hệ thống đều phải vượt qua các filter này trước khi chạm tới Controller.\nCác Filter cốt lõi trong chuỗi\nUsernamePasswordAuthenticationFilter:\nXử lý quá trình đăng nhập truyền thống.\nJwtAuthenticationFilter (Custom): Đọc\ntoken từ header, xác thực và đưa thông tin user\nvào SecurityContext.\nExceptionTranslationFilter: Bắt các ngoại lệ\nxác thực (401) và phân quyền (403).\nAuthorizationFilter: Kiểm tra quyền truy cập\nendpoint cuối cùng.\nCấu hình SecurityFilterChain dạng\nLambda DSL\nTrong Spring Boot 3, cấu hình bảo mật được viết\nhoàn toàn bằng cú pháp Lambda gọn gàng, tường\nminh, không sử dụng extends\nWebSecurityC",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0009",
+    "courseId": "c-101",
+    "courseTitle": "Lập trình Enterprise với Java 17/21 & Spring Boot 3",
+    "session": 5,
+    "chunkId": "c-101-b5-p11-57",
+    "page": 11,
+    "keywords": [],
+    "question": "Trong môn 'Lập trình Enterprise với Java 17/21 & Spring Boot 3' (Buổi 5), hãy giải thích nguyên lý và đặc điểm chính liên quan đến nội dung kiến thức.",
+    "ground_truth_context": "12. Chuyên đề bổ trợ: Security Testing với @WithMockUser &\nMockMvc\nViết test cho các endpoint được bảo mật bởi Spring Security đảm bảo phân quyền hoạt động đúng đắn\nvà không có lỗ hổng rò rỉ dữ liệu.\nSử dụng @WithMockUser trong Unit Testing\nAnnotation @WithMockUser(username = \"admin\", roles = {\"ADMIN\"}) giả lập một người\ndùng đã đăng nhập với vai trò cụ thể khi chạy test Controller.\nGiúp kiểm tra xem endpoint của admin có bị từ chối khi user thường gọi hay không (kỳ vọng\ntrả về mã 403 Forbidden).\nKiểm thử tích hợp bảo mật JWT\nViết test case thực hiện gửi request đăng nhập lấy token thực tế, sau đó dùng token đó đính\nkèm vào header để gọi các API bảo mật.\nBuổi 5: Security Testing with MockMvc Trang 12 / 15\n\n13. Chuyên đề bổ trợ: Audit & Security Logging trong Hệ thống Doanh\nnghiệp\nGhi nhận ",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0010",
+    "courseId": "c-101",
+    "courseTitle": "Lập trình Enterprise với Java 17/21 & Spring Boot 3",
+    "session": 6,
+    "chunkId": "c-101-b6-p1-59",
+    "page": 1,
+    "keywords": [
+      "Abstraction",
+      "JAVA 17",
+      "cron",
+      "Redis"
+    ],
+    "question": "Trong môn 'Lập trình Enterprise với Java 17/21 & Spring Boot 3' (Buổi 6), hãy giải thích nguyên lý và đặc điểm chính liên quan đến Abstraction, JAVA 17, cron.",
+    "ground_truth_context": "LAP TRINH ENTERPRISE VOI JAVA 17/21 & SPRING\nBOOT 3\nTai lieu Buổi 6: Caching, Redis & Asynchronous Processing (Tăng tốc hiệu năng & Xử lý tác vụ\nnền)\n1. Định hướng Buổi 6: Tối ưu hiệu năng ứng dụng với Redis & Xử lý\nBất đồng bộ\nKhi hệ thống doanh nghiệp phát triển và chịu tải hàng ngàn request mỗi giây, việc truy vấn trực tiếp\nxuống cơ sở dữ liệu quan hệ cho mọi yêu cầu đọc dữ liệu sẽ làm chậm toàn bộ hệ thống. Ở Buổi 6,\nchúng ta khai thác sức mạnh của cơ chế Spring Cache Abstraction kết hợp cơ sở dữ liệu in-memory\nphân tán Redis, thực thi các tác vụ nền bất đồng bộ với @Async và lập lịch biểu tự động với Spring\nTask Scheduler.\nTrụ cột Tối ưu Thách thức thực tế Giải pháp Enterprise chuẩn\nPerformance Caching\nTruy vấn database lặp lại cho các dữ\nliệu ít thay đổi gây nghẽn cổ chai.\nTích hợp R",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0011",
+    "courseId": "c-101",
+    "courseTitle": "Lập trình Enterprise với Java 17/21 & Spring Boot 3",
+    "session": 6,
+    "chunkId": "c-101-b6-p1-60",
+    "page": 1,
+    "keywords": [
+      "Redis",
+      "Abstraction",
+      "Microservices"
+    ],
+    "question": "Trong môn 'Lập trình Enterprise với Java 17/21 & Spring Boot 3' (Buổi 6), hãy giải thích nguyên lý và đặc điểm chính liên quan đến Redis, Abstraction, Microservices.",
+    "ground_truth_context": "2. Chuyên đề 1: Kiến trúc Spring Cache Abstraction & Redis\nIntegration\nSpring cung cấp một tầng trừu tượng hóa cache (Cache Abstraction) cực kỳ mạnh mẽ, cho phép áp\ndụng bộ nhớ đệm vào ứng dụng chỉ thông qua các annotations đơn giản mà không làm ô nhiễm\nbusiness logic.\nCác Spring Cache Annotations chính\n@Cacheable: Kiểm tra cache trước khi gọi\nmethod; nếu có trả về ngay, nếu chưa thì thực\nthi method và lưu kết quả vào cache.\n@CachePut: Luôn thực thi method và cập nhật\nlại giá trị mới vào cache (thường dùng cho thao\ntác Update).\n@CacheEvict: Xóa dữ liệu khỏi cache khi có\nthay đổi dữ liệu (thường dùng cho thao tác\nDelete hoặc Update).\nVai trò của Redis trong Enterprise\nRedis là cơ sở dữ liệu in-memory cấu trúc key￾value có tốc độ cực nhanh (hàng triệu lượt truy\nvấn mỗi giây).\nTrong hệ thống ",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0012",
+    "courseId": "c-101",
+    "courseTitle": "Lập trình Enterprise với Java 17/21 & Spring Boot 3",
+    "session": 7,
+    "chunkId": "c-101-b7-p7-73",
+    "page": 7,
+    "keywords": [
+      "Grafana",
+      "microservices",
+      "Microservices",
+      "RabbitMQ",
+      "Kafka",
+      "Spring Boot 3"
+    ],
+    "question": "Trong môn 'Lập trình Enterprise với Java 17/21 & Spring Boot 3' (Buổi 7), hãy giải thích nguyên lý và đặc điểm chính liên quan đến Grafana, microservices, Microservices.",
+    "ground_truth_context": "8. Chuyên đề bổ trợ: Distributed Tracing & Micrometer Observation\nTrong hệ thống Microservices, một request từ client có thể đi qua 5-10 microservices khác nhau. Khi\nxảy ra lỗi, việc tìm kiếm log thủ công là bất khả thi.\nMicrometer Tracing & Zipkin / Jaeger\nSpring Boot 3 tích hợp sẵn Micrometer Tracing, tự động gắn traceId và spanId vào mọi HTTP\nrequest header và file log.\nCác trace được gửi về hệ thống tập trung như Zipkin hoặc Grafana Tempo để vẽ biểu đồ trực\nquan hành trình của request qua từng microservice.\nGỡ lỗi nhanh chóng\nDựa vào traceId duy nhất, kỹ sư có thể trích xuất toàn bộ log liên quan đến một giao dịch cụ thể\ntrên toàn bộ cụm cluster chỉ trong vài giây.\nBuổi 7: Distributed Tracing with Micrometer Trang 8 / 15\n\n9. Chuyên đề bổ trợ: Distributed Transactions & Saga Pattern\nTro",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0013",
+    "courseId": "c-101",
+    "courseTitle": "Lập trình Enterprise với Java 17/21 & Spring Boot 3",
+    "session": 8,
+    "chunkId": "c-101-b8-p5-80",
+    "page": 5,
+    "keywords": [
+      "RabbitMQ",
+      "Kafka"
+    ],
+    "question": "Trong môn 'Lập trình Enterprise với Java 17/21 & Spring Boot 3' (Buổi 8), hãy giải thích nguyên lý và đặc điểm chính liên quan đến RabbitMQ, Kafka.",
+    "ground_truth_context": "6. Chuyên đề bổ trợ: Apache Kafka Advanced - Topics, Partitions &\nConsumer Groups\nApache Kafka là nền tảng streaming sự kiện phân tán dung lượng lớn, được sử dụng rộng rãi trong các\ntập đoàn công nghệ lớn.\nCấu trúc cốt lõi của Kafka\nTopic: Kênh phân loại sự kiện (ví dụ: user-signup-events, payment-processed).\nPartition: Mỗi topic được chia nhỏ thành nhiều partition để cho phép xử lý song song, tăng tốc\nđộ thông lượng.\nConsumer Group: Nhóm các consumer cùng đọc một topic; Kafka đảm bảo mỗi partition chỉ\nđược đọc bởi duy nhất một consumer trong cùng một group, đảm bảo thứ tự xử lý.\nSpring Kafka Integration\nSử dụng KafkaTemplate để gửi message và annotation @KafkaListener(topics = \"...\",\ngroupId = \"...\") để lắng nghe sự kiện cực kỳ hiệu quả.\nBuổi 8: Apache Kafka Architecture Trang 6 / 15\n\n7. ",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0014",
+    "courseId": "c-101",
+    "courseTitle": "Lập trình Enterprise với Java 17/21 & Spring Boot 3",
+    "session": 9,
+    "chunkId": "c-101-b9-p7-92",
+    "page": 7,
+    "keywords": [
+      "Grafana",
+      "Microservices",
+      "Nginx",
+      "CI/CD",
+      "Prometheus",
+      "Let's Encrypt",
+      "Spring Boot 3",
+      "Reverse Proxy",
+      "SSL",
+      "Java 17",
+      "Spring Cloud"
+    ],
+    "question": "Trong môn 'Lập trình Enterprise với Java 17/21 & Spring Boot 3' (Buổi 9), hãy giải thích nguyên lý và đặc điểm chính liên quan đến Grafana, Microservices, Nginx.",
+    "ground_truth_context": "Phan 8: Trien khai He thong Thuc te & CI/CD DevOps - Muc 8\nTrong phan tong ket cuoi cung nay, chung ta tap trung vao quy trinh dong goi ung dung Spring Boot 3 bang\nDocker, thiet lap pipeline CI/CD tu dong voi GitHub Actions va trien khai len AWS EC2 production su dung\nNginx va Let's Encrypt SSL.\n1. Ly thuyet va Quy trinh Van hanh Enterprise:\n• Containerization: Dong goi Microservices vao Docker Image toi uu multi-stage build de giam kich thuoc\nimage.\n• CI/CD Automation: Tu dong chay Unit Test, Integration Test va build image moi khi push code len\nnhanh main.\n• Production Monitoring: Thiet lap Prometheus va Grafana de giam sat CPU, Memory, JVM Garbage\nCollection va HTTP request latency.\n2. Cau hinh Dockerfile chuen production (Java 17/21):\n# Build stage\nFROM maven:3.9.6-eclipse-temurin-21 A",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0015",
+    "courseId": "c-101",
+    "courseTitle": "Lập trình Enterprise với Java 17/21 & Spring Boot 3",
+    "session": 9,
+    "chunkId": "c-101-b9-p2-87",
+    "page": 2,
+    "keywords": [
+      "Grafana",
+      "Microservices",
+      "Nginx",
+      "CI/CD",
+      "Prometheus",
+      "Let's Encrypt",
+      "Spring Boot 3",
+      "Reverse Proxy",
+      "SSL",
+      "Java 17",
+      "Spring Cloud"
+    ],
+    "question": "Trong môn 'Lập trình Enterprise với Java 17/21 & Spring Boot 3' (Buổi 9), hãy giải thích nguyên lý và đặc điểm chính liên quan đến Grafana, Microservices, Nginx.",
+    "ground_truth_context": "Phan 3: Trien khai He thong Thuc te & CI/CD DevOps - Muc 3\nTrong phan tong ket cuoi cung nay, chung ta tap trung vao quy trinh dong goi ung dung Spring Boot 3 bang\nDocker, thiet lap pipeline CI/CD tu dong voi GitHub Actions va trien khai len AWS EC2 production su dung\nNginx va Let's Encrypt SSL.\n1. Ly thuyet va Quy trinh Van hanh Enterprise:\n• Containerization: Dong goi Microservices vao Docker Image toi uu multi-stage build de giam kich thuoc\nimage.\n• CI/CD Automation: Tu dong chay Unit Test, Integration Test va build image moi khi push code len\nnhanh main.\n• Production Monitoring: Thiet lap Prometheus va Grafana de giam sat CPU, Memory, JVM Garbage\nCollection va HTTP request latency.\n2. Cau hinh Dockerfile chuen production (Java 17/21):\n# Build stage\nFROM maven:3.9.6-eclipse-temurin-21 A",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0016",
+    "courseId": "c-102",
+    "courseTitle": "Kiến trúc & Tối ưu Cơ sở Dữ liệu PostgreSQL Enterprise",
+    "session": 1,
+    "chunkId": "c-102-b1-p19-20",
+    "page": 19,
+    "keywords": [
+      "Maintenance Work Mem",
+      "Vacuum",
+      "WAL",
+      "vacuum",
+      "Work Mem",
+      "VACUUM",
+      "Postmaster",
+      "Shared Buffers",
+      "MVCC",
+      "Checkpointer"
+    ],
+    "question": "Trong môn 'Kiến trúc & Tối ưu Cơ sở Dữ liệu PostgreSQL Enterprise' (Buổi 1), hãy giải thích nguyên lý và đặc điểm chính liên quan đến Maintenance Work Mem, Vacuum, WAL.",
+    "ground_truth_context": "Phan 20: Kien truc PostgreSQL Enterprise & MVCC - Chu de 20\nTrong phan 20 cua buoi hoc dau tien nay, chung ta nghien cuu chuyen sau ve kien truc tien trinh\nPostgreSQL (Postmaster, Backend Processes, Background Writer, Checkpointer, WAL Writer), cau truc bo\nnho (Shared Buffers, WAL Buffers, Work Mem), co che Multi-Version Concurrency Control (MVCC),\nxmin/xmax va qua trinh Vacuum trong he thong co so du lieu doanh nghiep.\n1. Ly thuyet va Phuong phap Chuyen sâu:\n- Process Architecture: Postmaster la tien trinh goc lang nghe ket noi, khoi tao cac backend process cho\nmoi client va quan ly cac background worker.\n- Memory Structure: Shared Buffers (vùng cache du lieu), WAL Buffers (vùng ghi log truoc) va Work Mem /\nMaintenance Work Mem cho cac tac vu sort/hash/vacuum.\n- MVCC & Tuple Visibility: C",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0017",
+    "courseId": "c-102",
+    "courseTitle": "Kiến trúc & Tối ưu Cơ sở Dữ liệu PostgreSQL Enterprise",
+    "session": 1,
+    "chunkId": "c-102-b1-p7-8",
+    "page": 7,
+    "keywords": [
+      "Maintenance Work Mem",
+      "Vacuum",
+      "WAL",
+      "vacuum",
+      "Work Mem",
+      "VACUUM",
+      "Postmaster",
+      "Shared Buffers",
+      "MVCC",
+      "Checkpointer"
+    ],
+    "question": "Trong môn 'Kiến trúc & Tối ưu Cơ sở Dữ liệu PostgreSQL Enterprise' (Buổi 1), hãy giải thích nguyên lý và đặc điểm chính liên quan đến Maintenance Work Mem, Vacuum, WAL.",
+    "ground_truth_context": "Phan 8: Kien truc PostgreSQL Enterprise & MVCC - Chu de 8\nTrong phan 8 cua buoi hoc dau tien nay, chung ta nghien cuu chuyen sau ve kien truc tien trinh PostgreSQL\n(Postmaster, Backend Processes, Background Writer, Checkpointer, WAL Writer), cau truc bo nho (Shared\nBuffers, WAL Buffers, Work Mem), co che Multi-Version Concurrency Control (MVCC), xmin/xmax va qua\ntrinh Vacuum trong he thong co so du lieu doanh nghiep.\n1. Ly thuyet va Phuong phap Chuyen sâu:\n- Process Architecture: Postmaster la tien trinh goc lang nghe ket noi, khoi tao cac backend process cho\nmoi client va quan ly cac background worker.\n- Memory Structure: Shared Buffers (vùng cache du lieu), WAL Buffers (vùng ghi log truoc) va Work Mem /\nMaintenance Work Mem cho cac tac vu sort/hash/vacuum.\n- MVCC & Tuple Visibility: Co c",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0018",
+    "courseId": "c-102",
+    "courseTitle": "Kiến trúc & Tối ưu Cơ sở Dữ liệu PostgreSQL Enterprise",
+    "session": 1,
+    "chunkId": "c-102-b1-p1-2",
+    "page": 1,
+    "keywords": [
+      "Maintenance Work Mem",
+      "Vacuum",
+      "WAL",
+      "vacuum",
+      "Work Mem",
+      "VACUUM",
+      "Postmaster",
+      "Shared Buffers",
+      "MVCC",
+      "Checkpointer"
+    ],
+    "question": "Trong môn 'Kiến trúc & Tối ưu Cơ sở Dữ liệu PostgreSQL Enterprise' (Buổi 1), hãy giải thích nguyên lý và đặc điểm chính liên quan đến Maintenance Work Mem, Vacuum, WAL.",
+    "ground_truth_context": "Phan 2: Kien truc PostgreSQL Enterprise & MVCC - Chu de 2\nTrong phan 2 cua buoi hoc dau tien nay, chung ta nghien cuu chuyen sau ve kien truc tien trinh PostgreSQL\n(Postmaster, Backend Processes, Background Writer, Checkpointer, WAL Writer), cau truc bo nho (Shared\nBuffers, WAL Buffers, Work Mem), co che Multi-Version Concurrency Control (MVCC), xmin/xmax va qua\ntrinh Vacuum trong he thong co so du lieu doanh nghiep.\n1. Ly thuyet va Phuong phap Chuyen sâu:\n- Process Architecture: Postmaster la tien trinh goc lang nghe ket noi, khoi tao cac backend process cho\nmoi client va quan ly cac background worker.\n- Memory Structure: Shared Buffers (vùng cache du lieu), WAL Buffers (vùng ghi log truoc) va Work Mem /\nMaintenance Work Mem cho cac tac vu sort/hash/vacuum.\n- MVCC & Tuple Visibility: Co c",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0019",
+    "courseId": "c-102",
+    "courseTitle": "Kiến trúc & Tối ưu Cơ sở Dữ liệu PostgreSQL Enterprise",
+    "session": 2,
+    "chunkId": "c-102-b2-p8-29",
+    "page": 8,
+    "keywords": [],
+    "question": "Trong môn 'Kiến trúc & Tối ưu Cơ sở Dữ liệu PostgreSQL Enterprise' (Buổi 2), hãy giải thích nguyên lý và đặc điểm chính liên quan đến nội dung kiến thức.",
+    "ground_truth_context": "Phan 9: Kien truc Luu tru, Page Layout & TOAST trong PostgreSQL -\nChu de 9\nTrong phan 9 cua buoi hoc thu hai nay, chung ta nghien cuu chuyen sau ve cau truc luu tru vat ly cua\nPostgreSQL (8KB Data Page), Page Header, Item Identifiers, Heap Tuples, co che TOAST (The\nOversized-Attribute Storage Technique) de xu ly du lieu lon, va cach quan ly m■ng du lieu trong o dia\ndoanh nghiep.\n1. Ly thuyet va Phuong phap Quan tri Chuyen sâu:\n- 8KB Data Page Layout: Cau truc trang du lieu gom Page Header (thong tin trang), Line Pointers (danh\nsach con tro), Item Tuples (du lieu thuc te) va Free Space.\n- Tuple Internals: Cau truc Header cua moi tuple chua xmin, xmax, infomask va null bitmaps quyet dinh\nhieu suat truy van va hien thi du lieu.\n- TOAST Mechanism: Co che tu dong nen va tach cac truong du lieu ",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0020",
+    "courseId": "c-102",
+    "courseTitle": "Kiến trúc & Tối ưu Cơ sở Dữ liệu PostgreSQL Enterprise",
+    "session": 2,
+    "chunkId": "c-102-b2-p19-40",
+    "page": 19,
+    "keywords": [],
+    "question": "Trong môn 'Kiến trúc & Tối ưu Cơ sở Dữ liệu PostgreSQL Enterprise' (Buổi 2), hãy giải thích nguyên lý và đặc điểm chính liên quan đến nội dung kiến thức.",
+    "ground_truth_context": "Phan 20: Kien truc Luu tru, Page Layout & TOAST trong PostgreSQL -\nChu de 20\nTrong phan 20 cua buoi hoc thu hai nay, chung ta nghien cuu chuyen sau ve cau truc luu tru vat ly cua\nPostgreSQL (8KB Data Page), Page Header, Item Identifiers, Heap Tuples, co che TOAST (The\nOversized-Attribute Storage Technique) de xu ly du lieu lon, va cach quan ly m■ng du lieu trong o dia\ndoanh nghiep.\n1. Ly thuyet va Phuong phap Quan tri Chuyen sâu:\n- 8KB Data Page Layout: Cau truc trang du lieu gom Page Header (thong tin trang), Line Pointers (danh\nsach con tro), Item Tuples (du lieu thuc te) va Free Space.\n- Tuple Internals: Cau truc Header cua moi tuple chua xmin, xmax, infomask va null bitmaps quyet dinh\nhieu suat truy van va hien thi du lieu.\n- TOAST Mechanism: Co che tu dong nen va tach cac truong du li",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0021",
+    "courseId": "c-102",
+    "courseTitle": "Kiến trúc & Tối ưu Cơ sở Dữ liệu PostgreSQL Enterprise",
+    "session": 2,
+    "chunkId": "c-102-b2-p17-38",
+    "page": 17,
+    "keywords": [],
+    "question": "Trong môn 'Kiến trúc & Tối ưu Cơ sở Dữ liệu PostgreSQL Enterprise' (Buổi 2), hãy giải thích nguyên lý và đặc điểm chính liên quan đến nội dung kiến thức.",
+    "ground_truth_context": "Phan 18: Kien truc Luu tru, Page Layout & TOAST trong PostgreSQL -\nChu de 18\nTrong phan 18 cua buoi hoc thu hai nay, chung ta nghien cuu chuyen sau ve cau truc luu tru vat ly cua\nPostgreSQL (8KB Data Page), Page Header, Item Identifiers, Heap Tuples, co che TOAST (The\nOversized-Attribute Storage Technique) de xu ly du lieu lon, va cach quan ly m■ng du lieu trong o dia\ndoanh nghiep.\n1. Ly thuyet va Phuong phap Quan tri Chuyen sâu:\n- 8KB Data Page Layout: Cau truc trang du lieu gom Page Header (thong tin trang), Line Pointers (danh\nsach con tro), Item Tuples (du lieu thuc te) va Free Space.\n- Tuple Internals: Cau truc Header cua moi tuple chua xmin, xmax, infomask va null bitmaps quyet dinh\nhieu suat truy van va hien thi du lieu.\n- TOAST Mechanism: Co che tu dong nen va tach cac truong du li",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0022",
+    "courseId": "c-102",
+    "courseTitle": "Kiến trúc & Tối ưu Cơ sở Dữ liệu PostgreSQL Enterprise",
+    "session": 3,
+    "chunkId": "c-102-b3-p14-55",
+    "page": 14,
+    "keywords": [
+      "BRIN",
+      "B-Tree",
+      "GIN",
+      "EXPLAIN ANALYZE",
+      "gin",
+      "GiST"
+    ],
+    "question": "Trong môn 'Kiến trúc & Tối ưu Cơ sở Dữ liệu PostgreSQL Enterprise' (Buổi 3), hãy giải thích nguyên lý và đặc điểm chính liên quan đến BRIN, B-Tree, GIN.",
+    "ground_truth_context": "Phan 15: Kien truc Index, B-Tree Internals & Toi uu Chi muc trong\nPostgreSQL - Chu de 15\nTrong phan 15 cua buoi hoc thu ba nay, chung ta nghien cuu chuyen sau ve kien truc chi muc trong\nPostgreSQL, cau truc B-Tree Index (Leaf pages, Internal pages, Right-link pointers), cac loai chi muc nang\ncao nhu GiST, GIN, BRIN, Partial Indexes, Expression Indexes va chien luoc toi uu hoa truy van su dung\nindex cho he thong du lieu doanh nghiep.\n1. Ly thuyet va Phuong phap Quan tri Chuyen sâu:\n- B-Tree Index Internals: Cau truc cay can bang luu tru khoa va con tro ctid den heap tuple, ho tro tim ki■m\nnhanh range queries (=, <, >, BETWEEN).\n- Specialized Indexes: Su dung GIN (Generalized Inverted Index) cho truong mang va JSONB, GiST cho\ndu lieu hinh h■c va full-text search, BRIN cho du lieu sap xep the",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0023",
+    "courseId": "c-102",
+    "courseTitle": "Kiến trúc & Tối ưu Cơ sở Dữ liệu PostgreSQL Enterprise",
+    "session": 3,
+    "chunkId": "c-102-b3-p19-60",
+    "page": 19,
+    "keywords": [
+      "BRIN",
+      "B-Tree",
+      "GIN",
+      "EXPLAIN ANALYZE",
+      "gin",
+      "GiST"
+    ],
+    "question": "Trong môn 'Kiến trúc & Tối ưu Cơ sở Dữ liệu PostgreSQL Enterprise' (Buổi 3), hãy giải thích nguyên lý và đặc điểm chính liên quan đến BRIN, B-Tree, GIN.",
+    "ground_truth_context": "Phan 20: Kien truc Index, B-Tree Internals & Toi uu Chi muc trong\nPostgreSQL - Chu de 20\nTrong phan 20 cua buoi hoc thu ba nay, chung ta nghien cuu chuyen sau ve kien truc chi muc trong\nPostgreSQL, cau truc B-Tree Index (Leaf pages, Internal pages, Right-link pointers), cac loai chi muc nang\ncao nhu GiST, GIN, BRIN, Partial Indexes, Expression Indexes va chien luoc toi uu hoa truy van su dung\nindex cho he thong du lieu doanh nghiep.\n1. Ly thuyet va Phuong phap Quan tri Chuyen sâu:\n- B-Tree Index Internals: Cau truc cay can bang luu tru khoa va con tro ctid den heap tuple, ho tro tim ki■m\nnhanh range queries (=, <, >, BETWEEN).\n- Specialized Indexes: Su dung GIN (Generalized Inverted Index) cho truong mang va JSONB, GiST cho\ndu lieu hinh h■c va full-text search, BRIN cho du lieu sap xep the",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0024",
+    "courseId": "c-102",
+    "courseTitle": "Kiến trúc & Tối ưu Cơ sở Dữ liệu PostgreSQL Enterprise",
+    "session": 3,
+    "chunkId": "c-102-b3-p12-53",
+    "page": 12,
+    "keywords": [
+      "BRIN",
+      "B-Tree",
+      "GIN",
+      "EXPLAIN ANALYZE",
+      "gin",
+      "GiST"
+    ],
+    "question": "Trong môn 'Kiến trúc & Tối ưu Cơ sở Dữ liệu PostgreSQL Enterprise' (Buổi 3), hãy giải thích nguyên lý và đặc điểm chính liên quan đến BRIN, B-Tree, GIN.",
+    "ground_truth_context": "Phan 13: Kien truc Index, B-Tree Internals & Toi uu Chi muc trong\nPostgreSQL - Chu de 13\nTrong phan 13 cua buoi hoc thu ba nay, chung ta nghien cuu chuyen sau ve kien truc chi muc trong\nPostgreSQL, cau truc B-Tree Index (Leaf pages, Internal pages, Right-link pointers), cac loai chi muc nang\ncao nhu GiST, GIN, BRIN, Partial Indexes, Expression Indexes va chien luoc toi uu hoa truy van su dung\nindex cho he thong du lieu doanh nghiep.\n1. Ly thuyet va Phuong phap Quan tri Chuyen sâu:\n- B-Tree Index Internals: Cau truc cay can bang luu tru khoa va con tro ctid den heap tuple, ho tro tim ki■m\nnhanh range queries (=, <, >, BETWEEN).\n- Specialized Indexes: Su dung GIN (Generalized Inverted Index) cho truong mang va JSONB, GiST cho\ndu lieu hinh h■c va full-text search, BRIN cho du lieu sap xep the",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0025",
+    "courseId": "c-102",
+    "courseTitle": "Kiến trúc & Tối ưu Cơ sở Dữ liệu PostgreSQL Enterprise",
+    "session": 4,
+    "chunkId": "c-102-b4-p5-66",
+    "page": 5,
+    "keywords": [
+      "EXPLAIN ANALYZE"
+    ],
+    "question": "Trong môn 'Kiến trúc & Tối ưu Cơ sở Dữ liệu PostgreSQL Enterprise' (Buổi 4), hãy giải thích nguyên lý và đặc điểm chính liên quan đến EXPLAIN ANALYZE.",
+    "ground_truth_context": "Phan 6: Kien truc Thuc thi Truy van, Cost-Based Optimizer & EXPLAIN -\nChu de 6\nTrong phan 6 cua buoi hoc thu tu nay, chung ta nghien cuu chuyen sau ve qua trinh xu ly va bien dich cau\nlenh SQL (Parser, Rewriter, Planner/Optimizer), co che Cost-Based Optimizer (CBO), doc va phan tich ke\nhoach thuc thi truy van voi EXPLAIN va EXPLAIN ANALYZE, cung nhu cach toi uu hoa cacnut thuc thi (Seq\nScan, Index Scan, Nested Loop, Hash Join, Merge Join) trong he so so lieu doanh nghiep.\n1. Ly thuyet va Phuong phap Quan tri Chuyen sâu:\n- Query Lifecycle: Tu cau lenh SQL qua Parser (kiem tra cu phap), Rewriter (xu ly rules/views), den\nPlanner/Optimizer (tinh toan chi phi va chon execution plan toi uu nhat).\n- Cost-Based Optimizer (CBO): Dua tren thong ke (statistics trong pg_statistic) va cac tham so chi p",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0026",
+    "courseId": "c-102",
+    "courseTitle": "Kiến trúc & Tối ưu Cơ sở Dữ liệu PostgreSQL Enterprise",
+    "session": 4,
+    "chunkId": "c-102-b4-p16-77",
+    "page": 16,
+    "keywords": [
+      "EXPLAIN ANALYZE"
+    ],
+    "question": "Trong môn 'Kiến trúc & Tối ưu Cơ sở Dữ liệu PostgreSQL Enterprise' (Buổi 4), hãy giải thích nguyên lý và đặc điểm chính liên quan đến EXPLAIN ANALYZE.",
+    "ground_truth_context": "Phan 17: Kien truc Thuc thi Truy van, Cost-Based Optimizer & EXPLAIN\n- Chu de 17\nTrong phan 17 cua buoi hoc thu tu nay, chung ta nghien cuu chuyen sau ve qua trinh xu ly va bien dich cau\nlenh SQL (Parser, Rewriter, Planner/Optimizer), co che Cost-Based Optimizer (CBO), doc va phan tich ke\nhoach thuc thi truy van voi EXPLAIN va EXPLAIN ANALYZE, cung nhu cach toi uu hoa cacnut thuc thi (Seq\nScan, Index Scan, Nested Loop, Hash Join, Merge Join) trong he so so lieu doanh nghiep.\n1. Ly thuyet va Phuong phap Quan tri Chuyen sâu:\n- Query Lifecycle: Tu cau lenh SQL qua Parser (kiem tra cu phap), Rewriter (xu ly rules/views), den\nPlanner/Optimizer (tinh toan chi phi va chon execution plan toi uu nhat).\n- Cost-Based Optimizer (CBO): Dua tren thong ke (statistics trong pg_statistic) va cac tham so ch",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0027",
+    "courseId": "c-102",
+    "courseTitle": "Kiến trúc & Tối ưu Cơ sở Dữ liệu PostgreSQL Enterprise",
+    "session": 4,
+    "chunkId": "c-102-b4-p8-69",
+    "page": 8,
+    "keywords": [
+      "EXPLAIN ANALYZE"
+    ],
+    "question": "Trong môn 'Kiến trúc & Tối ưu Cơ sở Dữ liệu PostgreSQL Enterprise' (Buổi 4), hãy giải thích nguyên lý và đặc điểm chính liên quan đến EXPLAIN ANALYZE.",
+    "ground_truth_context": "Phan 9: Kien truc Thuc thi Truy van, Cost-Based Optimizer & EXPLAIN -\nChu de 9\nTrong phan 9 cua buoi hoc thu tu nay, chung ta nghien cuu chuyen sau ve qua trinh xu ly va bien dich cau\nlenh SQL (Parser, Rewriter, Planner/Optimizer), co che Cost-Based Optimizer (CBO), doc va phan tich ke\nhoach thuc thi truy van voi EXPLAIN va EXPLAIN ANALYZE, cung nhu cach toi uu hoa cacnut thuc thi (Seq\nScan, Index Scan, Nested Loop, Hash Join, Merge Join) trong he so so lieu doanh nghiep.\n1. Ly thuyet va Phuong phap Quan tri Chuyen sâu:\n- Query Lifecycle: Tu cau lenh SQL qua Parser (kiem tra cu phap), Rewriter (xu ly rules/views), den\nPlanner/Optimizer (tinh toan chi phi va chon execution plan toi uu nhat).\n- Cost-Based Optimizer (CBO): Dua tren thong ke (statistics trong pg_statistic) va cac tham so chi p",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0028",
+    "courseId": "c-102",
+    "courseTitle": "Kiến trúc & Tối ưu Cơ sở Dữ liệu PostgreSQL Enterprise",
+    "session": 5,
+    "chunkId": "c-102-b5-p3-84",
+    "page": 3,
+    "keywords": [
+      "locking",
+      "TRANSACTION ISOLATION",
+      "Serializable",
+      "Read Committed",
+      "REPEATABLE READ",
+      "Locking",
+      "Repeatable Read",
+      "Transaction Isolation"
+    ],
+    "question": "Trong môn 'Kiến trúc & Tối ưu Cơ sở Dữ liệu PostgreSQL Enterprise' (Buổi 5), hãy giải thích nguyên lý và đặc điểm chính liên quan đến locking, TRANSACTION ISOLATION, Serializable.",
+    "ground_truth_context": "Phan 4: Giao dich, Muc do Co lap, Co che Khoa & Xu ly Deadlock - Chu\nde 4\nTrong phan 4 cua buoi hoc thu nam nay, chung ta nghien cuu chuyen sau ve quan ly giao dich trong\nPostgreSQL, cac muc do co lap giao dich (Read Committed, Repeatable Read, Serializable), co che\nlocking (Row-level Locks, Table-level Locks, Explicit Locking) va phuong phap chan doan, xu ly deadlock\ntrong he thong co so du lieu tai cao.\n1. Ly thuyet va Phuong phap Quan tri Chuyen sâu:\n- Isolation Levels: Phan tich cac hien tuong Dirty Read, Non-Repeatable Read, Phantom Read va\nSerialization Failure duoi chuan ANSI SQL va cach PostgreSQL xu ly bang Snapshot Isolation.\n- Locking Architecture: Su dung cac loai khoa tu AccessShareLock den Exclusive va\nAccessExclusiveLock, cung nhu co che phan biet Row Share va Row Exclusive.",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0029",
+    "courseId": "c-102",
+    "courseTitle": "Kiến trúc & Tối ưu Cơ sở Dữ liệu PostgreSQL Enterprise",
+    "session": 5,
+    "chunkId": "c-102-b5-p1-81",
+    "page": 1,
+    "keywords": [
+      "locking",
+      "TRANSACTION ISOLATION",
+      "Serializable",
+      "Read Committed",
+      "REPEATABLE READ",
+      "Locking",
+      "Repeatable Read",
+      "Transaction Isolation"
+    ],
+    "question": "Trong môn 'Kiến trúc & Tối ưu Cơ sở Dữ liệu PostgreSQL Enterprise' (Buổi 5), hãy giải thích nguyên lý và đặc điểm chính liên quan đến locking, TRANSACTION ISOLATION, Serializable.",
+    "ground_truth_context": "KIEN TRUC & TOI UU CO SO DU LIEU\nPOSTGRESQL ENTERPRISE\nBUOI 5: Transactions, Isolation Levels, Locking Mechanisms & Deadlock\nManagement\nTai lieu hoc tap chuyen sau tu co ban den nang cao toan dien (20 trang) - ASCII Clean\nFormat\nPhan 1: Giao dich, Muc do Co lap, Co che Khoa & Xu ly Deadlock - Chu\nde 1\nTrong phan 1 cua buoi hoc thu nam nay, chung ta nghien cuu chuyen sau ve quan ly giao dich trong\nPostgreSQL, cac muc do co lap giao dich (Read Committed, Repeatable Read, Serializable), co che\nlocking (Row-level Locks, Table-level Locks, Explicit Locking) va phuong phap chan doan, xu ly deadlock\ntrong he thong co so du lieu tai cao.\n1. Ly thuyet va Phuong phap Quan tri Chuyen sâu:\n- Isolation Levels: Phan tich cac hien tuong Dirty Read, Non-Repeatable Read, Phantom Read va\nSerialization Failu",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0030",
+    "courseId": "c-102",
+    "courseTitle": "Kiến trúc & Tối ưu Cơ sở Dữ liệu PostgreSQL Enterprise",
+    "session": 5,
+    "chunkId": "c-102-b5-p15-96",
+    "page": 15,
+    "keywords": [
+      "locking",
+      "TRANSACTION ISOLATION",
+      "Serializable",
+      "Read Committed",
+      "REPEATABLE READ",
+      "Locking",
+      "Repeatable Read",
+      "Transaction Isolation"
+    ],
+    "question": "Trong môn 'Kiến trúc & Tối ưu Cơ sở Dữ liệu PostgreSQL Enterprise' (Buổi 5), hãy giải thích nguyên lý và đặc điểm chính liên quan đến locking, TRANSACTION ISOLATION, Serializable.",
+    "ground_truth_context": "Phan 16: Giao dich, Muc do Co lap, Co che Khoa & Xu ly Deadlock -\nChu de 16\nTrong phan 16 cua buoi hoc thu nam nay, chung ta nghien cuu chuyen sau ve quan ly giao dich trong\nPostgreSQL, cac muc do co lap giao dich (Read Committed, Repeatable Read, Serializable), co che\nlocking (Row-level Locks, Table-level Locks, Explicit Locking) va phuong phap chan doan, xu ly deadlock\ntrong he thong co so du lieu tai cao.\n1. Ly thuyet va Phuong phap Quan tri Chuyen sâu:\n- Isolation Levels: Phan tich cac hien tuong Dirty Read, Non-Repeatable Read, Phantom Read va\nSerialization Failure duoi chuan ANSI SQL va cach PostgreSQL xu ly bang Snapshot Isolation.\n- Locking Architecture: Su dung cac loai khoa tu AccessShareLock den Exclusive va\nAccessExclusiveLock, cung nhu co che phan biet Row Share va Row Exclusi",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0031",
+    "courseId": "c-102",
+    "courseTitle": "Kiến trúc & Tối ưu Cơ sở Dữ liệu PostgreSQL Enterprise",
+    "session": 6,
+    "chunkId": "c-102-b6-p8-109",
+    "page": 8,
+    "keywords": [
+      "Autovacuum",
+      "autovacuum"
+    ],
+    "question": "Trong môn 'Kiến trúc & Tối ưu Cơ sở Dữ liệu PostgreSQL Enterprise' (Buổi 6), hãy giải thích nguyên lý và đặc điểm chính liên quan đến Autovacuum, autovacuum.",
+    "ground_truth_context": "Phan 9: Toi uu Truy van, Thong ke & Autovacuum trong PostgreSQL -\nChu de 9\nTrong phan 9 cua buoi hoc thu sau nay, chung ta nghien cuu chuyen sau ve he thong thu thap thong ke\n(Statistics Collector), dieu chinh tham so default_statistics_target, su dung extension pg_stat_statements\nde phat hien truy van cham, va tinh chinh co ch■ Autovacuum de tranh hien tuong table bloat va transaction\nwraparound trong he thong du lieu doanh nghiep.\n1. Ly thuyet va Phuong phap Quan tri Chuyen sâu:\n- Statistics Collector: Co che thu thap thong ke ve so luong hang, tan suat truy cap va phan phoi du lieu\ngiup CBO chon ke hoach thuc thi chinh xac.\n- Autovacuum Configuration: Tinh chinh autovacuum_vacuum_scale_factor va\nautovacuum_vacuum_cost_limit de thuc thi don dep tuple rac kip thoi.\n- Slow Query Analysis (",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0032",
+    "courseId": "c-102",
+    "courseTitle": "Kiến trúc & Tối ưu Cơ sở Dữ liệu PostgreSQL Enterprise",
+    "session": 6,
+    "chunkId": "c-102-b6-p5-106",
+    "page": 5,
+    "keywords": [
+      "Autovacuum",
+      "autovacuum"
+    ],
+    "question": "Trong môn 'Kiến trúc & Tối ưu Cơ sở Dữ liệu PostgreSQL Enterprise' (Buổi 6), hãy giải thích nguyên lý và đặc điểm chính liên quan đến Autovacuum, autovacuum.",
+    "ground_truth_context": "Phan 6: Toi uu Truy van, Thong ke & Autovacuum trong PostgreSQL -\nChu de 6\nTrong phan 6 cua buoi hoc thu sau nay, chung ta nghien cuu chuyen sau ve he thong thu thap thong ke\n(Statistics Collector), dieu chinh tham so default_statistics_target, su dung extension pg_stat_statements\nde phat hien truy van cham, va tinh chinh co ch■ Autovacuum de tranh hien tuong table bloat va transaction\nwraparound trong he thong du lieu doanh nghiep.\n1. Ly thuyet va Phuong phap Quan tri Chuyen sâu:\n- Statistics Collector: Co che thu thap thong ke ve so luong hang, tan suat truy cap va phan phoi du lieu\ngiup CBO chon ke hoach thuc thi chinh xac.\n- Autovacuum Configuration: Tinh chinh autovacuum_vacuum_scale_factor va\nautovacuum_vacuum_cost_limit de thuc thi don dep tuple rac kip thoi.\n- Slow Query Analysis (",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0033",
+    "courseId": "c-102",
+    "courseTitle": "Kiến trúc & Tối ưu Cơ sở Dữ liệu PostgreSQL Enterprise",
+    "session": 6,
+    "chunkId": "c-102-b6-p17-118",
+    "page": 17,
+    "keywords": [
+      "Autovacuum",
+      "autovacuum"
+    ],
+    "question": "Trong môn 'Kiến trúc & Tối ưu Cơ sở Dữ liệu PostgreSQL Enterprise' (Buổi 6), hãy giải thích nguyên lý và đặc điểm chính liên quan đến Autovacuum, autovacuum.",
+    "ground_truth_context": "Phan 18: Toi uu Truy van, Thong ke & Autovacuum trong PostgreSQL -\nChu de 18\nTrong phan 18 cua buoi hoc thu sau nay, chung ta nghien cuu chuyen sau ve he thong thu thap thong ke\n(Statistics Collector), dieu chinh tham so default_statistics_target, su dung extension pg_stat_statements\nde phat hien truy van cham, va tinh chinh co ch■ Autovacuum de tranh hien tuong table bloat va transaction\nwraparound trong he thong du lieu doanh nghiep.\n1. Ly thuyet va Phuong phap Quan tri Chuyen sâu:\n- Statistics Collector: Co che thu thap thong ke ve so luong hang, tan suat truy cap va phan phoi du lieu\ngiup CBO chon ke hoach thuc thi chinh xac.\n- Autovacuum Configuration: Tinh chinh autovacuum_vacuum_scale_factor va\nautovacuum_vacuum_cost_limit de thuc thi don dep tuple rac kip thoi.\n- Slow Query Analysi",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0034",
+    "courseId": "c-102",
+    "courseTitle": "Kiến trúc & Tối ưu Cơ sở Dữ liệu PostgreSQL Enterprise",
+    "session": 7,
+    "chunkId": "c-102-b7-p1-121",
+    "page": 1,
+    "keywords": [
+      "WAL",
+      "records",
+      "Streaming Replication"
+    ],
+    "question": "Trong môn 'Kiến trúc & Tối ưu Cơ sở Dữ liệu PostgreSQL Enterprise' (Buổi 7), hãy giải thích nguyên lý và đặc điểm chính liên quan đến WAL, records, Streaming Replication.",
+    "ground_truth_context": "KIEN TRUC & TOI UU CO SO DU LIEU\nPOSTGRESQL ENTERPRISE\nBUOI 7: Replication Architecture, Streaming Replication, Synchronous /\nAsynchronous & Failover\nTai lieu hoc tap chuyen sau tu co ban den nang cao toan dien (20 trang) - ASCII Clean\nFormat\nPhan 1: Kien truc Replication, Streaming Replication & Failover trong\nPostgreSQL - Chu de 1\nTrong phan 1 cua buoi hoc thu bay nay, chung ta nghien cuu chuyen sau ve kien truc nhan ban du lieu\n(Replication Architecture), Streaming Replication (Physical vs Logical), che do Dong bo (Synchronous\nReplication) va Bat dong bo (Asynchronous), cau hinh standby servers va chien luoc failover tu dong cho he\nthong co so du lieu enterprise.\n1. Ly thuyet va Phuong phap Quan tri Chuyen sâu:\n- Streaming Replication: Co che truyen tai WAL records tu Primary sang Stand",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0035",
+    "courseId": "c-102",
+    "courseTitle": "Kiến trúc & Tối ưu Cơ sở Dữ liệu PostgreSQL Enterprise",
+    "session": 7,
+    "chunkId": "c-102-b7-p10-131",
+    "page": 10,
+    "keywords": [
+      "WAL",
+      "records",
+      "Streaming Replication"
+    ],
+    "question": "Trong môn 'Kiến trúc & Tối ưu Cơ sở Dữ liệu PostgreSQL Enterprise' (Buổi 7), hãy giải thích nguyên lý và đặc điểm chính liên quan đến WAL, records, Streaming Replication.",
+    "ground_truth_context": "Phan 11: Kien truc Replication, Streaming Replication & Failover trong\nPostgreSQL - Chu de 11\nTrong phan 11 cua buoi hoc thu bay nay, chung ta nghien cuu chuyen sau ve kien truc nhan ban du lieu\n(Replication Architecture), Streaming Replication (Physical vs Logical), che do Dong bo (Synchronous\nReplication) va Bat dong bo (Asynchronous), cau hinh standby servers va chien luoc failover tu dong cho he\nthong co so du lieu enterprise.\n1. Ly thuyet va Phuong phap Quan tri Chuyen sâu:\n- Streaming Replication: Co che truyen tai WAL records tu Primary sang Standby server theo thoi gian\nthuc giup dam bao tinh san sang cao (High Availability).\n- Synchronous vs Asynchronous: So sanh do tre du lieu (lag), an toan du lieu (RPO = 0 voi sync) va hieu\nsuat ghi (write performance) giua hai che do.\n- Failov",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0036",
+    "courseId": "c-102",
+    "courseTitle": "Kiến trúc & Tối ưu Cơ sở Dữ liệu PostgreSQL Enterprise",
+    "session": 7,
+    "chunkId": "c-102-b7-p2-123",
+    "page": 2,
+    "keywords": [
+      "WAL",
+      "records",
+      "Streaming Replication"
+    ],
+    "question": "Trong môn 'Kiến trúc & Tối ưu Cơ sở Dữ liệu PostgreSQL Enterprise' (Buổi 7), hãy giải thích nguyên lý và đặc điểm chính liên quan đến WAL, records, Streaming Replication.",
+    "ground_truth_context": "Phan 3: Kien truc Replication, Streaming Replication & Failover trong\nPostgreSQL - Chu de 3\nTrong phan 3 cua buoi hoc thu bay nay, chung ta nghien cuu chuyen sau ve kien truc nhan ban du lieu\n(Replication Architecture), Streaming Replication (Physical vs Logical), che do Dong bo (Synchronous\nReplication) va Bat dong bo (Asynchronous), cau hinh standby servers va chien luoc failover tu dong cho he\nthong co so du lieu enterprise.\n1. Ly thuyet va Phuong phap Quan tri Chuyen sâu:\n- Streaming Replication: Co che truyen tai WAL records tu Primary sang Standby server theo thoi gian\nthuc giup dam bao tinh san sang cao (High Availability).\n- Synchronous vs Asynchronous: So sanh do tre du lieu (lag), an toan du lieu (RPO = 0 voi sync) va hieu\nsuat ghi (write performance) giua hai che do.\n- Failover ",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0037",
+    "courseId": "c-102",
+    "courseTitle": "Kiến trúc & Tối ưu Cơ sở Dữ liệu PostgreSQL Enterprise",
+    "session": 8,
+    "chunkId": "c-102-b8-p4-145",
+    "page": 4,
+    "keywords": [
+      "Partitioning"
+    ],
+    "question": "Trong môn 'Kiến trúc & Tối ưu Cơ sở Dữ liệu PostgreSQL Enterprise' (Buổi 8), hãy giải thích nguyên lý và đặc điểm chính liên quan đến Partitioning.",
+    "ground_truth_context": "Phan 5: Partitioning, Sharding & Kien truc Phan tan trong PostgreSQL -\nChu de 5\nTrong phan 5 cua buoi hoc thu tam nay, chung ta nghien cuu chuyen sau ve ky thuat phan vung bang\n(Table Partitioning) voi cac chien luoc Range, List va Hash, toi ■u hoa truy van qua partition pruning, kien\ntruc sharding du lieu lon va giai phap mo rong phan tan cho he thong co so du lieu enterprise.\n1. Ly thuyet va Phuong phap Quan tri Chuyen sâu:\n- Table Partitioning (Declarative): Chia nho bang lon thanh cac partition con dua tren Range (khoang gia\ntri), List (danh sach) hoac Hash giup tang toc do truy van va de dang quan ly du lieu lich su.\n- Partition Pruning: Co che cua Query Planner tu dong loai bo cac partition khong lien quan trong menh de\nWHERE, tiet kiem tai nguyen doc dia.\n- Distributed Sharding & Ci",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0038",
+    "courseId": "c-102",
+    "courseTitle": "Kiến trúc & Tối ưu Cơ sở Dữ liệu PostgreSQL Enterprise",
+    "session": 8,
+    "chunkId": "c-102-b8-p17-158",
+    "page": 17,
+    "keywords": [
+      "Partitioning"
+    ],
+    "question": "Trong môn 'Kiến trúc & Tối ưu Cơ sở Dữ liệu PostgreSQL Enterprise' (Buổi 8), hãy giải thích nguyên lý và đặc điểm chính liên quan đến Partitioning.",
+    "ground_truth_context": "Phan 18: Partitioning, Sharding & Kien truc Phan tan trong PostgreSQL\n- Chu de 18\nTrong phan 18 cua buoi hoc thu tam nay, chung ta nghien cuu chuyen sau ve ky thuat phan vung bang\n(Table Partitioning) voi cac chien luoc Range, List va Hash, toi ■u hoa truy van qua partition pruning, kien\ntruc sharding du lieu lon va giai phap mo rong phan tan cho he thong co so du lieu enterprise.\n1. Ly thuyet va Phuong phap Quan tri Chuyen sâu:\n- Table Partitioning (Declarative): Chia nho bang lon thanh cac partition con dua tren Range (khoang gia\ntri), List (danh sach) hoac Hash giup tang toc do truy van va de dang quan ly du lieu lich su.\n- Partition Pruning: Co che cua Query Planner tu dong loai bo cac partition khong lien quan trong menh de\nWHERE, tiet kiem tai nguyen doc dia.\n- Distributed Sharding &",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0039",
+    "courseId": "c-102",
+    "courseTitle": "Kiến trúc & Tối ưu Cơ sở Dữ liệu PostgreSQL Enterprise",
+    "session": 8,
+    "chunkId": "c-102-b8-p6-147",
+    "page": 6,
+    "keywords": [
+      "Partitioning"
+    ],
+    "question": "Trong môn 'Kiến trúc & Tối ưu Cơ sở Dữ liệu PostgreSQL Enterprise' (Buổi 8), hãy giải thích nguyên lý và đặc điểm chính liên quan đến Partitioning.",
+    "ground_truth_context": "Phan 7: Partitioning, Sharding & Kien truc Phan tan trong PostgreSQL -\nChu de 7\nTrong phan 7 cua buoi hoc thu tam nay, chung ta nghien cuu chuyen sau ve ky thuat phan vung bang\n(Table Partitioning) voi cac chien luoc Range, List va Hash, toi ■u hoa truy van qua partition pruning, kien\ntruc sharding du lieu lon va giai phap mo rong phan tan cho he thong co so du lieu enterprise.\n1. Ly thuyet va Phuong phap Quan tri Chuyen sâu:\n- Table Partitioning (Declarative): Chia nho bang lon thanh cac partition con dua tren Range (khoang gia\ntri), List (danh sach) hoac Hash giup tang toc do truy van va de dang quan ly du lieu lich su.\n- Partition Pruning: Co che cua Query Planner tu dong loai bo cac partition khong lien quan trong menh de\nWHERE, tiet kiem tai nguyen doc dia.\n- Distributed Sharding & Ci",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0040",
+    "courseId": "c-102",
+    "courseTitle": "Kiến trúc & Tối ưu Cơ sở Dữ liệu PostgreSQL Enterprise",
+    "session": 9,
+    "chunkId": "c-102-b9-p12-173",
+    "page": 12,
+    "keywords": [
+      "pg_basebackup",
+      "PITR",
+      "WAL"
+    ],
+    "question": "Trong môn 'Kiến trúc & Tối ưu Cơ sở Dữ liệu PostgreSQL Enterprise' (Buổi 9), hãy giải thích nguyên lý và đặc điểm chính liên quan đến pg_basebackup, PITR, WAL.",
+    "ground_truth_context": "Phan 13: Backup, PITR, Bao mat & Tong ket PostgreSQL Enterprise -\nChu de 13\nTrong phan 13 cua buoi hoc tong ket cuoi cung nay, chung ta nghien cuu chuyen sau ve giai phap sao l■u\ndoanh nghiep (pg_basebackup), phuc hoi tai thoi diem xac dinh (Point-In-Time Recovery - PITR) su dung\nWAL archiving, cau hinh phan quyen pg_hba.conf, ma hoa du lieu va kiem toan bao mat cho toan bo he\nthong PostgreSQL enterprise.\n1. Ly thuyet va Phuong phap Quan tri Chuyen sâu:\n- Backup & WAL Archiving: Su dung pg_basebackup de tao ban sao luu vat ly va cau hinh\narchive_command de luu tru WAL files lien tuc phuc vu PITR.\n- Point-In-Time Recovery (PITR): Khoi phuc du lieu ve mot thoi diem chinh xac trong qua khu de phong\nchong su co xoa nh■m du lieu hoac loi ung dung.\n- Enterprise Security & pg_hba.conf: Quan ly xa",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0041",
+    "courseId": "c-102",
+    "courseTitle": "Kiến trúc & Tối ưu Cơ sở Dữ liệu PostgreSQL Enterprise",
+    "session": 9,
+    "chunkId": "c-102-b9-p1-162",
+    "page": 1,
+    "keywords": [
+      "pg_basebackup",
+      "PITR",
+      "WAL"
+    ],
+    "question": "Trong môn 'Kiến trúc & Tối ưu Cơ sở Dữ liệu PostgreSQL Enterprise' (Buổi 9), hãy giải thích nguyên lý và đặc điểm chính liên quan đến pg_basebackup, PITR, WAL.",
+    "ground_truth_context": "Phan 2: Backup, PITR, Bao mat & Tong ket PostgreSQL Enterprise -\nChu de 2\nTrong phan 2 cua buoi hoc tong ket cuoi cung nay, chung ta nghien cuu chuyen sau ve giai phap sao l■u\ndoanh nghiep (pg_basebackup), phuc hoi tai thoi diem xac dinh (Point-In-Time Recovery - PITR) su dung\nWAL archiving, cau hinh phan quyen pg_hba.conf, ma hoa du lieu va kiem toan bao mat cho toan bo he\nthong PostgreSQL enterprise.\n1. Ly thuyet va Phuong phap Quan tri Chuyen sâu:\n- Backup & WAL Archiving: Su dung pg_basebackup de tao ban sao luu vat ly va cau hinh\narchive_command de luu tru WAL files lien tuc phuc vu PITR.\n- Point-In-Time Recovery (PITR): Khoi phuc du lieu ve mot thoi diem chinh xac trong qua khu de phong\nchong su co xoa nh■m du lieu hoac loi ung dung.\n- Enterprise Security & pg_hba.conf: Quan ly xac t",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0042",
+    "courseId": "c-102",
+    "courseTitle": "Kiến trúc & Tối ưu Cơ sở Dữ liệu PostgreSQL Enterprise",
+    "session": 9,
+    "chunkId": "c-102-b9-p3-164",
+    "page": 3,
+    "keywords": [
+      "pg_basebackup",
+      "PITR",
+      "WAL"
+    ],
+    "question": "Trong môn 'Kiến trúc & Tối ưu Cơ sở Dữ liệu PostgreSQL Enterprise' (Buổi 9), hãy giải thích nguyên lý và đặc điểm chính liên quan đến pg_basebackup, PITR, WAL.",
+    "ground_truth_context": "Phan 4: Backup, PITR, Bao mat & Tong ket PostgreSQL Enterprise -\nChu de 4\nTrong phan 4 cua buoi hoc tong ket cuoi cung nay, chung ta nghien cuu chuyen sau ve giai phap sao l■u\ndoanh nghiep (pg_basebackup), phuc hoi tai thoi diem xac dinh (Point-In-Time Recovery - PITR) su dung\nWAL archiving, cau hinh phan quyen pg_hba.conf, ma hoa du lieu va kiem toan bao mat cho toan bo he\nthong PostgreSQL enterprise.\n1. Ly thuyet va Phuong phap Quan tri Chuyen sâu:\n- Backup & WAL Archiving: Su dung pg_basebackup de tao ban sao luu vat ly va cau hinh\narchive_command de luu tru WAL files lien tuc phuc vu PITR.\n- Point-In-Time Recovery (PITR): Khoi phuc du lieu ve mot thoi diem chinh xac trong qua khu de phong\nchong su co xoa nh■m du lieu hoac loi ung dung.\n- Enterprise Security & pg_hba.conf: Quan ly xac t",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0043",
+    "courseId": "c-103",
+    "courseTitle": "Phương pháp phát triển phần mềm hướng đối tượng-2-25",
+    "session": 1,
+    "chunkId": "c-103-b1-p1-1",
+    "page": 1,
+    "keywords": [
+      "UML",
+      "Polymorphism",
+      "Class Diagram",
+      "Sequence Diagram",
+      "Use Case",
+      "Inheritance",
+      "Abstraction",
+      "Encapsulation",
+      "OOP"
+    ],
+    "question": "Trong môn 'Phương pháp phát triển phần mềm hướng đối tượng-2-25' (Buổi 1), hãy giải thích nguyên lý và đặc điểm chính liên quan đến UML, Polymorphism, Class Diagram.",
+    "ground_truth_context": "PHUONG PHAP PHAT TRIEN PHAN MEM HUONG DOI\nTUONG\nBUOI 1: Tong quan Phuong phap Huong doi tuong, 4 Tinh chat OOP & Unified Modeling\nLanguage (UML)\nTai lieu hoc tap chuyen sau tu co ban den nang cao toan dien (20 trang) - ASCII Clean Format\nPhan 1: Nguyen ly Huong doi tuong & UML Modeling - Chu de 1\nTrong phan 1 cua buoi hoc dau tien nay, chung ta nghien cuu chuyen sau ve 4 tinh chat cot lõi cua lap trinh\nhuong doi tuong (OOP): Tinh Dong goi (Encapsulation), Tinh Ke thua (Inheritance), Tinh Da hinh\n(Polymorphism) va Tinh Tr■u tuong (Abstraction), cung nhu tong quan ve ngon ngu mo hinh hoa thong\nnhat (UML) trong phat trien phan mem doanh nghiep.\n1. Ly thuyet va Phuong phap Thiet ke Chuyen sâu:\n- Core OOP Principles: Dong goi giup an giau trang thai va chi cho phep truy cap thong qua public\nmet",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0044",
+    "courseId": "c-103",
+    "courseTitle": "Phương pháp phát triển phần mềm hướng đối tượng-2-25",
+    "session": 1,
+    "chunkId": "c-103-b1-p17-18",
+    "page": 17,
+    "keywords": [
+      "UML",
+      "Polymorphism",
+      "Class Diagram",
+      "Sequence Diagram",
+      "Use Case",
+      "Inheritance",
+      "Abstraction",
+      "Encapsulation",
+      "OOP"
+    ],
+    "question": "Trong môn 'Phương pháp phát triển phần mềm hướng đối tượng-2-25' (Buổi 1), hãy giải thích nguyên lý và đặc điểm chính liên quan đến UML, Polymorphism, Class Diagram.",
+    "ground_truth_context": "Phan 18: Nguyen ly Huong doi tuong & UML Modeling - Chu de 18\nTrong phan 18 cua buoi hoc dau tien nay, chung ta nghien cuu chuyen sau ve 4 tinh chat cot lõi cua lap\ntrinh huong doi tuong (OOP): Tinh Dong goi (Encapsulation), Tinh Ke thua (Inheritance), Tinh Da hinh\n(Polymorphism) va Tinh Tr■u tuong (Abstraction), cung nhu tong quan ve ngon ngu mo hinh hoa thong\nnhat (UML) trong phat trien phan mem doanh nghiep.\n1. Ly thuyet va Phuong phap Thiet ke Chuyen sâu:\n- Core OOP Principles: Dong goi giup an giau trang thai va chi cho phep truy cap thong qua public\nmethods; Ke thua tao phan cap lop; Da hinh cho phep goi phuong thuc linh hoat thuan theo doi tuong\nthuc thi; Truu tuong hoa giup tap trung vao chuc nang chinh.\n- UML Overview: Su dung cac bieu do UML (Use Case, Class Diagram, Sequence Dia",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0045",
+    "courseId": "c-103",
+    "courseTitle": "Phương pháp phát triển phần mềm hướng đối tượng-2-25",
+    "session": 1,
+    "chunkId": "c-103-b1-p1-2",
+    "page": 1,
+    "keywords": [
+      "UML",
+      "Polymorphism",
+      "Class Diagram",
+      "Sequence Diagram",
+      "Use Case",
+      "Inheritance",
+      "Abstraction",
+      "Encapsulation",
+      "OOP"
+    ],
+    "question": "Trong môn 'Phương pháp phát triển phần mềm hướng đối tượng-2-25' (Buổi 1), hãy giải thích nguyên lý và đặc điểm chính liên quan đến UML, Polymorphism, Class Diagram.",
+    "ground_truth_context": "Phan 2: Nguyen ly Huong doi tuong & UML Modeling - Chu de 2\nTrong phan 2 cua buoi hoc dau tien nay, chung ta nghien cuu chuyen sau ve 4 tinh chat cot lõi cua lap trinh\nhuong doi tuong (OOP): Tinh Dong goi (Encapsulation), Tinh Ke thua (Inheritance), Tinh Da hinh\n(Polymorphism) va Tinh Tr■u tuong (Abstraction), cung nhu tong quan ve ngon ngu mo hinh hoa thong\nnhat (UML) trong phat trien phan mem doanh nghiep.\n1. Ly thuyet va Phuong phap Thiet ke Chuyen sâu:\n- Core OOP Principles: Dong goi giup an giau trang thai va chi cho phep truy cap thong qua public\nmethods; Ke thua tao phan cap lop; Da hinh cho phep goi phuong thuc linh hoat thuan theo doi tuong\nthuc thi; Truu tuong hoa giup tap trung vao chuc nang chinh.\n- UML Overview: Su dung cac bieu do UML (Use Case, Class Diagram, Sequence Diagra",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0046",
+    "courseId": "c-103",
+    "courseTitle": "Phương pháp phát triển phần mềm hướng đối tượng-2-25",
+    "session": 2,
+    "chunkId": "c-103-b2-p15-36",
+    "page": 15,
+    "keywords": [
+      "Use Case"
+    ],
+    "question": "Trong môn 'Phương pháp phát triển phần mềm hướng đối tượng-2-25' (Buổi 2), hãy giải thích nguyên lý và đặc điểm chính liên quan đến Use Case.",
+    "ground_truth_context": "Phan 16: Phan tich Yeu cau & Use Case Modeling - Chu de 16\nTrong phan 16 cua buoi hoc thu hai nay, chung ta nghien cuu chuyen sau ve phuong phap phan tich yeu\ncau phan mem (Requirements Engineering), xac dinh Functional va Non-Functional Requirements, xay\ndung Use Case Diagram (Actor, Use Case, Associations, Include, Extend), va viet Dac ta Use Case (Use\nCase Specification) chi tiet cho he thong doanh nghiep.\n1. Ly thuyet va Phuong phap Phan tich Chuyen sâu:\n- Requirements Elicitation: Thu thap, phan tich va dac ta yeu cau thong qua ph■ng van, khao sát va phân\ntích nghiep vu thuc te.\n- Use Case Modeling: Xac dinh tac nhan (Actors) tuong tac va cac chuc nang he thong (Use Cases), ap\ndung moi quan he <> va <>.\n- Use Case Specification: Mo ta chi tiet lu■ng chinh (Main Success Scenario), luon",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0047",
+    "courseId": "c-103",
+    "courseTitle": "Phương pháp phát triển phần mềm hướng đối tượng-2-25",
+    "session": 2,
+    "chunkId": "c-103-b2-p17-38",
+    "page": 17,
+    "keywords": [
+      "Use Case"
+    ],
+    "question": "Trong môn 'Phương pháp phát triển phần mềm hướng đối tượng-2-25' (Buổi 2), hãy giải thích nguyên lý và đặc điểm chính liên quan đến Use Case.",
+    "ground_truth_context": "Phan 18: Phan tich Yeu cau & Use Case Modeling - Chu de 18\nTrong phan 18 cua buoi hoc thu hai nay, chung ta nghien cuu chuyen sau ve phuong phap phan tich yeu\ncau phan mem (Requirements Engineering), xac dinh Functional va Non-Functional Requirements, xay\ndung Use Case Diagram (Actor, Use Case, Associations, Include, Extend), va viet Dac ta Use Case (Use\nCase Specification) chi tiet cho he thong doanh nghiep.\n1. Ly thuyet va Phuong phap Phan tich Chuyen sâu:\n- Requirements Elicitation: Thu thap, phan tich va dac ta yeu cau thong qua ph■ng van, khao sát va phân\ntích nghiep vu thuc te.\n- Use Case Modeling: Xac dinh tac nhan (Actors) tuong tac va cac chuc nang he thong (Use Cases), ap\ndung moi quan he <> va <>.\n- Use Case Specification: Mo ta chi tiet lu■ng chinh (Main Success Scenario), luon",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0048",
+    "courseId": "c-103",
+    "courseTitle": "Phương pháp phát triển phần mềm hướng đối tượng-2-25",
+    "session": 2,
+    "chunkId": "c-103-b2-p13-34",
+    "page": 13,
+    "keywords": [
+      "Use Case"
+    ],
+    "question": "Trong môn 'Phương pháp phát triển phần mềm hướng đối tượng-2-25' (Buổi 2), hãy giải thích nguyên lý và đặc điểm chính liên quan đến Use Case.",
+    "ground_truth_context": "Phan 14: Phan tich Yeu cau & Use Case Modeling - Chu de 14\nTrong phan 14 cua buoi hoc thu hai nay, chung ta nghien cuu chuyen sau ve phuong phap phan tich yeu\ncau phan mem (Requirements Engineering), xac dinh Functional va Non-Functional Requirements, xay\ndung Use Case Diagram (Actor, Use Case, Associations, Include, Extend), va viet Dac ta Use Case (Use\nCase Specification) chi tiet cho he thong doanh nghiep.\n1. Ly thuyet va Phuong phap Phan tich Chuyen sâu:\n- Requirements Elicitation: Thu thap, phan tich va dac ta yeu cau thong qua ph■ng van, khao sát va phân\ntích nghiep vu thuc te.\n- Use Case Modeling: Xac dinh tac nhan (Actors) tuong tac va cac chuc nang he thong (Use Cases), ap\ndung moi quan he <> va <>.\n- Use Case Specification: Mo ta chi tiet lu■ng chinh (Main Success Scenario), luon",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0049",
+    "courseId": "c-103",
+    "courseTitle": "Phương pháp phát triển phần mềm hướng đối tượng-2-25",
+    "session": 3,
+    "chunkId": "c-103-b3-p18-59",
+    "page": 18,
+    "keywords": [
+      "Class Diagram"
+    ],
+    "question": "Trong môn 'Phương pháp phát triển phần mềm hướng đối tượng-2-25' (Buổi 3), hãy giải thích nguyên lý và đặc điểm chính liên quan đến Class Diagram.",
+    "ground_truth_context": "Phan 19: Class Diagram & Domain Modeling - Chu de 19\nTrong phan 19 cua buoi hoc thu ba nay, chung ta nghien cuu chuyen sau ve Xay dung Bieu do Lop (Class\nDiagram), Mo hinh Mien (Domain Modeling), phan biet cac moi quan he giua cac lop nhu Ket hop\n(Association), Tap hop (Aggregation), Thanh phan (Composition) va Ke thua (Generalization), cung nhu\nphuong phap chuyen doi mo hinh thiet ke thanh ma nguon huong doi tuong thuc te.\n1. Ly thuyet va Phuong phap Thiet ke Chuyen sâu:\n- Class Diagram Architecture: Bieu dien cau truc tinh cua he thong gom Classes, Attributes, Operations va\nVisibility (+ public, - private, # protected).\n- Object Relationships: Phan biet Associations (ket hop thong thuong), Aggregation (quan he co-phan\n'has-a' long leo) va Composition (quan he so huu 'owns-a' chat che).\n-",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0050",
+    "courseId": "c-103",
+    "courseTitle": "Phương pháp phát triển phần mềm hướng đối tượng-2-25",
+    "session": 3,
+    "chunkId": "c-103-b3-p2-43",
+    "page": 2,
+    "keywords": [
+      "Class Diagram"
+    ],
+    "question": "Trong môn 'Phương pháp phát triển phần mềm hướng đối tượng-2-25' (Buổi 3), hãy giải thích nguyên lý và đặc điểm chính liên quan đến Class Diagram.",
+    "ground_truth_context": "Phan 3: Class Diagram & Domain Modeling - Chu de 3\nTrong phan 3 cua buoi hoc thu ba nay, chung ta nghien cuu chuyen sau ve Xay dung Bieu do Lop (Class\nDiagram), Mo hinh Mien (Domain Modeling), phan biet cac moi quan he giua cac lop nhu Ket hop\n(Association), Tap hop (Aggregation), Thanh phan (Composition) va Ke thua (Generalization), cung nhu\nphuong phap chuyen doi mo hinh thiet ke thanh ma nguon huong doi tuong thuc te.\n1. Ly thuyet va Phuong phap Thiet ke Chuyen sâu:\n- Class Diagram Architecture: Bieu dien cau truc tinh cua he thong gom Classes, Attributes, Operations va\nVisibility (+ public, - private, # protected).\n- Object Relationships: Phan biet Associations (ket hop thong thuong), Aggregation (quan he co-phan\n'has-a' long leo) va Composition (quan he so huu 'owns-a' chat che).\n- Mu",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0051",
+    "courseId": "c-103",
+    "courseTitle": "Phương pháp phát triển phần mềm hướng đối tượng-2-25",
+    "session": 3,
+    "chunkId": "c-103-b3-p5-46",
+    "page": 5,
+    "keywords": [
+      "Class Diagram"
+    ],
+    "question": "Trong môn 'Phương pháp phát triển phần mềm hướng đối tượng-2-25' (Buổi 3), hãy giải thích nguyên lý và đặc điểm chính liên quan đến Class Diagram.",
+    "ground_truth_context": "Phan 6: Class Diagram & Domain Modeling - Chu de 6\nTrong phan 6 cua buoi hoc thu ba nay, chung ta nghien cuu chuyen sau ve Xay dung Bieu do Lop (Class\nDiagram), Mo hinh Mien (Domain Modeling), phan biet cac moi quan he giua cac lop nhu Ket hop\n(Association), Tap hop (Aggregation), Thanh phan (Composition) va Ke thua (Generalization), cung nhu\nphuong phap chuyen doi mo hinh thiet ke thanh ma nguon huong doi tuong thuc te.\n1. Ly thuyet va Phuong phap Thiet ke Chuyen sâu:\n- Class Diagram Architecture: Bieu dien cau truc tinh cua he thong gom Classes, Attributes, Operations va\nVisibility (+ public, - private, # protected).\n- Object Relationships: Phan biet Associations (ket hop thong thuong), Aggregation (quan he co-phan\n'has-a' long leo) va Composition (quan he so huu 'owns-a' chat che).\n- Mu",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0052",
+    "courseId": "c-103",
+    "courseTitle": "Phương pháp phát triển phần mềm hướng đối tượng-2-25",
+    "session": 4,
+    "chunkId": "c-103-b4-p8-69",
+    "page": 8,
+    "keywords": [
+      "Sequence Diagram"
+    ],
+    "question": "Trong môn 'Phương pháp phát triển phần mềm hướng đối tượng-2-25' (Buổi 4), hãy giải thích nguyên lý và đặc điểm chính liên quan đến Sequence Diagram.",
+    "ground_truth_context": "Phan 9: Bieu do Tuong tac, Sequence Diagram & Dynamic Modeling - Chu de\n9\nTrong phan 9 cua buoi hoc thu tu nay, chung ta nghien cuu chuyen sau ve Mo hinh dong (Dynamic\nModeling) thong qua Bieu do Tuong tac (Interaction Diagrams), bao gom Sequence Diagram (Bieu do Trinh\ntu) de mo ta thong diep theo thoi gian, Communication Diagram (Bieu do Giao tiep) va cac cau truc dieu\nkien, vong lap (alt, loop, opt) trong thiet ke phan mem huong doi tuong.\n1. Ly thuyet va Phuong phap Thiet ke Chuyen sâu:\n- Sequence Diagram Internals: Bieu dien cac doi tuong tham gia, duong doi (lifelines), thong diep dong b■\n(synchronous calls), bat dong bo (asynchronous) va su tra ve (return values) theo truc thoi gian doc.\n- Combined Fragments: Su dung cac khung dieu kien (alt), vong lap (loop), lua chon (opt) va tham ",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0053",
+    "courseId": "c-103",
+    "courseTitle": "Phương pháp phát triển phần mềm hướng đối tượng-2-25",
+    "session": 4,
+    "chunkId": "c-103-b4-p7-68",
+    "page": 7,
+    "keywords": [
+      "Sequence Diagram"
+    ],
+    "question": "Trong môn 'Phương pháp phát triển phần mềm hướng đối tượng-2-25' (Buổi 4), hãy giải thích nguyên lý và đặc điểm chính liên quan đến Sequence Diagram.",
+    "ground_truth_context": "Phan 8: Bieu do Tuong tac, Sequence Diagram & Dynamic Modeling - Chu de\n8\nTrong phan 8 cua buoi hoc thu tu nay, chung ta nghien cuu chuyen sau ve Mo hinh dong (Dynamic\nModeling) thong qua Bieu do Tuong tac (Interaction Diagrams), bao gom Sequence Diagram (Bieu do Trinh\ntu) de mo ta thong diep theo thoi gian, Communication Diagram (Bieu do Giao tiep) va cac cau truc dieu\nkien, vong lap (alt, loop, opt) trong thiet ke phan mem huong doi tuong.\n1. Ly thuyet va Phuong phap Thiet ke Chuyen sâu:\n- Sequence Diagram Internals: Bieu dien cac doi tuong tham gia, duong doi (lifelines), thong diep dong b■\n(synchronous calls), bat dong bo (asynchronous) va su tra ve (return values) theo truc thoi gian doc.\n- Combined Fragments: Su dung cac khung dieu kien (alt), vong lap (loop), lua chon (opt) va tham ",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0054",
+    "courseId": "c-103",
+    "courseTitle": "Phương pháp phát triển phần mềm hướng đối tượng-2-25",
+    "session": 4,
+    "chunkId": "c-103-b4-p10-71",
+    "page": 10,
+    "keywords": [
+      "Sequence Diagram"
+    ],
+    "question": "Trong môn 'Phương pháp phát triển phần mềm hướng đối tượng-2-25' (Buổi 4), hãy giải thích nguyên lý và đặc điểm chính liên quan đến Sequence Diagram.",
+    "ground_truth_context": "Phan 11: Bieu do Tuong tac, Sequence Diagram & Dynamic Modeling - Chu\nde 11\nTrong phan 11 cua buoi hoc thu tu nay, chung ta nghien cuu chuyen sau ve Mo hinh dong (Dynamic\nModeling) thong qua Bieu do Tuong tac (Interaction Diagrams), bao gom Sequence Diagram (Bieu do Trinh\ntu) de mo ta thong diep theo thoi gian, Communication Diagram (Bieu do Giao tiep) va cac cau truc dieu\nkien, vong lap (alt, loop, opt) trong thiet ke phan mem huong doi tuong.\n1. Ly thuyet va Phuong phap Thiet ke Chuyen sâu:\n- Sequence Diagram Internals: Bieu dien cac doi tuong tham gia, duong doi (lifelines), thong diep dong b■\n(synchronous calls), bat dong bo (asynchronous) va su tra ve (return values) theo truc thoi gian doc.\n- Combined Fragments: Su dung cac khung dieu kien (alt), vong lap (loop), lua chon (opt) va th",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0055",
+    "courseId": "c-103",
+    "courseTitle": "Phương pháp phát triển phần mềm hướng đối tượng-2-25",
+    "session": 5,
+    "chunkId": "c-103-b5-p4-85",
+    "page": 4,
+    "keywords": [
+      "Singleton",
+      "GoF",
+      "Factory",
+      "Observer",
+      "Strategy",
+      "Design Patterns"
+    ],
+    "question": "Trong môn 'Phương pháp phát triển phần mềm hướng đối tượng-2-25' (Buổi 5), hãy giải thích nguyên lý và đặc điểm chính liên quan đến Singleton, GoF, Factory.",
+    "ground_truth_context": "Phan 5: Mau thiet ke Design Patterns (GoF) & Kien truc Ung dung - Chu de 5\nTrong phan 5 cua buoi hoc thu nam nay, chung ta nghien cuu chuyen sau ve cac Mau thiet ke phan mem\nkinh dien cua Gang of Four (GoF), bao gom Nhom Khoi tao (Creational: Singleton, Factory Method,\nBuilder), Nhom Cau truc (Structural: Adapter, Decorator, Facade), va Nhom Hanh vi (Behavioral: Observer,\nStrategy, Command) trong thiet ke huong doi tuong doanh nghiep.\n1. Ly thuyet va Phuong phap Thiet ke Chuyen sâu:\n- Creational Patterns: Quan ly co che khoi tao doi tuong, dam bao tinh linh hoat va an toan (vi du:\nSingleton dam bao chi co 1 instance, Factory Method giam su phu thuoc).\n- Structural Patterns: To chuc cac lop va doi tuong thanh cac cau truc lon hon nhung van giu duoc tinh linh\nhoat (vi du: Adapter chuyen doi ",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0056",
+    "courseId": "c-103",
+    "courseTitle": "Phương pháp phát triển phần mềm hướng đối tượng-2-25",
+    "session": 5,
+    "chunkId": "c-103-b5-p8-89",
+    "page": 8,
+    "keywords": [
+      "Singleton",
+      "GoF",
+      "Factory",
+      "Observer",
+      "Strategy",
+      "Design Patterns"
+    ],
+    "question": "Trong môn 'Phương pháp phát triển phần mềm hướng đối tượng-2-25' (Buổi 5), hãy giải thích nguyên lý và đặc điểm chính liên quan đến Singleton, GoF, Factory.",
+    "ground_truth_context": "Phan 9: Mau thiet ke Design Patterns (GoF) & Kien truc Ung dung - Chu de 9\nTrong phan 9 cua buoi hoc thu nam nay, chung ta nghien cuu chuyen sau ve cac Mau thiet ke phan mem\nkinh dien cua Gang of Four (GoF), bao gom Nhom Khoi tao (Creational: Singleton, Factory Method,\nBuilder), Nhom Cau truc (Structural: Adapter, Decorator, Facade), va Nhom Hanh vi (Behavioral: Observer,\nStrategy, Command) trong thiet ke huong doi tuong doanh nghiep.\n1. Ly thuyet va Phuong phap Thiet ke Chuyen sâu:\n- Creational Patterns: Quan ly co che khoi tao doi tuong, dam bao tinh linh hoat va an toan (vi du:\nSingleton dam bao chi co 1 instance, Factory Method giam su phu thuoc).\n- Structural Patterns: To chuc cac lop va doi tuong thanh cac cau truc lon hon nhung van giu duoc tinh linh\nhoat (vi du: Adapter chuyen doi ",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0057",
+    "courseId": "c-103",
+    "courseTitle": "Phương pháp phát triển phần mềm hướng đối tượng-2-25",
+    "session": 5,
+    "chunkId": "c-103-b5-p16-97",
+    "page": 16,
+    "keywords": [
+      "Singleton",
+      "GoF",
+      "Factory",
+      "Observer",
+      "Strategy",
+      "Design Patterns"
+    ],
+    "question": "Trong môn 'Phương pháp phát triển phần mềm hướng đối tượng-2-25' (Buổi 5), hãy giải thích nguyên lý và đặc điểm chính liên quan đến Singleton, GoF, Factory.",
+    "ground_truth_context": "Phan 17: Mau thiet ke Design Patterns (GoF) & Kien truc Ung dung - Chu de\n17\nTrong phan 17 cua buoi hoc thu nam nay, chung ta nghien cuu chuyen sau ve cac Mau thiet ke phan mem\nkinh dien cua Gang of Four (GoF), bao gom Nhom Khoi tao (Creational: Singleton, Factory Method,\nBuilder), Nhom Cau truc (Structural: Adapter, Decorator, Facade), va Nhom Hanh vi (Behavioral: Observer,\nStrategy, Command) trong thiet ke huong doi tuong doanh nghiep.\n1. Ly thuyet va Phuong phap Thiet ke Chuyen sâu:\n- Creational Patterns: Quan ly co che khoi tao doi tuong, dam bao tinh linh hoat va an toan (vi du:\nSingleton dam bao chi co 1 instance, Factory Method giam su phu thuoc).\n- Structural Patterns: To chuc cac lop va doi tuong thanh cac cau truc lon hon nhung van giu duoc tinh linh\nhoat (vi du: Adapter chuyen d",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0058",
+    "courseId": "c-103",
+    "courseTitle": "Phương pháp phát triển phần mềm hướng đối tượng-2-25",
+    "session": 6,
+    "chunkId": "c-103-b6-p8-109",
+    "page": 8,
+    "keywords": [
+      "Use Case",
+      "MVC",
+      "Dependency Inversion",
+      "Clean Architecture"
+    ],
+    "question": "Trong môn 'Phương pháp phát triển phần mềm hướng đối tượng-2-25' (Buổi 6), hãy giải thích nguyên lý và đặc điểm chính liên quan đến Use Case, MVC, Dependency Inversion.",
+    "ground_truth_context": "Phan 9: Kien truc Phan mem, Layered Architecture & Clean Architecture -\nChu de 9\nTrong phan 9 cua buoi hoc thu sau nay, chung ta nghien cuu chuyen sau ve cac Mau kien truc phan mem\n(Architectural Patterns), Mo hinh 3 tang (Layered Architecture), Model-View-Controller (MVC),\nModel-View-ViewModel (MVVM) va Clean Architecture (Hexagonal / Onion Architecture) de xay dung he\nthong huong doi tuong de bao tri va mo rong.\n1. Ly thuyet va Phuong phap Thiet ke Chuyen sâu:\n- Layered Architecture: Phan chia he thong thanh Presentation Layer, Business Logic Layer va Data\nAccess Layer dam bao nguyen tac phan tach trach nhiem (Separation of Concerns).\n- MVC & MVVM Patterns: Quan ly luu luong du lieu va tuong tac nguoi dung giua Controller/ViewModel va\nView trong cac ung dung web va mobile.\n- Clean Archit",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0059",
+    "courseId": "c-103",
+    "courseTitle": "Phương pháp phát triển phần mềm hướng đối tượng-2-25",
+    "session": 6,
+    "chunkId": "c-103-b6-p4-105",
+    "page": 4,
+    "keywords": [
+      "Use Case",
+      "MVC",
+      "Dependency Inversion",
+      "Clean Architecture"
+    ],
+    "question": "Trong môn 'Phương pháp phát triển phần mềm hướng đối tượng-2-25' (Buổi 6), hãy giải thích nguyên lý và đặc điểm chính liên quan đến Use Case, MVC, Dependency Inversion.",
+    "ground_truth_context": "Phan 5: Kien truc Phan mem, Layered Architecture & Clean Architecture -\nChu de 5\nTrong phan 5 cua buoi hoc thu sau nay, chung ta nghien cuu chuyen sau ve cac Mau kien truc phan mem\n(Architectural Patterns), Mo hinh 3 tang (Layered Architecture), Model-View-Controller (MVC),\nModel-View-ViewModel (MVVM) va Clean Architecture (Hexagonal / Onion Architecture) de xay dung he\nthong huong doi tuong de bao tri va mo rong.\n1. Ly thuyet va Phuong phap Thiet ke Chuyen sâu:\n- Layered Architecture: Phan chia he thong thanh Presentation Layer, Business Logic Layer va Data\nAccess Layer dam bao nguyen tac phan tach trach nhiem (Separation of Concerns).\n- MVC & MVVM Patterns: Quan ly luu luong du lieu va tuong tac nguoi dung giua Controller/ViewModel va\nView trong cac ung dung web va mobile.\n- Clean Archit",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0060",
+    "courseId": "c-103",
+    "courseTitle": "Phương pháp phát triển phần mềm hướng đối tượng-2-25",
+    "session": 6,
+    "chunkId": "c-103-b6-p3-104",
+    "page": 3,
+    "keywords": [
+      "Use Case",
+      "MVC",
+      "Dependency Inversion",
+      "Clean Architecture"
+    ],
+    "question": "Trong môn 'Phương pháp phát triển phần mềm hướng đối tượng-2-25' (Buổi 6), hãy giải thích nguyên lý và đặc điểm chính liên quan đến Use Case, MVC, Dependency Inversion.",
+    "ground_truth_context": "Phan 4: Kien truc Phan mem, Layered Architecture & Clean Architecture -\nChu de 4\nTrong phan 4 cua buoi hoc thu sau nay, chung ta nghien cuu chuyen sau ve cac Mau kien truc phan mem\n(Architectural Patterns), Mo hinh 3 tang (Layered Architecture), Model-View-Controller (MVC),\nModel-View-ViewModel (MVVM) va Clean Architecture (Hexagonal / Onion Architecture) de xay dung he\nthong huong doi tuong de bao tri va mo rong.\n1. Ly thuyet va Phuong phap Thiet ke Chuyen sâu:\n- Layered Architecture: Phan chia he thong thanh Presentation Layer, Business Logic Layer va Data\nAccess Layer dam bao nguyen tac phan tach trach nhiem (Separation of Concerns).\n- MVC & MVVM Patterns: Quan ly luu luong du lieu va tuong tac nguoi dung giua Controller/ViewModel va\nView trong cac ung dung web va mobile.\n- Clean Archit",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0061",
+    "courseId": "c-103",
+    "courseTitle": "Phương pháp phát triển phần mềm hướng đối tượng-2-25",
+    "session": 7,
+    "chunkId": "c-103-b7-p8-129",
+    "page": 8,
+    "keywords": [
+      "State Machine",
+      "Activity Diagram"
+    ],
+    "question": "Trong môn 'Phương pháp phát triển phần mềm hướng đối tượng-2-25' (Buổi 7), hãy giải thích nguyên lý và đặc điểm chính liên quan đến State Machine, Activity Diagram.",
+    "ground_truth_context": "Phan 9: State Machine Diagram & Activity Diagram - Chu de 9\nTrong phan 9 cua buoi hoc thu bay nay, chung ta nghien cuu chuyen sau ve Mo hinh trang thai va hanh vi\nthong qua State Machine Diagram (Bieu do Trang thai) de mo ta vong doi cua doi tuong (States,\nTransitions, Events, Guards) va Activity Diagram (Bieu do Hoat dong) de bieu dien quy trinh nghiep vu,\nluong dieu khien (Control Flows) va xu ly song song (Fork/Join).\n1. Ly thuyet va Phuong phap Thiet ke Chuyen sâu:\n- State Machine Diagram: Mo ta cac trang thai (States), su kien kich hoat (Events), dieu kien bao ve\n(Guards) va hanh dong (Actions) trong vong doi cua mot doi tuong nghiep vu (vi du: Trang thai Don\nhang: Pending -> Paid -> Shipped -> Completed).\n- Activity Diagram Mechanics: Su dung Action Nodes, Decision Nodes, Merge Nodes",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0062",
+    "courseId": "c-103",
+    "courseTitle": "Phương pháp phát triển phần mềm hướng đối tượng-2-25",
+    "session": 7,
+    "chunkId": "c-103-b7-p13-134",
+    "page": 13,
+    "keywords": [
+      "State Machine",
+      "Activity Diagram"
+    ],
+    "question": "Trong môn 'Phương pháp phát triển phần mềm hướng đối tượng-2-25' (Buổi 7), hãy giải thích nguyên lý và đặc điểm chính liên quan đến State Machine, Activity Diagram.",
+    "ground_truth_context": "Phan 14: State Machine Diagram & Activity Diagram - Chu de 14\nTrong phan 14 cua buoi hoc thu bay nay, chung ta nghien cuu chuyen sau ve Mo hinh trang thai va hanh vi\nthong qua State Machine Diagram (Bieu do Trang thai) de mo ta vong doi cua doi tuong (States,\nTransitions, Events, Guards) va Activity Diagram (Bieu do Hoat dong) de bieu dien quy trinh nghiep vu,\nluong dieu khien (Control Flows) va xu ly song song (Fork/Join).\n1. Ly thuyet va Phuong phap Thiet ke Chuyen sâu:\n- State Machine Diagram: Mo ta cac trang thai (States), su kien kich hoat (Events), dieu kien bao ve\n(Guards) va hanh dong (Actions) trong vong doi cua mot doi tuong nghiep vu (vi du: Trang thai Don\nhang: Pending -> Paid -> Shipped -> Completed).\n- Activity Diagram Mechanics: Su dung Action Nodes, Decision Nodes, Merge No",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0063",
+    "courseId": "c-103",
+    "courseTitle": "Phương pháp phát triển phần mềm hướng đối tượng-2-25",
+    "session": 7,
+    "chunkId": "c-103-b7-p2-123",
+    "page": 2,
+    "keywords": [
+      "State Machine",
+      "Activity Diagram"
+    ],
+    "question": "Trong môn 'Phương pháp phát triển phần mềm hướng đối tượng-2-25' (Buổi 7), hãy giải thích nguyên lý và đặc điểm chính liên quan đến State Machine, Activity Diagram.",
+    "ground_truth_context": "Phan 3: State Machine Diagram & Activity Diagram - Chu de 3\nTrong phan 3 cua buoi hoc thu bay nay, chung ta nghien cuu chuyen sau ve Mo hinh trang thai va hanh vi\nthong qua State Machine Diagram (Bieu do Trang thai) de mo ta vong doi cua doi tuong (States,\nTransitions, Events, Guards) va Activity Diagram (Bieu do Hoat dong) de bieu dien quy trinh nghiep vu,\nluong dieu khien (Control Flows) va xu ly song song (Fork/Join).\n1. Ly thuyet va Phuong phap Thiet ke Chuyen sâu:\n- State Machine Diagram: Mo ta cac trang thai (States), su kien kich hoat (Events), dieu kien bao ve\n(Guards) va hanh dong (Actions) trong vong doi cua mot doi tuong nghiep vu (vi du: Trang thai Don\nhang: Pending -> Paid -> Shipped -> Completed).\n- Activity Diagram Mechanics: Su dung Action Nodes, Decision Nodes, Merge Nodes",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0064",
+    "courseId": "c-103",
+    "courseTitle": "Phương pháp phát triển phần mềm hướng đối tượng-2-25",
+    "session": 8,
+    "chunkId": "c-103-b8-p11-152",
+    "page": 11,
+    "keywords": [
+      "JUnit 5",
+      "Mockito",
+      "OOP"
+    ],
+    "question": "Trong môn 'Phương pháp phát triển phần mềm hướng đối tượng-2-25' (Buổi 8), hãy giải thích nguyên lý và đặc điểm chính liên quan đến JUnit 5, Mockito, OOP.",
+    "ground_truth_context": "Phan 12: Kiem thu Huong doi tuong, Unit Testing & TDD - Chu de 12\nTrong phan 12 cua buoi hoc thu tam nay, chung ta nghien cuu chuyen sau ve phuong phap kiem thu phan\nmem huong doi tuong (Object-Oriented Testing), viet Unit Test voi JUnit va Mockito, phuong phap\nTest-Driven Development (TDD: Red-Green-Refactor) va danh gia do phu code (Code Coverage) cho he\nthong phan mem doanh nghiep.\n1. Ly thuyet va Phuong phap Thiet ke Chuyen sâu:\n- OO Testing Principles: Kiem thu tu muc lop (Class Testing), kiem thu phuong thuc (Method Testing) den\nkiem thu tich hop (Integration Testing) trong he thong huong doi tuong.\n- Test-Driven Development (TDD): Quy trinh phat trien huong kiem thu (Viet test loi -> Viet code thoa man\ntest -> Refactor code sach se).\n- Mocking & Stubbing: Su dung Mockito de co lap c",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0065",
+    "courseId": "c-103",
+    "courseTitle": "Phương pháp phát triển phần mềm hướng đối tượng-2-25",
+    "session": 8,
+    "chunkId": "c-103-b8-p1-142",
+    "page": 1,
+    "keywords": [
+      "JUnit 5",
+      "Mockito",
+      "OOP"
+    ],
+    "question": "Trong môn 'Phương pháp phát triển phần mềm hướng đối tượng-2-25' (Buổi 8), hãy giải thích nguyên lý và đặc điểm chính liên quan đến JUnit 5, Mockito, OOP.",
+    "ground_truth_context": "Phan 2: Kiem thu Huong doi tuong, Unit Testing & TDD - Chu de 2\nTrong phan 2 cua buoi hoc thu tam nay, chung ta nghien cuu chuyen sau ve phuong phap kiem thu phan\nmem huong doi tuong (Object-Oriented Testing), viet Unit Test voi JUnit va Mockito, phuong phap\nTest-Driven Development (TDD: Red-Green-Refactor) va danh gia do phu code (Code Coverage) cho he\nthong phan mem doanh nghiep.\n1. Ly thuyet va Phuong phap Thiet ke Chuyen sâu:\n- OO Testing Principles: Kiem thu tu muc lop (Class Testing), kiem thu phuong thuc (Method Testing) den\nkiem thu tich hop (Integration Testing) trong he thong huong doi tuong.\n- Test-Driven Development (TDD): Quy trinh phat trien huong kiem thu (Viet test loi -> Viet code thoa man\ntest -> Refactor code sach se).\n- Mocking & Stubbing: Su dung Mockito de co lap cac ",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0066",
+    "courseId": "c-103",
+    "courseTitle": "Phương pháp phát triển phần mềm hướng đối tượng-2-25",
+    "session": 8,
+    "chunkId": "c-103-b8-p17-158",
+    "page": 17,
+    "keywords": [
+      "JUnit 5",
+      "Mockito",
+      "OOP"
+    ],
+    "question": "Trong môn 'Phương pháp phát triển phần mềm hướng đối tượng-2-25' (Buổi 8), hãy giải thích nguyên lý và đặc điểm chính liên quan đến JUnit 5, Mockito, OOP.",
+    "ground_truth_context": "Phan 18: Kiem thu Huong doi tuong, Unit Testing & TDD - Chu de 18\nTrong phan 18 cua buoi hoc thu tam nay, chung ta nghien cuu chuyen sau ve phuong phap kiem thu phan\nmem huong doi tuong (Object-Oriented Testing), viet Unit Test voi JUnit va Mockito, phuong phap\nTest-Driven Development (TDD: Red-Green-Refactor) va danh gia do phu code (Code Coverage) cho he\nthong phan mem doanh nghiep.\n1. Ly thuyet va Phuong phap Thiet ke Chuyen sâu:\n- OO Testing Principles: Kiem thu tu muc lop (Class Testing), kiem thu phuong thuc (Method Testing) den\nkiem thu tich hop (Integration Testing) trong he thong huong doi tuong.\n- Test-Driven Development (TDD): Quy trinh phat trien huong kiem thu (Viet test loi -> Viet code thoa man\ntest -> Refactor code sach se).\n- Mocking & Stubbing: Su dung Mockito de co lap c",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0067",
+    "courseId": "c-103",
+    "courseTitle": "Phương pháp phát triển phần mềm hướng đối tượng-2-25",
+    "session": 9,
+    "chunkId": "c-103-b9-p18-179",
+    "page": 18,
+    "keywords": [
+      "UML",
+      "CI/CD",
+      "Clean Architecture",
+      "Docker Compose",
+      "Design Patterns",
+      "OOP"
+    ],
+    "question": "Trong môn 'Phương pháp phát triển phần mềm hướng đối tượng-2-25' (Buổi 9), hãy giải thích nguyên lý và đặc điểm chính liên quan đến UML, CI/CD, Clean Architecture.",
+    "ground_truth_context": "Phan 19: Trien khai Du an, Bao tri & Tong ket Hoc phan - Chu de 19\nTrong phan 19 cua buoi hoc tong ket cuoi cung nay, chung ta nghien cuu chuyen sau ve quy trinh trien khai\nphan mem huong doi tuong len moi truong production (Deployment Strategies), dong goi ung dung voi\nDocker, quan ly cau hinh he thong, bao tri phan mem va tong ket toan bo kien thuc cot lõi cua hoc phan\nPhuong phap phat trien phan mem huong doi tuong.\n1. Ly thuyet va Phuong phap Quan tri Chuyen sâu:\n- Deployment & Containerization: Dong goi ung dung huong doi tuong vao Docker containers va thiet lap\nCI/CD pipelines de tu dong hoa qua trinh build va deploy.\n- Software Maintenance & Refactoring: Cac ky thuat tai cau truc ma nguon (Refactoring Smells) de duy trì\ntinh clean code va mo rong he thong trong dai han.\n- Course Sum",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0068",
+    "courseId": "c-103",
+    "courseTitle": "Phương pháp phát triển phần mềm hướng đối tượng-2-25",
+    "session": 9,
+    "chunkId": "c-103-b9-p5-166",
+    "page": 5,
+    "keywords": [
+      "UML",
+      "CI/CD",
+      "Clean Architecture",
+      "Docker Compose",
+      "Design Patterns",
+      "OOP"
+    ],
+    "question": "Trong môn 'Phương pháp phát triển phần mềm hướng đối tượng-2-25' (Buổi 9), hãy giải thích nguyên lý và đặc điểm chính liên quan đến UML, CI/CD, Clean Architecture.",
+    "ground_truth_context": "Phan 6: Trien khai Du an, Bao tri & Tong ket Hoc phan - Chu de 6\nTrong phan 6 cua buoi hoc tong ket cuoi cung nay, chung ta nghien cuu chuyen sau ve quy trinh trien khai\nphan mem huong doi tuong len moi truong production (Deployment Strategies), dong goi ung dung voi\nDocker, quan ly cau hinh he thong, bao tri phan mem va tong ket toan bo kien thuc cot lõi cua hoc phan\nPhuong phap phat trien phan mem huong doi tuong.\n1. Ly thuyet va Phuong phap Quan tri Chuyen sâu:\n- Deployment & Containerization: Dong goi ung dung huong doi tuong vao Docker containers va thiet lap\nCI/CD pipelines de tu dong hoa qua trinh build va deploy.\n- Software Maintenance & Refactoring: Cac ky thuat tai cau truc ma nguon (Refactoring Smells) de duy trì\ntinh clean code va mo rong he thong trong dai han.\n- Course Summar",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0069",
+    "courseId": "c-103",
+    "courseTitle": "Phương pháp phát triển phần mềm hướng đối tượng-2-25",
+    "session": 9,
+    "chunkId": "c-103-b9-p7-168",
+    "page": 7,
+    "keywords": [
+      "UML",
+      "CI/CD",
+      "Clean Architecture",
+      "Docker Compose",
+      "Design Patterns",
+      "OOP"
+    ],
+    "question": "Trong môn 'Phương pháp phát triển phần mềm hướng đối tượng-2-25' (Buổi 9), hãy giải thích nguyên lý và đặc điểm chính liên quan đến UML, CI/CD, Clean Architecture.",
+    "ground_truth_context": "Phan 8: Trien khai Du an, Bao tri & Tong ket Hoc phan - Chu de 8\nTrong phan 8 cua buoi hoc tong ket cuoi cung nay, chung ta nghien cuu chuyen sau ve quy trinh trien khai\nphan mem huong doi tuong len moi truong production (Deployment Strategies), dong goi ung dung voi\nDocker, quan ly cau hinh he thong, bao tri phan mem va tong ket toan bo kien thuc cot lõi cua hoc phan\nPhuong phap phat trien phan mem huong doi tuong.\n1. Ly thuyet va Phuong phap Quan tri Chuyen sâu:\n- Deployment & Containerization: Dong goi ung dung huong doi tuong vao Docker containers va thiet lap\nCI/CD pipelines de tu dong hoa qua trinh build va deploy.\n- Software Maintenance & Refactoring: Cac ky thuat tai cau truc ma nguon (Refactoring Smells) de duy trì\ntinh clean code va mo rong he thong trong dai han.\n- Course Summar",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0070",
+    "courseId": "c-104",
+    "courseTitle": "Quản lý dự án CNTT-2-25",
+    "session": 1,
+    "chunkId": "c-104-b1-p14-15",
+    "page": 14,
+    "keywords": [
+      "CPI",
+      "WBS",
+      "SPI",
+      "EVM",
+      "Strategy",
+      "CPM",
+      "Earned Value Management"
+    ],
+    "question": "Trong môn 'Quản lý dự án CNTT-2-25' (Buổi 1), hãy giải thích nguyên lý và đặc điểm chính liên quan đến CPI, WBS, SPI.",
+    "ground_truth_context": "Phan 15: Nen tang Ly thuyet & Thuc tien Quan ly Du an CNTT - Chu de\n15\nTrong phan 15 cua buoi hoc nay, chung ta nghien cuu chuyen sau cac khia canh quan ly du an cong nghe\nthong tin theo chuan PMBOK, phan tich chi tiet cac quy trình khoi dong, lap ke ho■ch, thuc thi, kiem soat va\ndong du an phan mem doanh nghiep.\n1. Phan tich Chuyen sau va Mohinh Quan ly:\n- Quan ly Pham vi (Scope Management): Xac dinh ro cac yeu cau chuc nang va phi chuc nang, kiem soat\nhien tuong phinh pham vi (Scope Creep).\n- Quan ly Thoi gian & Tien do (Schedule Management): Ap dung phuong phap Duong gang (Critical Path\nMethod - CPM) va bieu do Gantt.\n- Quan ly Chi phí & Ngan sach (Cost Management): Du toan chi phí nhân su, ha tang cloud, quan ly dong\ntien du an.\n2. Mau Tai lieu & Bieu mau Quan ly Du an (Phan 15):\nProje",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0071",
+    "courseId": "c-104",
+    "courseTitle": "Quản lý dự án CNTT-2-25",
+    "session": 1,
+    "chunkId": "c-104-b1-p6-7",
+    "page": 6,
+    "keywords": [
+      "CPI",
+      "WBS",
+      "SPI",
+      "EVM",
+      "Strategy",
+      "CPM",
+      "Earned Value Management"
+    ],
+    "question": "Trong môn 'Quản lý dự án CNTT-2-25' (Buổi 1), hãy giải thích nguyên lý và đặc điểm chính liên quan đến CPI, WBS, SPI.",
+    "ground_truth_context": "Phan 7: Nen tang Ly thuyet & Thuc tien Quan ly Du an CNTT - Chu de 7\nTrong phan 7 cua buoi hoc nay, chung ta nghien cuu chuyen sau cac khia canh quan ly du an cong nghe\nthong tin theo chuan PMBOK, phan tich chi tiet cac quy trình khoi dong, lap ke ho■ch, thuc thi, kiem soat va\ndong du an phan mem doanh nghiep.\n1. Phan tich Chuyen sau va Mohinh Quan ly:\n- Quan ly Pham vi (Scope Management): Xac dinh ro cac yeu cau chuc nang va phi chuc nang, kiem soat\nhien tuong phinh pham vi (Scope Creep).\n- Quan ly Thoi gian & Tien do (Schedule Management): Ap dung phuong phap Duong gang (Critical Path\nMethod - CPM) va bieu do Gantt.\n- Quan ly Chi phí & Ngan sach (Cost Management): Du toan chi phí nhân su, ha tang cloud, quan ly dong\ntien du an.\n2. Mau Tai lieu & Bieu mau Quan ly Du an (Phan 7):\nProject: ",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0072",
+    "courseId": "c-104",
+    "courseTitle": "Quản lý dự án CNTT-2-25",
+    "session": 1,
+    "chunkId": "c-104-b1-p7-8",
+    "page": 7,
+    "keywords": [
+      "CPI",
+      "WBS",
+      "SPI",
+      "EVM",
+      "Strategy",
+      "CPM",
+      "Earned Value Management"
+    ],
+    "question": "Trong môn 'Quản lý dự án CNTT-2-25' (Buổi 1), hãy giải thích nguyên lý và đặc điểm chính liên quan đến CPI, WBS, SPI.",
+    "ground_truth_context": "Phan 8: Nen tang Ly thuyet & Thuc tien Quan ly Du an CNTT - Chu de 8\nTrong phan 8 cua buoi hoc nay, chung ta nghien cuu chuyen sau cac khia canh quan ly du an cong nghe\nthong tin theo chuan PMBOK, phan tich chi tiet cac quy trình khoi dong, lap ke ho■ch, thuc thi, kiem soat va\ndong du an phan mem doanh nghiep.\n1. Phan tich Chuyen sau va Mohinh Quan ly:\n- Quan ly Pham vi (Scope Management): Xac dinh ro cac yeu cau chuc nang va phi chuc nang, kiem soat\nhien tuong phinh pham vi (Scope Creep).\n- Quan ly Thoi gian & Tien do (Schedule Management): Ap dung phuong phap Duong gang (Critical Path\nMethod - CPM) va bieu do Gantt.\n- Quan ly Chi phí & Ngan sach (Cost Management): Du toan chi phí nhân su, ha tang cloud, quan ly dong\ntien du an.\n2. Mau Tai lieu & Bieu mau Quan ly Du an (Phan 8):\nProject: ",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0073",
+    "courseId": "c-104",
+    "courseTitle": "Quản lý dự án CNTT-2-25",
+    "session": 2,
+    "chunkId": "c-104-b2-p1-21",
+    "page": 1,
+    "keywords": [
+      "WBS",
+      "use case",
+      "Stakeholder",
+      "Work Breakdown Structure"
+    ],
+    "question": "Trong môn 'Quản lý dự án CNTT-2-25' (Buổi 2), hãy giải thích nguyên lý và đặc điểm chính liên quan đến WBS, use case, Stakeholder.",
+    "ground_truth_context": "QUAN LY DU AN CONG NGHE THONG TIN\nBUOI 2: Phan tich Stakeholder, Xac dinh Yeu cau & Lap Ke hoach Pham vi (Scope\nPlanning)\nTai lieu hoc tap chuyen sau tu co ban den nang cao toan dien (20 trang) - ASCII Clean\nFormat\nPhan 1: Phan tich Stakeholder & Quan ly Pham vi Du an CNTT - Chu de\n1\nTrong phan 1 cua buoi hoc thu hai nay, chung ta di sau vao phuong phap xac dinh cac ben lien quan\n(Stakeholder Analysis), xay d■ng ma tr■n Power/Interest, thu th■p yêu c■u ph■n m■m (Requirements\nElicitation) va lap tai lieu WBS (Work Breakdown Structure) chi tiet cho du an doanh nghiep.\n1. Ly thuyet va Phuong phap Chuyen sâu:\n- Stakeholder Management: Phan loai cac ben lien quan theo quy mo anh huong va su quan tam de co\nchien luoc truyen thong phu hop.\n- Requirements Gathering: Su dung phuong phap phong van, ",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0074",
+    "courseId": "c-104",
+    "courseTitle": "Quản lý dự án CNTT-2-25",
+    "session": 2,
+    "chunkId": "c-104-b2-p10-31",
+    "page": 10,
+    "keywords": [
+      "use case",
+      "WBS",
+      "Stakeholder",
+      "Work Breakdown Structure",
+      "stakeholder"
+    ],
+    "question": "Trong môn 'Quản lý dự án CNTT-2-25' (Buổi 2), hãy giải thích nguyên lý và đặc điểm chính liên quan đến use case, WBS, Stakeholder.",
+    "ground_truth_context": "Phan 11: Phan tich Stakeholder & Quan ly Pham vi Du an CNTT - Chu\nde 11\nTrong phan 11 cua buoi hoc thu hai nay, chung ta di sau vao phuong phap xac dinh cac ben lien quan\n(Stakeholder Analysis), xay d■ng ma tr■n Power/Interest, thu th■p yêu c■u ph■n m■m (Requirements\nElicitation) va lap tai lieu WBS (Work Breakdown Structure) chi tiet cho du an doanh nghiep.\n1. Ly thuyet va Phuong phap Chuyen sâu:\n- Stakeholder Management: Phan loai cac ben lien quan theo quy mo anh huong va su quan tam de co\nchien luoc truyen thong phu hop.\n- Requirements Gathering: Su dung phuong phap phong van, khao sat, prototyping va use case modeling\nde bat tron yeu cau nghiep vu.\n- WBS Decomposition: Phan ra du an tu muc tong the xuong cac goi cong viec (Work Packages) de quan\nly de dang.\n2. Mau Tai lieu & WBS Dicti",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0075",
+    "courseId": "c-104",
+    "courseTitle": "Quản lý dự án CNTT-2-25",
+    "session": 2,
+    "chunkId": "c-104-b2-p17-38",
+    "page": 17,
+    "keywords": [
+      "use case",
+      "WBS",
+      "Stakeholder",
+      "Work Breakdown Structure",
+      "stakeholder"
+    ],
+    "question": "Trong môn 'Quản lý dự án CNTT-2-25' (Buổi 2), hãy giải thích nguyên lý và đặc điểm chính liên quan đến use case, WBS, Stakeholder.",
+    "ground_truth_context": "Phan 18: Phan tich Stakeholder & Quan ly Pham vi Du an CNTT - Chu\nde 18\nTrong phan 18 cua buoi hoc thu hai nay, chung ta di sau vao phuong phap xac dinh cac ben lien quan\n(Stakeholder Analysis), xay d■ng ma tr■n Power/Interest, thu th■p yêu c■u ph■n m■m (Requirements\nElicitation) va lap tai lieu WBS (Work Breakdown Structure) chi tiet cho du an doanh nghiep.\n1. Ly thuyet va Phuong phap Chuyen sâu:\n- Stakeholder Management: Phan loai cac ben lien quan theo quy mo anh huong va su quan tam de co\nchien luoc truyen thong phu hop.\n- Requirements Gathering: Su dung phuong phap phong van, khao sat, prototyping va use case modeling\nde bat tron yeu cau nghiep vu.\n- WBS Decomposition: Phan ra du an tu muc tong the xuong cac goi cong viec (Work Packages) de quan\nly de dang.\n2. Mau Tai lieu & WBS Dicti",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0076",
+    "courseId": "c-104",
+    "courseTitle": "Quản lý dự án CNTT-2-25",
+    "session": 3,
+    "chunkId": "c-104-b3-p13-54",
+    "page": 13,
+    "keywords": [
+      "Critical Path Method",
+      "CPM"
+    ],
+    "question": "Trong môn 'Quản lý dự án CNTT-2-25' (Buổi 3), hãy giải thích nguyên lý và đặc điểm chính liên quan đến Critical Path Method, CPM.",
+    "ground_truth_context": "Phan 14: Lap Ke hoach Tien do & CPM trong Du an CNTT - Chu de 14\nTrong phan 14 cua buoi hoc thu ba nay, chung ta nghien cuu chuyen sau ve phuong phap xac dinh duong\ngang (Critical Path Method - CPM), uoc tinh thoi gian cong viec (PERT), lap bieu do Gantt va quan ly tien do\nthi cong phan mem trong moi truong doanh nghiep.\n1. Ly thuyet va Phuong phap Chuyen sâu:\n- Network Diagram & CPM: Xac dinh chuoi cac hoat ■■ng quyet dinh thoi gian hoan thanh toi thieu cua\ntoan bo du an, khong co do tre (Float = 0).\n- PERT Estimation: Su dung cong thuc uoc tinh ba diem (Optimistic, Pessimistic, Most Likely) de tinh toan\nky vong thoi gian thuc te.\n- Schedule Compression: Ap dung ky thuat Crashing (tang nguon luc) va Fast Tracking (lam song song)\nkhi can rut ngan tien do.\n2. Mau Tai lieu & CPM Analysis Dat",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0077",
+    "courseId": "c-104",
+    "courseTitle": "Quản lý dự án CNTT-2-25",
+    "session": 3,
+    "chunkId": "c-104-b3-p1-42",
+    "page": 1,
+    "keywords": [
+      "Critical Path Method",
+      "CPM"
+    ],
+    "question": "Trong môn 'Quản lý dự án CNTT-2-25' (Buổi 3), hãy giải thích nguyên lý và đặc điểm chính liên quan đến Critical Path Method, CPM.",
+    "ground_truth_context": "Phan 2: Lap Ke hoach Tien do & CPM trong Du an CNTT - Chu de 2\nTrong phan 2 cua buoi hoc thu ba nay, chung ta nghien cuu chuyen sau ve phuong phap xac dinh duong\ngang (Critical Path Method - CPM), uoc tinh thoi gian cong viec (PERT), lap bieu do Gantt va quan ly tien do\nthi cong phan mem trong moi truong doanh nghiep.\n1. Ly thuyet va Phuong phap Chuyen sâu:\n- Network Diagram & CPM: Xac dinh chuoi cac hoat ■■ng quyet dinh thoi gian hoan thanh toi thieu cua\ntoan bo du an, khong co do tre (Float = 0).\n- PERT Estimation: Su dung cong thuc uoc tinh ba diem (Optimistic, Pessimistic, Most Likely) de tinh toan\nky vong thoi gian thuc te.\n- Schedule Compression: Ap dung ky thuat Crashing (tang nguon luc) va Fast Tracking (lam song song)\nkhi can rut ngan tien do.\n2. Mau Tai lieu & CPM Analysis Data (",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0078",
+    "courseId": "c-104",
+    "courseTitle": "Quản lý dự án CNTT-2-25",
+    "session": 3,
+    "chunkId": "c-104-b3-p8-49",
+    "page": 8,
+    "keywords": [
+      "Critical Path Method",
+      "CPM"
+    ],
+    "question": "Trong môn 'Quản lý dự án CNTT-2-25' (Buổi 3), hãy giải thích nguyên lý và đặc điểm chính liên quan đến Critical Path Method, CPM.",
+    "ground_truth_context": "Phan 9: Lap Ke hoach Tien do & CPM trong Du an CNTT - Chu de 9\nTrong phan 9 cua buoi hoc thu ba nay, chung ta nghien cuu chuyen sau ve phuong phap xac dinh duong\ngang (Critical Path Method - CPM), uoc tinh thoi gian cong viec (PERT), lap bieu do Gantt va quan ly tien do\nthi cong phan mem trong moi truong doanh nghiep.\n1. Ly thuyet va Phuong phap Chuyen sâu:\n- Network Diagram & CPM: Xac dinh chuoi cac hoat ■■ng quyet dinh thoi gian hoan thanh toi thieu cua\ntoan bo du an, khong co do tre (Float = 0).\n- PERT Estimation: Su dung cong thuc uoc tinh ba diem (Optimistic, Pessimistic, Most Likely) de tinh toan\nky vong thoi gian thuc te.\n- Schedule Compression: Ap dung ky thuat Crashing (tang nguon luc) va Fast Tracking (lam song song)\nkhi can rut ngan tien do.\n2. Mau Tai lieu & CPM Analysis Data (",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0079",
+    "courseId": "c-104",
+    "courseTitle": "Quản lý dự án CNTT-2-25",
+    "session": 4,
+    "chunkId": "c-104-b4-p9-70",
+    "page": 9,
+    "keywords": [],
+    "question": "Trong môn 'Quản lý dự án CNTT-2-25' (Buổi 4), hãy giải thích nguyên lý và đặc điểm chính liên quan đến nội dung kiến thức.",
+    "ground_truth_context": "Phan 10: Quan ly Nguon luc & Chi phi trong Du an CNTT - Chu de 10\nTrong phan 10 cua buoi hoc thu tu nay, chung ta nghien cuu chuyen sau ve phuong phap hoach ■inh\nnguon luc nhan su, phan bo tai nguyen (Resource Allocation), ma tran RACI, uoc tinh chi phi du an\n(Analogous, Parametric, Bottom-up Estimating) va xay dung ngan sach tong the cho he thong phan mem\ndoanh nghiep.\n1. Ly thuyet va Phuong phap Chuyen sâu:\n- RACI Matrix: Phan dinh ro trach nhiem cua cac ben lien quan gom Responsible (Thuc hien), Accountable\n(Chiu trach nhiem), Consulted (Tu van), Informed (Thong bao).\n- Cost Estimating Techniques: Su dung uoc tinh tuong tu (Analogous), uoc tinh tham so (Parametric) va\nuoc tinh tu duoi len (Bottom-up) de dam bo do chinh xac.\n- Resource Leveling & Smoothing: Giai quyet tinh trang qua tai ",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0080",
+    "courseId": "c-104",
+    "courseTitle": "Quản lý dự án CNTT-2-25",
+    "session": 4,
+    "chunkId": "c-104-b4-p12-73",
+    "page": 12,
+    "keywords": [],
+    "question": "Trong môn 'Quản lý dự án CNTT-2-25' (Buổi 4), hãy giải thích nguyên lý và đặc điểm chính liên quan đến nội dung kiến thức.",
+    "ground_truth_context": "Phan 13: Quan ly Nguon luc & Chi phi trong Du an CNTT - Chu de 13\nTrong phan 13 cua buoi hoc thu tu nay, chung ta nghien cuu chuyen sau ve phuong phap hoach ■inh\nnguon luc nhan su, phan bo tai nguyen (Resource Allocation), ma tran RACI, uoc tinh chi phi du an\n(Analogous, Parametric, Bottom-up Estimating) va xay dung ngan sach tong the cho he thong phan mem\ndoanh nghiep.\n1. Ly thuyet va Phuong phap Chuyen sâu:\n- RACI Matrix: Phan dinh ro trach nhiem cua cac ben lien quan gom Responsible (Thuc hien), Accountable\n(Chiu trach nhiem), Consulted (Tu van), Informed (Thong bao).\n- Cost Estimating Techniques: Su dung uoc tinh tuong tu (Analogous), uoc tinh tham so (Parametric) va\nuoc tinh tu duoi len (Bottom-up) de dam bo do chinh xac.\n- Resource Leveling & Smoothing: Giai quyet tinh trang qua tai ",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0081",
+    "courseId": "c-104",
+    "courseTitle": "Quản lý dự án CNTT-2-25",
+    "session": 4,
+    "chunkId": "c-104-b4-p10-71",
+    "page": 10,
+    "keywords": [],
+    "question": "Trong môn 'Quản lý dự án CNTT-2-25' (Buổi 4), hãy giải thích nguyên lý và đặc điểm chính liên quan đến nội dung kiến thức.",
+    "ground_truth_context": "Phan 11: Quan ly Nguon luc & Chi phi trong Du an CNTT - Chu de 11\nTrong phan 11 cua buoi hoc thu tu nay, chung ta nghien cuu chuyen sau ve phuong phap hoach ■inh\nnguon luc nhan su, phan bo tai nguyen (Resource Allocation), ma tran RACI, uoc tinh chi phi du an\n(Analogous, Parametric, Bottom-up Estimating) va xay dung ngan sach tong the cho he thong phan mem\ndoanh nghiep.\n1. Ly thuyet va Phuong phap Chuyen sâu:\n- RACI Matrix: Phan dinh ro trach nhiem cua cac ben lien quan gom Responsible (Thuc hien), Accountable\n(Chiu trach nhiem), Consulted (Tu van), Informed (Thong bao).\n- Cost Estimating Techniques: Su dung uoc tinh tuong tu (Analogous), uoc tinh tham so (Parametric) va\nuoc tinh tu duoi len (Bottom-up) de dam bo do chinh xac.\n- Resource Leveling & Smoothing: Giai quyet tinh trang qua tai ",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0082",
+    "courseId": "c-104",
+    "courseTitle": "Quản lý dự án CNTT-2-25",
+    "session": 5,
+    "chunkId": "c-104-b5-p14-95",
+    "page": 14,
+    "keywords": [
+      "Strategy",
+      "Risk Register"
+    ],
+    "question": "Trong môn 'Quản lý dự án CNTT-2-25' (Buổi 5), hãy giải thích nguyên lý và đặc điểm chính liên quan đến Strategy, Risk Register.",
+    "ground_truth_context": "Phan 15: Quan ly Rui ro & Risk Register trong Du an CNTT - Chu de 15\nTrong phan 15 cua buoi hoc thu nam nay, chung ta nghien cuu chuyen sau ve quy trình nhan dien rui ro\n(Risk Identification), phan tich rui ro dinh tinh va dinh luong (Qualitative & Quantitative Risk Analysis), xay\ndung phuong an ung phó (Risk Response Planning) va duy trì so tay rui ro (Risk Register) trong cac du an\nphan mem doanh nghiep.\n1. Ly thuyet va Phuong phap Chuyen sâu:\n- Risk Identification: Su dung ky thuat Brainstorming, SWOT Analysis, Delphi Technique va Checklist\nAnalysis de tim kiem moi rui ro tiem an.\n- Probability & Impact Matrix: Danh gia muc do xac suat xay ra va anh huong cua rui ro de xep loai uu tien\n(High, Medium, Low).\n- Risk Response Strategies: Ap dung cac chien luoc ung pho gom Tranh ne (Avoid), ",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0083",
+    "courseId": "c-104",
+    "courseTitle": "Quản lý dự án CNTT-2-25",
+    "session": 5,
+    "chunkId": "c-104-b5-p10-91",
+    "page": 10,
+    "keywords": [
+      "Strategy",
+      "Risk Register"
+    ],
+    "question": "Trong môn 'Quản lý dự án CNTT-2-25' (Buổi 5), hãy giải thích nguyên lý và đặc điểm chính liên quan đến Strategy, Risk Register.",
+    "ground_truth_context": "Phan 11: Quan ly Rui ro & Risk Register trong Du an CNTT - Chu de 11\nTrong phan 11 cua buoi hoc thu nam nay, chung ta nghien cuu chuyen sau ve quy trình nhan dien rui ro\n(Risk Identification), phan tich rui ro dinh tinh va dinh luong (Qualitative & Quantitative Risk Analysis), xay\ndung phuong an ung phó (Risk Response Planning) va duy trì so tay rui ro (Risk Register) trong cac du an\nphan mem doanh nghiep.\n1. Ly thuyet va Phuong phap Chuyen sâu:\n- Risk Identification: Su dung ky thuat Brainstorming, SWOT Analysis, Delphi Technique va Checklist\nAnalysis de tim kiem moi rui ro tiem an.\n- Probability & Impact Matrix: Danh gia muc do xac suat xay ra va anh huong cua rui ro de xep loai uu tien\n(High, Medium, Low).\n- Risk Response Strategies: Ap dung cac chien luoc ung pho gom Tranh ne (Avoid), ",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0084",
+    "courseId": "c-104",
+    "courseTitle": "Quản lý dự án CNTT-2-25",
+    "session": 5,
+    "chunkId": "c-104-b5-p18-99",
+    "page": 18,
+    "keywords": [
+      "Strategy",
+      "Risk Register"
+    ],
+    "question": "Trong môn 'Quản lý dự án CNTT-2-25' (Buổi 5), hãy giải thích nguyên lý và đặc điểm chính liên quan đến Strategy, Risk Register.",
+    "ground_truth_context": "Phan 19: Quan ly Rui ro & Risk Register trong Du an CNTT - Chu de 19\nTrong phan 19 cua buoi hoc thu nam nay, chung ta nghien cuu chuyen sau ve quy trình nhan dien rui ro\n(Risk Identification), phan tich rui ro dinh tinh va dinh luong (Qualitative & Quantitative Risk Analysis), xay\ndung phuong an ung phó (Risk Response Planning) va duy trì so tay rui ro (Risk Register) trong cac du an\nphan mem doanh nghiep.\n1. Ly thuyet va Phuong phap Chuyen sâu:\n- Risk Identification: Su dung ky thuat Brainstorming, SWOT Analysis, Delphi Technique va Checklist\nAnalysis de tim kiem moi rui ro tiem an.\n- Probability & Impact Matrix: Danh gia muc do xac suat xay ra va anh huong cua rui ro de xep loai uu tien\n(High, Medium, Low).\n- Risk Response Strategies: Ap dung cac chien luoc ung pho gom Tranh ne (Avoid), ",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0085",
+    "courseId": "c-104",
+    "courseTitle": "Quản lý dự án CNTT-2-25",
+    "session": 6,
+    "chunkId": "c-104-b6-p7-108",
+    "page": 7,
+    "keywords": [
+      "JUnit 5",
+      "QA/QC",
+      "Mockito"
+    ],
+    "question": "Trong môn 'Quản lý dự án CNTT-2-25' (Buổi 6), hãy giải thích nguyên lý và đặc điểm chính liên quan đến JUnit 5, QA/QC, Mockito.",
+    "ground_truth_context": "Phan 8: Quan ly Chat luong & QA/QC trong Du an CNTT - Chu de 8\nTrong phan 8 cua buoi hoc thu sau nay, chung ta nghien cuu chuyen sau ve phuong phap quan ly chat\nluong phan mem theo chuan Six Sigma va CMMI, phan biet QA (Quality Assurance) va QC (Quality\nControl), xay dung ke hoach kiem thu (Test Plan), quan ly loi (Bug Tracking) va dam bao tieu chuan san\npham doanh nghiep.\n1. Ly thuyet va Phuong phap Chuyen sâu:\n- Quality Assurance (QA): Tap trung vao quy trinh phat trien, kiem toan quy trinh (Process Audit) de ngan\nngua loi tu goc.\n- Quality Control (QC): Tap trung vao kiem tra san pham cuoi cung, chay Unit Test, Integration Test va\nEnd-to-End Test de phat hien loi.\n- Defect Management Lifecycle: Quan ly vong doi cua loi tu khi phat hien (New), dang xu ly (In Progress),\nkiem tra lai (Rete",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0086",
+    "courseId": "c-104",
+    "courseTitle": "Quản lý dự án CNTT-2-25",
+    "session": 6,
+    "chunkId": "c-104-b6-p1-102",
+    "page": 1,
+    "keywords": [
+      "JUnit 5",
+      "QA/QC",
+      "Mockito"
+    ],
+    "question": "Trong môn 'Quản lý dự án CNTT-2-25' (Buổi 6), hãy giải thích nguyên lý và đặc điểm chính liên quan đến JUnit 5, QA/QC, Mockito.",
+    "ground_truth_context": "Phan 2: Quan ly Chat luong & QA/QC trong Du an CNTT - Chu de 2\nTrong phan 2 cua buoi hoc thu sau nay, chung ta nghien cuu chuyen sau ve phuong phap quan ly chat\nluong phan mem theo chuan Six Sigma va CMMI, phan biet QA (Quality Assurance) va QC (Quality\nControl), xay dung ke hoach kiem thu (Test Plan), quan ly loi (Bug Tracking) va dam bao tieu chuan san\npham doanh nghiep.\n1. Ly thuyet va Phuong phap Chuyen sâu:\n- Quality Assurance (QA): Tap trung vao quy trinh phat trien, kiem toan quy trinh (Process Audit) de ngan\nngua loi tu goc.\n- Quality Control (QC): Tap trung vao kiem tra san pham cuoi cung, chay Unit Test, Integration Test va\nEnd-to-End Test de phat hien loi.\n- Defect Management Lifecycle: Quan ly vong doi cua loi tu khi phat hien (New), dang xu ly (In Progress),\nkiem tra lai (Rete",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0087",
+    "courseId": "c-104",
+    "courseTitle": "Quản lý dự án CNTT-2-25",
+    "session": 6,
+    "chunkId": "c-104-b6-p1-101",
+    "page": 1,
+    "keywords": [
+      "JUnit 5",
+      "QA/QC",
+      "Mockito"
+    ],
+    "question": "Trong môn 'Quản lý dự án CNTT-2-25' (Buổi 6), hãy giải thích nguyên lý và đặc điểm chính liên quan đến JUnit 5, QA/QC, Mockito.",
+    "ground_truth_context": "QUAN LY DU AN CONG NGHE THONG TIN\nBUOI 6: Quan ly Chat luong Du an (Quality Management), QA/QC & Test\nManagement\nTai lieu hoc tap chuyen sau tu co ban den nang cao toan dien (20 trang) - ASCII Clean\nFormat\nPhan 1: Quan ly Chat luong & QA/QC trong Du an CNTT - Chu de 1\nTrong phan 1 cua buoi hoc thu sau nay, chung ta nghien cuu chuyen sau ve phuong phap quan ly chat\nluong phan mem theo chuan Six Sigma va CMMI, phan biet QA (Quality Assurance) va QC (Quality\nControl), xay dung ke hoach kiem thu (Test Plan), quan ly loi (Bug Tracking) va dam bao tieu chuan san\npham doanh nghiep.\n1. Ly thuyet va Phuong phap Chuyen sâu:\n- Quality Assurance (QA): Tap trung vao quy trinh phat trien, kiem toan quy trinh (Process Audit) de ngan\nngua loi tu goc.\n- Quality Control (QC): Tap trung vao kiem tra san pham",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0088",
+    "courseId": "c-104",
+    "courseTitle": "Quản lý dự án CNTT-2-25",
+    "session": 7,
+    "chunkId": "c-104-b7-p14-135",
+    "page": 14,
+    "keywords": [
+      "AC",
+      "EV",
+      "CPI",
+      "SPI",
+      "EVM",
+      "PV",
+      "Earned Value Management"
+    ],
+    "question": "Trong môn 'Quản lý dự án CNTT-2-25' (Buổi 7), hãy giải thích nguyên lý và đặc điểm chính liên quan đến AC, EV, CPI.",
+    "ground_truth_context": "Phan 15: Earned Value Management & Kiem soat Chi phi Du an CNTT -\nChu de 15\nTrong phan 15 cua buoi hoc thu bay nay, chung ta nghien cuu chuyen sau ve phuong phap Quan ly Gia tri\nThu du (Earned Value Management - EVM), tinh toan cac chi so PV, EV, AC, CV, SV, CPI, SPI, du bao chi\nphi hoan thanh (EAC, ETC) va kiem soat ngan sach thuc te cho he thong phan mem doanh nghiep.\n1. Ly thuyet va Phuong phap Chuyen sâu:\n- Planned Value (PV): Ngan sach du kien cho cong viec duoc len lich den thoi diem hien tai (BCWS).\n- Earned Value (EV): Gia tri thuc te cua cong viec da hoan thanh tinh theo ngan sach (BCWP).\n- Actual Cost (AC): Chi phi thuc te da chi ra de thuc hien cong viec den thoi diem hien tai (ACWP).\n- Cost Performance Index (CPI = EV / AC): Chi so hieu suat chi phi. CPI < 1 nghia la du an dang",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0089",
+    "courseId": "c-104",
+    "courseTitle": "Quản lý dự án CNTT-2-25",
+    "session": 7,
+    "chunkId": "c-104-b7-p16-137",
+    "page": 16,
+    "keywords": [
+      "AC",
+      "EV",
+      "CPI",
+      "SPI",
+      "EVM",
+      "PV",
+      "Earned Value Management"
+    ],
+    "question": "Trong môn 'Quản lý dự án CNTT-2-25' (Buổi 7), hãy giải thích nguyên lý và đặc điểm chính liên quan đến AC, EV, CPI.",
+    "ground_truth_context": "Phan 17: Earned Value Management & Kiem soat Chi phi Du an CNTT -\nChu de 17\nTrong phan 17 cua buoi hoc thu bay nay, chung ta nghien cuu chuyen sau ve phuong phap Quan ly Gia tri\nThu du (Earned Value Management - EVM), tinh toan cac chi so PV, EV, AC, CV, SV, CPI, SPI, du bao chi\nphi hoan thanh (EAC, ETC) va kiem soat ngan sach thuc te cho he thong phan mem doanh nghiep.\n1. Ly thuyet va Phuong phap Chuyen sâu:\n- Planned Value (PV): Ngan sach du kien cho cong viec duoc len lich den thoi diem hien tai (BCWS).\n- Earned Value (EV): Gia tri thuc te cua cong viec da hoan thanh tinh theo ngan sach (BCWP).\n- Actual Cost (AC): Chi phi thuc te da chi ra de thuc hien cong viec den thoi diem hien tai (ACWP).\n- Cost Performance Index (CPI = EV / AC): Chi so hieu suat chi phi. CPI < 1 nghia la du an dang",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0090",
+    "courseId": "c-104",
+    "courseTitle": "Quản lý dự án CNTT-2-25",
+    "session": 7,
+    "chunkId": "c-104-b7-p5-126",
+    "page": 5,
+    "keywords": [
+      "AC",
+      "EV",
+      "CPI",
+      "SPI",
+      "EVM",
+      "PV",
+      "Earned Value Management"
+    ],
+    "question": "Trong môn 'Quản lý dự án CNTT-2-25' (Buổi 7), hãy giải thích nguyên lý và đặc điểm chính liên quan đến AC, EV, CPI.",
+    "ground_truth_context": "Phan 6: Earned Value Management & Kiem soat Chi phi Du an CNTT -\nChu de 6\nTrong phan 6 cua buoi hoc thu bay nay, chung ta nghien cuu chuyen sau ve phuong phap Quan ly Gia tri\nThu du (Earned Value Management - EVM), tinh toan cac chi so PV, EV, AC, CV, SV, CPI, SPI, du bao chi\nphi hoan thanh (EAC, ETC) va kiem soat ngan sach thuc te cho he thong phan mem doanh nghiep.\n1. Ly thuyet va Phuong phap Chuyen sâu:\n- Planned Value (PV): Ngan sach du kien cho cong viec duoc len lich den thoi diem hien tai (BCWS).\n- Earned Value (EV): Gia tri thuc te cua cong viec da hoan thanh tinh theo ngan sach (BCWP).\n- Actual Cost (AC): Chi phi thuc te da chi ra de thuc hien cong viec den thoi diem hien tai (ACWP).\n- Cost Performance Index (CPI = EV / AC): Chi so hieu suat chi phi. CPI < 1 nghia la du an dang bi",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0091",
+    "courseId": "c-104",
+    "courseTitle": "Quản lý dự án CNTT-2-25",
+    "session": 8,
+    "chunkId": "c-104-b8-p14-155",
+    "page": 14,
+    "keywords": [
+      "Procurement",
+      "SLA"
+    ],
+    "question": "Trong môn 'Quản lý dự án CNTT-2-25' (Buổi 8), hãy giải thích nguyên lý và đặc điểm chính liên quan đến Procurement, SLA.",
+    "ground_truth_context": "Phan 15: Quan ly Mua sam, Hop dong & Giao tiep trong Du an CNTT -\nChu de 15\nTrong phan 15 cua buoi hoc thu tam nay, chung ta nghien cuu chuyen sau ve phuong phap quan ly mua\nsam phan mem/ha tang ngoai vi (Procurement Management), cac loai hop dong CNTT (FP, T&M;,\nCost-Reimbursable), quy trinh dau thau RFP/RFQ va xay dung ke hoach giao tiep (Communication\nManagement Plan) hieu qua cho cac ben lien quan doanh nghiep.\n1. Ly thuyet va Phuong phap Chuyen sâu:\n- Procurement Management: Lap ke hoach mua sam, tao ho so moi thau (RFP/RFQ), danh gia nha cung\ncap va quan ly hop dong.\n- Contract Types: Phu h■p giua Fixed-Price (Gia co dinh cho scope ro rang) va Time & Materials (Thoi\ngian va nguyen vat lieu cho scope linh hoat).\n- Communication Management Plan: Xac dinh thong tin nao can cung c■p, ai ",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0092",
+    "courseId": "c-104",
+    "courseTitle": "Quản lý dự án CNTT-2-25",
+    "session": 8,
+    "chunkId": "c-104-b8-p15-156",
+    "page": 15,
+    "keywords": [
+      "Procurement",
+      "SLA"
+    ],
+    "question": "Trong môn 'Quản lý dự án CNTT-2-25' (Buổi 8), hãy giải thích nguyên lý và đặc điểm chính liên quan đến Procurement, SLA.",
+    "ground_truth_context": "Phan 16: Quan ly Mua sam, Hop dong & Giao tiep trong Du an CNTT -\nChu de 16\nTrong phan 16 cua buoi hoc thu tam nay, chung ta nghien cuu chuyen sau ve phuong phap quan ly mua\nsam phan mem/ha tang ngoai vi (Procurement Management), cac loai hop dong CNTT (FP, T&M;,\nCost-Reimbursable), quy trinh dau thau RFP/RFQ va xay dung ke hoach giao tiep (Communication\nManagement Plan) hieu qua cho cac ben lien quan doanh nghiep.\n1. Ly thuyet va Phuong phap Chuyen sâu:\n- Procurement Management: Lap ke hoach mua sam, tao ho so moi thau (RFP/RFQ), danh gia nha cung\ncap va quan ly hop dong.\n- Contract Types: Phu h■p giua Fixed-Price (Gia co dinh cho scope ro rang) va Time & Materials (Thoi\ngian va nguyen vat lieu cho scope linh hoat).\n- Communication Management Plan: Xac dinh thong tin nao can cung c■p, ai ",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0093",
+    "courseId": "c-104",
+    "courseTitle": "Quản lý dự án CNTT-2-25",
+    "session": 8,
+    "chunkId": "c-104-b8-p5-146",
+    "page": 5,
+    "keywords": [
+      "Procurement",
+      "SLA"
+    ],
+    "question": "Trong môn 'Quản lý dự án CNTT-2-25' (Buổi 8), hãy giải thích nguyên lý và đặc điểm chính liên quan đến Procurement, SLA.",
+    "ground_truth_context": "Phan 6: Quan ly Mua sam, Hop dong & Giao tiep trong Du an CNTT -\nChu de 6\nTrong phan 6 cua buoi hoc thu tam nay, chung ta nghien cuu chuyen sau ve phuong phap quan ly mua sam\nphan mem/ha tang ngoai vi (Procurement Management), cac loai hop dong CNTT (FP, T&M;,\nCost-Reimbursable), quy trinh dau thau RFP/RFQ va xay dung ke hoach giao tiep (Communication\nManagement Plan) hieu qua cho cac ben lien quan doanh nghiep.\n1. Ly thuyet va Phuong phap Chuyen sâu:\n- Procurement Management: Lap ke hoach mua sam, tao ho so moi thau (RFP/RFQ), danh gia nha cung\ncap va quan ly hop dong.\n- Contract Types: Phu h■p giua Fixed-Price (Gia co dinh cho scope ro rang) va Time & Materials (Thoi\ngian va nguyen vat lieu cho scope linh hoat).\n- Communication Management Plan: Xac dinh thong tin nao can cung c■p, ai can",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0094",
+    "courseId": "c-104",
+    "courseTitle": "Quản lý dự án CNTT-2-25",
+    "session": 9,
+    "chunkId": "c-104-b9-p2-163",
+    "page": 2,
+    "keywords": [
+      "SLA"
+    ],
+    "question": "Trong môn 'Quản lý dự án CNTT-2-25' (Buổi 9), hãy giải thích nguyên lý và đặc điểm chính liên quan đến SLA.",
+    "ground_truth_context": "Phan 3: Nghiem thu, Ban giao & Tong ket Du an CNTT - Chu de 3\nTrong phan 3 cua buoi hoc tong ket cuoi cung nay, chung ta nghien cuu chuyen sau ve quy trình nghiem\nthu san pham (Project Acceptance), ban giao he thong cho khach hang hoac van hanh production\n(Handover), lap bao cao tong ket du an (Final Project Report) va danh gia bai hoc kinh nghiem (Lessons\nLearned) cho toan bo chu ky phat trien phan mem doanh nghiep.\n1. Ly thuyet va Phuong phap Chuyen sâu:\n- Project Closing Process: Hoan tat tat ca cac hop dong, giai phong nguon luc, luu tru tai lieu du an va\nchuyen giao quyen so huu he thong.\n- Acceptance & Handover: Ky bien ban nghiem thu (UAT Sign-off), chuyen giao source code, tai lieu API,\nhuong dan su dung va cau hinh production.\n- Lessons Learned Session: To chuc hop tong ket nham d",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0095",
+    "courseId": "c-104",
+    "courseTitle": "Quản lý dự án CNTT-2-25",
+    "session": 9,
+    "chunkId": "c-104-b9-p17-178",
+    "page": 17,
+    "keywords": [
+      "SLA"
+    ],
+    "question": "Trong môn 'Quản lý dự án CNTT-2-25' (Buổi 9), hãy giải thích nguyên lý và đặc điểm chính liên quan đến SLA.",
+    "ground_truth_context": "Phan 18: Nghiem thu, Ban giao & Tong ket Du an CNTT - Chu de 18\nTrong phan 18 cua buoi hoc tong ket cuoi cung nay, chung ta nghien cuu chuyen sau ve quy trình nghiem\nthu san pham (Project Acceptance), ban giao he thong cho khach hang hoac van hanh production\n(Handover), lap bao cao tong ket du an (Final Project Report) va danh gia bai hoc kinh nghiem (Lessons\nLearned) cho toan bo chu ky phat trien phan mem doanh nghiep.\n1. Ly thuyet va Phuong phap Chuyen sâu:\n- Project Closing Process: Hoan tat tat ca cac hop dong, giai phong nguon luc, luu tru tai lieu du an va\nchuyen giao quyen so huu he thong.\n- Acceptance & Handover: Ky bien ban nghiem thu (UAT Sign-off), chuyen giao source code, tai lieu API,\nhuong dan su dung va cau hinh production.\n- Lessons Learned Session: To chuc hop tong ket nha",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0096",
+    "courseId": "c-104",
+    "courseTitle": "Quản lý dự án CNTT-2-25",
+    "session": 9,
+    "chunkId": "c-104-b9-p10-171",
+    "page": 10,
+    "keywords": [
+      "SLA"
+    ],
+    "question": "Trong môn 'Quản lý dự án CNTT-2-25' (Buổi 9), hãy giải thích nguyên lý và đặc điểm chính liên quan đến SLA.",
+    "ground_truth_context": "Phan 11: Nghiem thu, Ban giao & Tong ket Du an CNTT - Chu de 11\nTrong phan 11 cua buoi hoc tong ket cuoi cung nay, chung ta nghien cuu chuyen sau ve quy trình nghiem\nthu san pham (Project Acceptance), ban giao he thong cho khach hang hoac van hanh production\n(Handover), lap bao cao tong ket du an (Final Project Report) va danh gia bai hoc kinh nghiem (Lessons\nLearned) cho toan bo chu ky phat trien phan mem doanh nghiep.\n1. Ly thuyet va Phuong phap Chuyen sâu:\n- Project Closing Process: Hoan tat tat ca cac hop dong, giai phong nguon luc, luu tru tai lieu du an va\nchuyen giao quyen so huu he thong.\n- Acceptance & Handover: Ky bien ban nghiem thu (UAT Sign-off), chuyen giao source code, tai lieu API,\nhuong dan su dung va cau hinh production.\n- Lessons Learned Session: To chuc hop tong ket nha",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0097",
+    "courseId": "c-105",
+    "courseTitle": "Quản trị hệ thống-2-25",
+    "session": 1,
+    "chunkId": "c-105-b1-p1-1",
+    "page": 1,
+    "keywords": [
+      "UFW",
+      "LVM",
+      "ufw",
+      "Process Management",
+      "Linux",
+      "ext4",
+      "Firewall",
+      "cron",
+      "Ubuntu",
+      "systemd",
+      "Logical Volume",
+      "XFS",
+      "Kernel"
+    ],
+    "question": "Trong môn 'Quản trị hệ thống-2-25' (Buổi 1), hãy giải thích nguyên lý và đặc điểm chính liên quan đến UFW, LVM, ufw.",
+    "ground_truth_context": "QUAN TRI HE THONG DOANH NGHIEP\nBUOI 1: Tong quan Kien truc Ha tang, Linux System Administration & Core Security\nFundamentals\nTai lieu hoc tap chuyen sau tu co ban den nang cao toan dien (20 trang) - ASCII Clean\nFormat\nPhan 1: Quan tri He thong Linux & Ha tang Doanh nghiep - Chu de 1\nTrong phan 1 cua buoi hoc dau tien nay, chung ta nghien cuu chuyen sau ve quan tri he thong Linux doanh\nnghiep (RedHat/Ubuntu), quan ly tien trinh, phan quyen SELinux/AppArmor, cau hinh mang nang cao, tu\ndong hoa tac vu he thong va thiet lap nen tang ha tang an toan cho cac ung dung enterprise.\n1. Ly thuyet va Phuong phap Quan tri Chuyen sâu:\n- Linux Kernel & Process Management: Quan ly tien trinh voi systemd, theo dõi tai nguyen CPU/Memory\nbang top/htop, cau hinh cronjobs cho cac tac vu dinh ky.\n- Access Contr",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0098",
+    "courseId": "c-105",
+    "courseTitle": "Quản trị hệ thống-2-25",
+    "session": 1,
+    "chunkId": "c-105-b1-p12-13",
+    "page": 12,
+    "keywords": [
+      "UFW",
+      "LVM",
+      "ufw",
+      "Process Management",
+      "Linux",
+      "ext4",
+      "Firewall",
+      "cron",
+      "Ubuntu",
+      "systemd",
+      "Logical Volume",
+      "XFS",
+      "Kernel"
+    ],
+    "question": "Trong môn 'Quản trị hệ thống-2-25' (Buổi 1), hãy giải thích nguyên lý và đặc điểm chính liên quan đến UFW, LVM, ufw.",
+    "ground_truth_context": "Phan 13: Quan tri He thong Linux & Ha tang Doanh nghiep - Chu de 13\nTrong phan 13 cua buoi hoc dau tien nay, chung ta nghien cuu chuyen sau ve quan tri he thong Linux\ndoanh nghiep (RedHat/Ubuntu), quan ly tien trinh, phan quyen SELinux/AppArmor, cau hinh mang nang\ncao, tu dong hoa tac vu he thong va thiet lap nen tang ha tang an toan cho cac ung dung enterprise.\n1. Ly thuyet va Phuong phap Quan tri Chuyen sâu:\n- Linux Kernel & Process Management: Quan ly tien trinh voi systemd, theo dõi tai nguyen CPU/Memory\nbang top/htop, cau hinh cronjobs cho cac tac vu dinh ky.\n- Access Control & Security: Cau hinh phan quyen POSIX, Access Control Lists (ACLs), SELinux modes\n(Enforcing/Permissive) vakhoa an toan SSH key-based authentication.\n- Storage & Filesystem Management: Quan ly Logical Volume Mana",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0099",
+    "courseId": "c-105",
+    "courseTitle": "Quản trị hệ thống-2-25",
+    "session": 1,
+    "chunkId": "c-105-b1-p13-14",
+    "page": 13,
+    "keywords": [
+      "UFW",
+      "LVM",
+      "ufw",
+      "Process Management",
+      "Linux",
+      "ext4",
+      "Firewall",
+      "cron",
+      "Ubuntu",
+      "systemd",
+      "Logical Volume",
+      "XFS",
+      "Kernel"
+    ],
+    "question": "Trong môn 'Quản trị hệ thống-2-25' (Buổi 1), hãy giải thích nguyên lý và đặc điểm chính liên quan đến UFW, LVM, ufw.",
+    "ground_truth_context": "Phan 14: Quan tri He thong Linux & Ha tang Doanh nghiep - Chu de 14\nTrong phan 14 cua buoi hoc dau tien nay, chung ta nghien cuu chuyen sau ve quan tri he thong Linux\ndoanh nghiep (RedHat/Ubuntu), quan ly tien trinh, phan quyen SELinux/AppArmor, cau hinh mang nang\ncao, tu dong hoa tac vu he thong va thiet lap nen tang ha tang an toan cho cac ung dung enterprise.\n1. Ly thuyet va Phuong phap Quan tri Chuyen sâu:\n- Linux Kernel & Process Management: Quan ly tien trinh voi systemd, theo dõi tai nguyen CPU/Memory\nbang top/htop, cau hinh cronjobs cho cac tac vu dinh ky.\n- Access Control & Security: Cau hinh phan quyen POSIX, Access Control Lists (ACLs), SELinux modes\n(Enforcing/Permissive) vakhoa an toan SSH key-based authentication.\n- Storage & Filesystem Management: Quan ly Logical Volume Mana",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0100",
+    "courseId": "c-105",
+    "courseTitle": "Quản trị hệ thống-2-25",
+    "session": 2,
+    "chunkId": "c-105-b2-p19-40",
+    "page": 19,
+    "keywords": [
+      "systemctl",
+      "nginx",
+      "sudoers",
+      "Sudoers"
+    ],
+    "question": "Trong môn 'Quản trị hệ thống-2-25' (Buổi 2), hãy giải thích nguyên lý và đặc điểm chính liên quan đến systemctl, nginx, sudoers.",
+    "ground_truth_context": "Phan 20: Quan ly User, Group & Phan quyen He thong - Chu de 20\nTrong phan 20 cua buoi hoc thu hai nay, chung ta nghien cuu chuyen sau ve quan ly tai khoan nguoi dung\n(useradd, usermod), phan quyen nhom (groupadd), cau hinh quyen sudo nang cao cho cac quan tri vien,\nquan ly file /etc/passwd, /etc/shadow va ap dung nguyen tac dac quyen toi thieu (Principle of Least\nPrivilege) trong doanh nghiep.\n1. Ly thuyet va Phuong phap Quan tri Chuyen sâu:\n- User & Group Management: Tao, xoa, sua tai khoan, quan ly UID/GID, thiet lap mat khau het han\n(chage) va quan ly thu muc goc (home directory).\n- Sudoers Configuration: Cau hinh an toan file /etc/sudoers qua lenh visudo, phan quyen han che lenh cho\ntung nhom nguoi dung cu the.\n- Permission Audit: Su dung lenh find, chmod, chown de kiem tra va xu ly ca",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0101",
+    "courseId": "c-105",
+    "courseTitle": "Quản trị hệ thống-2-25",
+    "session": 2,
+    "chunkId": "c-105-b2-p10-31",
+    "page": 10,
+    "keywords": [
+      "systemctl",
+      "nginx",
+      "sudoers",
+      "Sudoers"
+    ],
+    "question": "Trong môn 'Quản trị hệ thống-2-25' (Buổi 2), hãy giải thích nguyên lý và đặc điểm chính liên quan đến systemctl, nginx, sudoers.",
+    "ground_truth_context": "Phan 11: Quan ly User, Group & Phan quyen He thong - Chu de 11\nTrong phan 11 cua buoi hoc thu hai nay, chung ta nghien cuu chuyen sau ve quan ly tai khoan nguoi dung\n(useradd, usermod), phan quyen nhom (groupadd), cau hinh quyen sudo nang cao cho cac quan tri vien,\nquan ly file /etc/passwd, /etc/shadow va ap dung nguyen tac dac quyen toi thieu (Principle of Least\nPrivilege) trong doanh nghiep.\n1. Ly thuyet va Phuong phap Quan tri Chuyen sâu:\n- User & Group Management: Tao, xoa, sua tai khoan, quan ly UID/GID, thiet lap mat khau het han\n(chage) va quan ly thu muc goc (home directory).\n- Sudoers Configuration: Cau hinh an toan file /etc/sudoers qua lenh visudo, phan quyen han che lenh cho\ntung nhom nguoi dung cu the.\n- Permission Audit: Su dung lenh find, chmod, chown de kiem tra va xu ly ca",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0102",
+    "courseId": "c-105",
+    "courseTitle": "Quản trị hệ thống-2-25",
+    "session": 2,
+    "chunkId": "c-105-b2-p12-33",
+    "page": 12,
+    "keywords": [
+      "systemctl",
+      "nginx",
+      "sudoers",
+      "Sudoers"
+    ],
+    "question": "Trong môn 'Quản trị hệ thống-2-25' (Buổi 2), hãy giải thích nguyên lý và đặc điểm chính liên quan đến systemctl, nginx, sudoers.",
+    "ground_truth_context": "Phan 13: Quan ly User, Group & Phan quyen He thong - Chu de 13\nTrong phan 13 cua buoi hoc thu hai nay, chung ta nghien cuu chuyen sau ve quan ly tai khoan nguoi dung\n(useradd, usermod), phan quyen nhom (groupadd), cau hinh quyen sudo nang cao cho cac quan tri vien,\nquan ly file /etc/passwd, /etc/shadow va ap dung nguyen tac dac quyen toi thieu (Principle of Least\nPrivilege) trong doanh nghiep.\n1. Ly thuyet va Phuong phap Quan tri Chuyen sâu:\n- User & Group Management: Tao, xoa, sua tai khoan, quan ly UID/GID, thiet lap mat khau het han\n(chage) va quan ly thu muc goc (home directory).\n- Sudoers Configuration: Cau hinh an toan file /etc/sudoers qua lenh visudo, phan quyen han che lenh cho\ntung nhom nguoi dung cu the.\n- Permission Audit: Su dung lenh find, chmod, chown de kiem tra va xu ly ca",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0103",
+    "courseId": "c-105",
+    "courseTitle": "Quản trị hệ thống-2-25",
+    "session": 3,
+    "chunkId": "c-105-b3-p10-51",
+    "page": 10,
+    "keywords": [
+      "RHEL",
+      "Linux",
+      "Network Configuration",
+      "IP Routing",
+      "Systemd",
+      "systemd",
+      "Ubuntu",
+      "systemctl",
+      "DNS"
+    ],
+    "question": "Trong môn 'Quản trị hệ thống-2-25' (Buổi 3), hãy giải thích nguyên lý và đặc điểm chính liên quan đến RHEL, Linux, Network Configuration.",
+    "ground_truth_context": "Phan 11: Quan ly Dich vu Systemd & Cau hinh Mang Linux - Chu de 11\nTrong phan 11 cua buoi hoc thu ba nay, chung ta nghien cuu chuyen sau ve he thong quan ly tien trinh\nsystemd, cach viet unit file tuy chinh cho cac ung dung doanh nghiep, cau hinh dia chi IP t■nh,\nNetplan/NetworkManager, dinh tuyen mang (IP Routing), phan giai DNS va kiem tra ket noi mang nang cao\ntrong he thong Linux.\n1. Ly thuyet va Phuong phap Quan tri Chuyen sâu:\n- Systemd Service Management: Quan ly trang thai, khoi dong, tat va tu dong phuc hoi (Restart=always)\ncho cac tien trinh nen thong qua systemctl va custom unit files.\n- Network Configuration: Cau hinh dia chi IP tinh, gateway, DNS thong qua Netplan tren Ubuntu hoac\nNetworkManager tren RHEL/CentOS.\n- Routing & Troubleshooting: Su dung ip route, ss, netstat, tcpd",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0104",
+    "courseId": "c-105",
+    "courseTitle": "Quản trị hệ thống-2-25",
+    "session": 3,
+    "chunkId": "c-105-b3-p12-53",
+    "page": 12,
+    "keywords": [
+      "RHEL",
+      "Linux",
+      "Network Configuration",
+      "IP Routing",
+      "Systemd",
+      "systemd",
+      "Ubuntu",
+      "systemctl",
+      "DNS"
+    ],
+    "question": "Trong môn 'Quản trị hệ thống-2-25' (Buổi 3), hãy giải thích nguyên lý và đặc điểm chính liên quan đến RHEL, Linux, Network Configuration.",
+    "ground_truth_context": "Phan 13: Quan ly Dich vu Systemd & Cau hinh Mang Linux - Chu de 13\nTrong phan 13 cua buoi hoc thu ba nay, chung ta nghien cuu chuyen sau ve he thong quan ly tien trinh\nsystemd, cach viet unit file tuy chinh cho cac ung dung doanh nghiep, cau hinh dia chi IP t■nh,\nNetplan/NetworkManager, dinh tuyen mang (IP Routing), phan giai DNS va kiem tra ket noi mang nang cao\ntrong he thong Linux.\n1. Ly thuyet va Phuong phap Quan tri Chuyen sâu:\n- Systemd Service Management: Quan ly trang thai, khoi dong, tat va tu dong phuc hoi (Restart=always)\ncho cac tien trinh nen thong qua systemctl va custom unit files.\n- Network Configuration: Cau hinh dia chi IP tinh, gateway, DNS thong qua Netplan tren Ubuntu hoac\nNetworkManager tren RHEL/CentOS.\n- Routing & Troubleshooting: Su dung ip route, ss, netstat, tcpd",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0105",
+    "courseId": "c-105",
+    "courseTitle": "Quản trị hệ thống-2-25",
+    "session": 3,
+    "chunkId": "c-105-b3-p8-49",
+    "page": 8,
+    "keywords": [
+      "RHEL",
+      "Linux",
+      "Network Configuration",
+      "IP Routing",
+      "Systemd",
+      "systemd",
+      "Ubuntu",
+      "systemctl",
+      "DNS"
+    ],
+    "question": "Trong môn 'Quản trị hệ thống-2-25' (Buổi 3), hãy giải thích nguyên lý và đặc điểm chính liên quan đến RHEL, Linux, Network Configuration.",
+    "ground_truth_context": "Phan 9: Quan ly Dich vu Systemd & Cau hinh Mang Linux - Chu de 9\nTrong phan 9 cua buoi hoc thu ba nay, chung ta nghien cuu chuyen sau ve he thong quan ly tien trinh\nsystemd, cach viet unit file tuy chinh cho cac ung dung doanh nghiep, cau hinh dia chi IP t■nh,\nNetplan/NetworkManager, dinh tuyen mang (IP Routing), phan giai DNS va kiem tra ket noi mang nang cao\ntrong he thong Linux.\n1. Ly thuyet va Phuong phap Quan tri Chuyen sâu:\n- Systemd Service Management: Quan ly trang thai, khoi dong, tat va tu dong phuc hoi (Restart=always)\ncho cac tien trinh nen thong qua systemctl va custom unit files.\n- Network Configuration: Cau hinh dia chi IP tinh, gateway, DNS thong qua Netplan tren Ubuntu hoac\nNetworkManager tren RHEL/CentOS.\n- Routing & Troubleshooting: Su dung ip route, ss, netstat, tcpdump",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0106",
+    "courseId": "c-105",
+    "courseTitle": "Quản trị hệ thống-2-25",
+    "session": 4,
+    "chunkId": "c-105-b4-p1-61",
+    "page": 1,
+    "keywords": [
+      "LVM",
+      "Linux",
+      "ext4",
+      "XFS",
+      "PV",
+      "Logical Volume"
+    ],
+    "question": "Trong môn 'Quản trị hệ thống-2-25' (Buổi 4), hãy giải thích nguyên lý và đặc điểm chính liên quan đến LVM, Linux, ext4.",
+    "ground_truth_context": "QUAN TRI HE THONG DOANH NGHIEP\nBUOI 4: Quan ly Luu tru Nang cao, LVM (Logical Volume Manager) & Filesystem\nMaintenance\nTai lieu hoc tap chuyen sau tu co ban den nang cao toan dien (20 trang) - ASCII Clean\nFormat\nPhan 1: Quan ly Luu tru, LVM & Filesystem trong Linux - Chu de 1\nTrong phan 1 cua buoi hoc thu tu nay, chung ta nghien cuu chuyen sau ve he thong quan ly luu tru nang\ncao tren Linux, su dung LVM (Logical Volume Manager) de tao Physical Volumes (PV), Volume Groups\n(VG), Logical Volumes (LV), mo rong va thu h■p phan vung dong, dinh dang filesystem ext4/XFS, cau hinh\nfstab va kiem tra sua loi dia cung.\n1. Ly thuyet va Phuong phap Quan tri Chuyen sâu:\n- LVM Architecture: Co che trtrung gian giua phan cung vat ly va he thong tep, cho phep linh hoat thay doi\nkich thuoc phan vung ma khong",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0107",
+    "courseId": "c-105",
+    "courseTitle": "Quản trị hệ thống-2-25",
+    "session": 4,
+    "chunkId": "c-105-b4-p1-62",
+    "page": 1,
+    "keywords": [
+      "LVM",
+      "Linux",
+      "ext4",
+      "XFS",
+      "PV",
+      "Logical Volume"
+    ],
+    "question": "Trong môn 'Quản trị hệ thống-2-25' (Buổi 4), hãy giải thích nguyên lý và đặc điểm chính liên quan đến LVM, Linux, ext4.",
+    "ground_truth_context": "Phan 2: Quan ly Luu tru, LVM & Filesystem trong Linux - Chu de 2\nTrong phan 2 cua buoi hoc thu tu nay, chung ta nghien cuu chuyen sau ve he thong quan ly luu tru nang\ncao tren Linux, su dung LVM (Logical Volume Manager) de tao Physical Volumes (PV), Volume Groups\n(VG), Logical Volumes (LV), mo rong va thu h■p phan vung dong, dinh dang filesystem ext4/XFS, cau hinh\nfstab va kiem tra sua loi dia cung.\n1. Ly thuyet va Phuong phap Quan tri Chuyen sâu:\n- LVM Architecture: Co che trtrung gian giua phan cung vat ly va he thong tep, cho phep linh hoat thay doi\nkich thuoc phan vung ma khong mat du lieu.\n- Volume Management Workflow: Tao PV tu o dia/phan vung, gom nhom vao VG va cat lat thanh cac LV\nde su dung lam filesystem.\n- Filesystem Maintenance: Su dung cac cong cu nhu fsck (cho ext4), xfs_rep",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0108",
+    "courseId": "c-105",
+    "courseTitle": "Quản trị hệ thống-2-25",
+    "session": 4,
+    "chunkId": "c-105-b4-p2-63",
+    "page": 2,
+    "keywords": [
+      "LVM",
+      "Linux",
+      "ext4",
+      "XFS",
+      "PV",
+      "Logical Volume"
+    ],
+    "question": "Trong môn 'Quản trị hệ thống-2-25' (Buổi 4), hãy giải thích nguyên lý và đặc điểm chính liên quan đến LVM, Linux, ext4.",
+    "ground_truth_context": "Phan 3: Quan ly Luu tru, LVM & Filesystem trong Linux - Chu de 3\nTrong phan 3 cua buoi hoc thu tu nay, chung ta nghien cuu chuyen sau ve he thong quan ly luu tru nang\ncao tren Linux, su dung LVM (Logical Volume Manager) de tao Physical Volumes (PV), Volume Groups\n(VG), Logical Volumes (LV), mo rong va thu h■p phan vung dong, dinh dang filesystem ext4/XFS, cau hinh\nfstab va kiem tra sua loi dia cung.\n1. Ly thuyet va Phuong phap Quan tri Chuyen sâu:\n- LVM Architecture: Co che trtrung gian giua phan cung vat ly va he thong tep, cho phep linh hoat thay doi\nkich thuoc phan vung ma khong mat du lieu.\n- Volume Management Workflow: Tao PV tu o dia/phan vung, gom nhom vao VG va cat lat thanh cac LV\nde su dung lam filesystem.\n- Filesystem Maintenance: Su dung cac cong cu nhu fsck (cho ext4), xfs_rep",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0109",
+    "courseId": "c-105",
+    "courseTitle": "Quản trị hệ thống-2-25",
+    "session": 5,
+    "chunkId": "c-105-b5-p5-86",
+    "page": 5,
+    "keywords": [
+      "Crontab",
+      "Cron",
+      "Linux",
+      "cron",
+      "crontab"
+    ],
+    "question": "Trong môn 'Quản trị hệ thống-2-25' (Buổi 5), hãy giải thích nguyên lý và đặc điểm chính liên quan đến Crontab, Cron, Linux.",
+    "ground_truth_context": "Phan 6: Quan ly Qua trinh & Tu dong hoa Tac vu trong Linux - Chu de 6\nTrong phan 6 cua buoi hoc thu nam nay, chung ta nghien cuu chuyen sau ve quan ly qua trinh (Process\nManagement) tren Linux su dung ps, top, htop, kill, nice, renice, quan ly tien trinh nen voi nohup va screen,\ncung nhu thiet lap lich trinh tu dong hoa tac vu voi cron, crontab va anacron cho he thong doanh nghiep.\n1. Ly thuyet va Phuong phap Quan tri Chuyen sâu:\n- Process Lifecycle & Signals: Quan ly vong doi tien trinh, gui tin hieu dieu khi■n (SIGTERM, SIGKILL,\nSIGHUP) va theo doi PID/PPID.\n- Process Priority & Resource Control: Dieu chinh do ■u tien (nice values tu -20 den 19) va phan bo tai\nnguyen CPU cho cac tien trinh nang.\n- Automated Task Scheduling: Cu phap crontab chuan (minute hour day month weekday) de tu dong",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0110",
+    "courseId": "c-105",
+    "courseTitle": "Quản trị hệ thống-2-25",
+    "session": 5,
+    "chunkId": "c-105-b5-p3-84",
+    "page": 3,
+    "keywords": [
+      "Crontab",
+      "Cron",
+      "Linux",
+      "cron",
+      "crontab"
+    ],
+    "question": "Trong môn 'Quản trị hệ thống-2-25' (Buổi 5), hãy giải thích nguyên lý và đặc điểm chính liên quan đến Crontab, Cron, Linux.",
+    "ground_truth_context": "Phan 4: Quan ly Qua trinh & Tu dong hoa Tac vu trong Linux - Chu de 4\nTrong phan 4 cua buoi hoc thu nam nay, chung ta nghien cuu chuyen sau ve quan ly qua trinh (Process\nManagement) tren Linux su dung ps, top, htop, kill, nice, renice, quan ly tien trinh nen voi nohup va screen,\ncung nhu thiet lap lich trinh tu dong hoa tac vu voi cron, crontab va anacron cho he thong doanh nghiep.\n1. Ly thuyet va Phuong phap Quan tri Chuyen sâu:\n- Process Lifecycle & Signals: Quan ly vong doi tien trinh, gui tin hieu dieu khi■n (SIGTERM, SIGKILL,\nSIGHUP) va theo doi PID/PPID.\n- Process Priority & Resource Control: Dieu chinh do ■u tien (nice values tu -20 den 19) va phan bo tai\nnguyen CPU cho cac tien trinh nang.\n- Automated Task Scheduling: Cu phap crontab chuan (minute hour day month weekday) de tu dong",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0111",
+    "courseId": "c-105",
+    "courseTitle": "Quản trị hệ thống-2-25",
+    "session": 5,
+    "chunkId": "c-105-b5-p19-100",
+    "page": 19,
+    "keywords": [
+      "Crontab",
+      "Cron",
+      "Linux",
+      "cron",
+      "crontab"
+    ],
+    "question": "Trong môn 'Quản trị hệ thống-2-25' (Buổi 5), hãy giải thích nguyên lý và đặc điểm chính liên quan đến Crontab, Cron, Linux.",
+    "ground_truth_context": "Phan 20: Quan ly Qua trinh & Tu dong hoa Tac vu trong Linux - Chu de\n20\nTrong phan 20 cua buoi hoc thu nam nay, chung ta nghien cuu chuyen sau ve quan ly qua trinh (Process\nManagement) tren Linux su dung ps, top, htop, kill, nice, renice, quan ly tien trinh nen voi nohup va screen,\ncung nhu thiet lap lich trinh tu dong hoa tac vu voi cron, crontab va anacron cho he thong doanh nghiep.\n1. Ly thuyet va Phuong phap Quan tri Chuyen sâu:\n- Process Lifecycle & Signals: Quan ly vong doi tien trinh, gui tin hieu dieu khi■n (SIGTERM, SIGKILL,\nSIGHUP) va theo doi PID/PPID.\n- Process Priority & Resource Control: Dieu chinh do ■u tien (nice values tu -20 den 19) va phan bo tai\nnguyen CPU cho cac tien trinh nang.\n- Automated Task Scheduling: Cu phap crontab chuan (minute hour day month weekday) de tu d",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0112",
+    "courseId": "c-105",
+    "courseTitle": "Quản trị hệ thống-2-25",
+    "session": 6,
+    "chunkId": "c-105-b6-p1-102",
+    "page": 1,
+    "keywords": [
+      "Grafana",
+      "journalctl",
+      "Prometheus",
+      "logrotate",
+      "kernel",
+      "Kernel",
+      "Logrotate"
+    ],
+    "question": "Trong môn 'Quản trị hệ thống-2-25' (Buổi 6), hãy giải thích nguyên lý và đặc điểm chính liên quan đến Grafana, journalctl, Prometheus.",
+    "ground_truth_context": "Phan 2: Quan ly Log, Giam sat & Toi uu Hieu suat He thong - Chu de 2\nTrong phan 2 cua buoi hoc thu sau nay, chung ta nghien cuu chuyen sau ve quan ly log he thong va ung\ndung (Logrotate), phan tich file log voi journalctl va rsyslog, giam sat tai nguyen thoi gian thuc (Prometheus,\nGrafana, Node Exporter) va toi uu hoa hieu suat kernel, CPU, Memory cho may chu doanh nghiep.\n1. Ly thuyet va Phuong phap Quan tri Chuyen sâu:\n- Log Management & Logrotate: Cau hinh tu dong xoay vong, nen va xoa log cu trong /etc/logrotate.d/ de\ntiet kiem khong gian o dia.\n- System Monitoring Tools: Su dung vmstat, iostat, sar, free va uptime de phat hien nghien co th■t\n(bottlenecks) ve CPU, I/O hoac RAM.\n- Kernel & Performance Tuning: Tinh chinh cac thong so sysctl.conf (vm.swappiness, fs.file-max,\nnet.core.soma",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0113",
+    "courseId": "c-105",
+    "courseTitle": "Quản trị hệ thống-2-25",
+    "session": 6,
+    "chunkId": "c-105-b6-p3-104",
+    "page": 3,
+    "keywords": [
+      "Grafana",
+      "journalctl",
+      "Prometheus",
+      "logrotate",
+      "kernel",
+      "Kernel",
+      "Logrotate"
+    ],
+    "question": "Trong môn 'Quản trị hệ thống-2-25' (Buổi 6), hãy giải thích nguyên lý và đặc điểm chính liên quan đến Grafana, journalctl, Prometheus.",
+    "ground_truth_context": "Phan 4: Quan ly Log, Giam sat & Toi uu Hieu suat He thong - Chu de 4\nTrong phan 4 cua buoi hoc thu sau nay, chung ta nghien cuu chuyen sau ve quan ly log he thong va ung\ndung (Logrotate), phan tich file log voi journalctl va rsyslog, giam sat tai nguyen thoi gian thuc (Prometheus,\nGrafana, Node Exporter) va toi uu hoa hieu suat kernel, CPU, Memory cho may chu doanh nghiep.\n1. Ly thuyet va Phuong phap Quan tri Chuyen sâu:\n- Log Management & Logrotate: Cau hinh tu dong xoay vong, nen va xoa log cu trong /etc/logrotate.d/ de\ntiet kiem khong gian o dia.\n- System Monitoring Tools: Su dung vmstat, iostat, sar, free va uptime de phat hien nghien co th■t\n(bottlenecks) ve CPU, I/O hoac RAM.\n- Kernel & Performance Tuning: Tinh chinh cac thong so sysctl.conf (vm.swappiness, fs.file-max,\nnet.core.soma",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0114",
+    "courseId": "c-105",
+    "courseTitle": "Quản trị hệ thống-2-25",
+    "session": 6,
+    "chunkId": "c-105-b6-p19-120",
+    "page": 19,
+    "keywords": [
+      "Grafana",
+      "journalctl",
+      "Prometheus",
+      "logrotate",
+      "kernel",
+      "Kernel",
+      "Logrotate"
+    ],
+    "question": "Trong môn 'Quản trị hệ thống-2-25' (Buổi 6), hãy giải thích nguyên lý và đặc điểm chính liên quan đến Grafana, journalctl, Prometheus.",
+    "ground_truth_context": "Phan 20: Quan ly Log, Giam sat & Toi uu Hieu suat He thong - Chu de\n20\nTrong phan 20 cua buoi hoc thu sau nay, chung ta nghien cuu chuyen sau ve quan ly log he thong va ung\ndung (Logrotate), phan tich file log voi journalctl va rsyslog, giam sat tai nguyen thoi gian thuc (Prometheus,\nGrafana, Node Exporter) va toi uu hoa hieu suat kernel, CPU, Memory cho may chu doanh nghiep.\n1. Ly thuyet va Phuong phap Quan tri Chuyen sâu:\n- Log Management & Logrotate: Cau hinh tu dong xoay vong, nen va xoa log cu trong /etc/logrotate.d/ de\ntiet kiem khong gian o dia.\n- System Monitoring Tools: Su dung vmstat, iostat, sar, free va uptime de phat hien nghien co th■t\n(bottlenecks) ve CPU, I/O hoac RAM.\n- Kernel & Performance Tuning: Tinh chinh cac thong so sysctl.conf (vm.swappiness, fs.file-max,\nnet.core.s",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0115",
+    "courseId": "c-105",
+    "courseTitle": "Quản trị hệ thống-2-25",
+    "session": 7,
+    "chunkId": "c-105-b7-p5-126",
+    "page": 5,
+    "keywords": [
+      "Disaster Recovery",
+      "pg_dump",
+      "Strategy"
+    ],
+    "question": "Trong môn 'Quản trị hệ thống-2-25' (Buổi 7), hãy giải thích nguyên lý và đặc điểm chính liên quan đến Disaster Recovery, pg_dump, Strategy.",
+    "ground_truth_context": "Phan 6: Chien luoc Backup, Khoi phuc & Phuc hoi Tham hoa - Chu de 6\nTrong phan 6 cua buoi hoc thu bay nay, chung ta nghien cuu chuyen sau ve chien luoc sao luu du lieu\ndoanh nghiep (Full, Incremental, Differential Backup), su dung cac cong cu tar, rsync, pg_dump,\nmysqldump, xay dung quy trinh phuc hoi (Restore Strategy) va lap ke hoach phuc hoi sau tham hoa\n(Disaster Recovery Plan - DRP) cho he thong ha tang phan tan.\n1. Ly thuyet va Phuong phap Quan tri Chuyen sâu:\n- Backup Strategies: Phan biet Full Backup (sao luu toan bo), Incremental Backup (sao luu phan thay doi\ntu lan backup gan nhat) va Differential Backup (sao luu phan thay doi tu lan Full backup).\n- Database Backup & Recovery: Thuc hien backup nong (hot backup) va lanh (cold backup) cho\nPostgreSQL va MySQL dam bao tinh toan ven d",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0116",
+    "courseId": "c-105",
+    "courseTitle": "Quản trị hệ thống-2-25",
+    "session": 7,
+    "chunkId": "c-105-b7-p13-134",
+    "page": 13,
+    "keywords": [
+      "Disaster Recovery",
+      "pg_dump",
+      "Strategy"
+    ],
+    "question": "Trong môn 'Quản trị hệ thống-2-25' (Buổi 7), hãy giải thích nguyên lý và đặc điểm chính liên quan đến Disaster Recovery, pg_dump, Strategy.",
+    "ground_truth_context": "Phan 14: Chien luoc Backup, Khoi phuc & Phuc hoi Tham hoa - Chu de\n14\nTrong phan 14 cua buoi hoc thu bay nay, chung ta nghien cuu chuyen sau ve chien luoc sao luu du lieu\ndoanh nghiep (Full, Incremental, Differential Backup), su dung cac cong cu tar, rsync, pg_dump,\nmysqldump, xay dung quy trinh phuc hoi (Restore Strategy) va lap ke hoach phuc hoi sau tham hoa\n(Disaster Recovery Plan - DRP) cho he thong ha tang phan tan.\n1. Ly thuyet va Phuong phap Quan tri Chuyen sâu:\n- Backup Strategies: Phan biet Full Backup (sao luu toan bo), Incremental Backup (sao luu phan thay doi\ntu lan backup gan nhat) va Differential Backup (sao luu phan thay doi tu lan Full backup).\n- Database Backup & Recovery: Thuc hien backup nong (hot backup) va lanh (cold backup) cho\nPostgreSQL va MySQL dam bao tinh toan ve",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0117",
+    "courseId": "c-105",
+    "courseTitle": "Quản trị hệ thống-2-25",
+    "session": 7,
+    "chunkId": "c-105-b7-p4-125",
+    "page": 4,
+    "keywords": [
+      "Disaster Recovery",
+      "pg_dump",
+      "Strategy"
+    ],
+    "question": "Trong môn 'Quản trị hệ thống-2-25' (Buổi 7), hãy giải thích nguyên lý và đặc điểm chính liên quan đến Disaster Recovery, pg_dump, Strategy.",
+    "ground_truth_context": "Phan 5: Chien luoc Backup, Khoi phuc & Phuc hoi Tham hoa - Chu de 5\nTrong phan 5 cua buoi hoc thu bay nay, chung ta nghien cuu chuyen sau ve chien luoc sao luu du lieu\ndoanh nghiep (Full, Incremental, Differential Backup), su dung cac cong cu tar, rsync, pg_dump,\nmysqldump, xay dung quy trinh phuc hoi (Restore Strategy) va lap ke hoach phuc hoi sau tham hoa\n(Disaster Recovery Plan - DRP) cho he thong ha tang phan tan.\n1. Ly thuyet va Phuong phap Quan tri Chuyen sâu:\n- Backup Strategies: Phan biet Full Backup (sao luu toan bo), Incremental Backup (sao luu phan thay doi\ntu lan backup gan nhat) va Differential Backup (sao luu phan thay doi tu lan Full backup).\n- Database Backup & Recovery: Thuc hien backup nong (hot backup) va lanh (cold backup) cho\nPostgreSQL va MySQL dam bao tinh toan ven d",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0118",
+    "courseId": "c-105",
+    "courseTitle": "Quản trị hệ thống-2-25",
+    "session": 8,
+    "chunkId": "c-105-b8-p13-153",
+    "page": 13,
+    "keywords": [
+      "microservices",
+      "Linux",
+      "BIND9",
+      "Nginx",
+      "Load Balancing",
+      "TLS",
+      "iptables",
+      "load balancing",
+      "Reverse Proxy",
+      "SSL",
+      "DNS",
+      "ssl"
+    ],
+    "question": "Trong môn 'Quản trị hệ thống-2-25' (Buổi 8), hãy giải thích nguyên lý và đặc điểm chính liên quan đến microservices, Linux, BIND9.",
+    "ground_truth_context": "Phan 13: Quan ly Mang nang cao, DNS & Reverse Proxy trong Linux -\nChu de 13\nTrong phan 13 cua buoi hoc thu tam nay, chung ta nghien cuu chuyen sau ve cau hinh va quan tri may chu\nphan giai ten mien BIND9 (DNS Server), thiet lap Nginx lam Reverse Proxy va Load Balancer (Round\nRobin, Least Connections), cau hinh SSL/TLS termination va quan ly luu luong mang nang cao cho cac he\nthong phan tan doanh nghiep.\n1. Ly thuyet va Phuong phap Quan tri Chuyen sâu:\n- DNS Server Administration (BIND9): Cau hinh zone files, ban ghi A, CNAME, MX, TXT va co che\ncaching/forwarding cho he thong mang noi bo.\n- Nginx Reverse Proxy & Load Balancing: Cau hinh upstream blocks, phan phoi tai nguyen giua cac\nmicroservices, xu ly SSL termination va security headers.\n- Network Troubleshooting & Security: Su dung dig, ",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0119",
+    "courseId": "c-105",
+    "courseTitle": "Quản trị hệ thống-2-25",
+    "session": 8,
+    "chunkId": "c-105-b8-p19-159",
+    "page": 19,
+    "keywords": [
+      "microservices",
+      "Linux",
+      "BIND9",
+      "Nginx",
+      "Load Balancing",
+      "TLS",
+      "iptables",
+      "load balancing",
+      "Reverse Proxy",
+      "SSL",
+      "DNS",
+      "ssl"
+    ],
+    "question": "Trong môn 'Quản trị hệ thống-2-25' (Buổi 8), hãy giải thích nguyên lý và đặc điểm chính liên quan đến microservices, Linux, BIND9.",
+    "ground_truth_context": "Phan 19: Quan ly Mang nang cao, DNS & Reverse Proxy trong Linux -\nChu de 19\nTrong phan 19 cua buoi hoc thu tam nay, chung ta nghien cuu chuyen sau ve cau hinh va quan tri may chu\nphan giai ten mien BIND9 (DNS Server), thiet lap Nginx lam Reverse Proxy va Load Balancer (Round\nRobin, Least Connections), cau hinh SSL/TLS termination va quan ly luu luong mang nang cao cho cac he\nthong phan tan doanh nghiep.\n1. Ly thuyet va Phuong phap Quan tri Chuyen sâu:\n- DNS Server Administration (BIND9): Cau hinh zone files, ban ghi A, CNAME, MX, TXT va co che\ncaching/forwarding cho he thong mang noi bo.\n- Nginx Reverse Proxy & Load Balancing: Cau hinh upstream blocks, phan phoi tai nguyen giua cac\nmicroservices, xu ly SSL termination va security headers.\n- Network Troubleshooting & Security: Su dung dig, ",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0120",
+    "courseId": "c-105",
+    "courseTitle": "Quản trị hệ thống-2-25",
+    "session": 8,
+    "chunkId": "c-105-b8-p15-155",
+    "page": 15,
+    "keywords": [
+      "microservices",
+      "Linux",
+      "BIND9",
+      "Nginx",
+      "Load Balancing",
+      "TLS",
+      "iptables",
+      "load balancing",
+      "Reverse Proxy",
+      "SSL",
+      "DNS",
+      "ssl"
+    ],
+    "question": "Trong môn 'Quản trị hệ thống-2-25' (Buổi 8), hãy giải thích nguyên lý và đặc điểm chính liên quan đến microservices, Linux, BIND9.",
+    "ground_truth_context": "Phan 15: Quan ly Mang nang cao, DNS & Reverse Proxy trong Linux -\nChu de 15\nTrong phan 15 cua buoi hoc thu tam nay, chung ta nghien cuu chuyen sau ve cau hinh va quan tri may chu\nphan giai ten mien BIND9 (DNS Server), thiet lap Nginx lam Reverse Proxy va Load Balancer (Round\nRobin, Least Connections), cau hinh SSL/TLS termination va quan ly luu luong mang nang cao cho cac he\nthong phan tan doanh nghiep.\n1. Ly thuyet va Phuong phap Quan tri Chuyen sâu:\n- DNS Server Administration (BIND9): Cau hinh zone files, ban ghi A, CNAME, MX, TXT va co che\ncaching/forwarding cho he thong mang noi bo.\n- Nginx Reverse Proxy & Load Balancing: Cau hinh upstream blocks, phan phoi tai nguyen giua cac\nmicroservices, xu ly SSL termination va security headers.\n- Network Troubleshooting & Security: Su dung dig, ",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0121",
+    "courseId": "c-105",
+    "courseTitle": "Quản trị hệ thống-2-25",
+    "session": 9,
+    "chunkId": "c-105-b9-p2-163",
+    "page": 2,
+    "keywords": [
+      "Nginx",
+      "TLS",
+      "SSL",
+      "Linux"
+    ],
+    "question": "Trong môn 'Quản trị hệ thống-2-25' (Buổi 9), hãy giải thích nguyên lý và đặc điểm chính liên quan đến Nginx, TLS, SSL.",
+    "ground_truth_context": "Phan 3: Security Hardening, X■ lý Su co & Tong ket Ha tang He thong -\nChu de 3\nTrong phan 3 cua buoi hoc tong ket cuoi cung nay, chung ta nghien cuu chuyen sau ve quy trinh tang cuong\nbao mat he thong (Security Hardening), cau hinh Fail2ban chong tan cong brute-force, quan ly chung chi\nSSL/TLS voi Certbot, quy trinh xu ly su co bao mat (Incident Response) va van hanh ha tang production an\ntoan cho toan bo he thong doanh nghiep.\n1. Ly thuyet va Phuong phap Quan tri Chuyen sâu:\n- Linux Security Hardening: Tat cac dich vu khong can thiet, cau hinh SSH khong cho root login truc tiep,\nsu dung port khac va xac thuc khoa an toan.\n- Intrusion Prevention (Fail2ban): Cau hinh jail cho SSH, Nginx va PostgreSQL de tu dong chan IP tan\ncong brute-force.\n- Incident Response & Auditing: Su dung auditd, fa",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0122",
+    "courseId": "c-105",
+    "courseTitle": "Quản trị hệ thống-2-25",
+    "session": 9,
+    "chunkId": "c-105-b9-p6-167",
+    "page": 6,
+    "keywords": [
+      "Nginx",
+      "TLS",
+      "SSL",
+      "Linux"
+    ],
+    "question": "Trong môn 'Quản trị hệ thống-2-25' (Buổi 9), hãy giải thích nguyên lý và đặc điểm chính liên quan đến Nginx, TLS, SSL.",
+    "ground_truth_context": "Phan 7: Security Hardening, X■ lý Su co & Tong ket Ha tang He thong -\nChu de 7\nTrong phan 7 cua buoi hoc tong ket cuoi cung nay, chung ta nghien cuu chuyen sau ve quy trinh tang cuong\nbao mat he thong (Security Hardening), cau hinh Fail2ban chong tan cong brute-force, quan ly chung chi\nSSL/TLS voi Certbot, quy trinh xu ly su co bao mat (Incident Response) va van hanh ha tang production an\ntoan cho toan bo he thong doanh nghiep.\n1. Ly thuyet va Phuong phap Quan tri Chuyen sâu:\n- Linux Security Hardening: Tat cac dich vu khong can thiet, cau hinh SSH khong cho root login truc tiep,\nsu dung port khac va xac thuc khoa an toan.\n- Intrusion Prevention (Fail2ban): Cau hinh jail cho SSH, Nginx va PostgreSQL de tu dong chan IP tan\ncong brute-force.\n- Incident Response & Auditing: Su dung auditd, fa",
+    "sealed": true
+  },
+  {
+    "id": "TEST-QA-0123",
+    "courseId": "c-105",
+    "courseTitle": "Quản trị hệ thống-2-25",
+    "session": 9,
+    "chunkId": "c-105-b9-p16-177",
+    "page": 16,
+    "keywords": [
+      "Nginx",
+      "TLS",
+      "SSL",
+      "Linux"
+    ],
+    "question": "Trong môn 'Quản trị hệ thống-2-25' (Buổi 9), hãy giải thích nguyên lý và đặc điểm chính liên quan đến Nginx, TLS, SSL.",
+    "ground_truth_context": "Phan 17: Security Hardening, X■ lý Su co & Tong ket Ha tang He thong\n- Chu de 17\nTrong phan 17 cua buoi hoc tong ket cuoi cung nay, chung ta nghien cuu chuyen sau ve quy trinh tang\ncuong bao mat he thong (Security Hardening), cau hinh Fail2ban chong tan cong brute-force, quan ly chung\nchi SSL/TLS voi Certbot, quy trinh xu ly su co bao mat (Incident Response) va van hanh ha tang production\nan toan cho toan bo he thong doanh nghiep.\n1. Ly thuyet va Phuong phap Quan tri Chuyen sâu:\n- Linux Security Hardening: Tat cac dich vu khong can thiet, cau hinh SSH khong cho root login truc tiep,\nsu dung port khac va xac thuc khoa an toan.\n- Intrusion Prevention (Fail2ban): Cau hinh jail cho SSH, Nginx va PostgreSQL de tu dong chan IP tan\ncong brute-force.\n- Incident Response & Auditing: Su dung auditd,",
+    "sealed": true
+  }
+]
