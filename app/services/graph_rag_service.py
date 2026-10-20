@@ -6,6 +6,27 @@ from app.core.config import settings
 
 logger = logging.getLogger(__name__)
 
+def remove_vietnamese_accents(s: str) -> str:
+    """Converts accented Vietnamese text to base ASCII ('quản lý' -> 'quan ly')."""
+    if not s:
+        return ""
+    s = str(s).replace('đ', 'd').replace('Đ', 'D')
+    import unicodedata
+    nfkd = unicodedata.normalize('NFKD', s)
+    return ''.join(c for c in nfkd if not unicodedata.combining(c)).lower()
+
+def decode_telex_typos(s: str) -> str:
+    """Decodes common typing errors when user types Telex on English IME."""
+    import re
+    t = str(s).lower()
+    t = re.sub(r'aa|aw', 'a', t)
+    t = re.sub(r'ee', 'e', t)
+    t = re.sub(r'oo|ow', 'o', t)
+    t = re.sub(r'uw', 'u', t)
+    t = re.sub(r'dd', 'd', t)
+    t = re.sub(r'[sfrxj](?=\b|\s|[0-9])', '', t)
+    return t
+
 class NetworkXGraphRAG:
     """
     A pure Python local-search GraphRAG implementation using networkx and LiteLLM.
@@ -130,8 +151,8 @@ class NetworkXGraphRAG:
 
     async def aquery(self, query: str, param=None) -> str:
         """
-        Extracts key entities, performs hybrid search across the Knowledge Graph
-        and the rich lecture knowledge store, returning fully grounded context.
+        Performs accent-resilient, telex-aware, n-gram hybrid search across the
+        Knowledge Graph and knowledge store chunks, returning grounded lecture context.
         """
         if self.graph.number_of_nodes() == 0 and not self.knowledge_store:
             return ""
@@ -140,28 +161,36 @@ class NetworkXGraphRAG:
 
         clean_q = query.strip()
         lower_q = clean_q.lower()
+        norm_q = remove_vietnamese_accents(clean_q)
+        telex_q = decode_telex_typos(norm_q)
 
-        # Step 1: Fast keyword extraction (acronyms, technical phrases, words > 2 chars)
-        candidate_keywords = set()
-        # Find capitalized terms or acronyms (e.g. MVCC, JWT, B-Tree, Spring Boot)
-        for m in re.finditer(r'\b[A-Za-z0-9\-\_]{2,}\b', clean_q):
-            candidate_keywords.add(m.group(0))
+        # Step 1: Extract multi-variant search tokens (words >= 2 chars)
+        candidate_tokens = set()
+        for text in [lower_q, norm_q, telex_q]:
+            for w in re.findall(r'[\w\-]+', text):
+                if len(w) >= 2:
+                    candidate_tokens.add(w)
+                    candidate_tokens.add(remove_vietnamese_accents(w))
 
-        # Also add full query phrases
-        for w in clean_q.split():
-            cw = w.strip(",.!?\"'()[]{}").lower()
-            if len(cw) >= 3:
-                candidate_keywords.add(cw)
+        # Bigram / phrase tokens (e.g. "quan ly", "mo hinh", "phan tich", "chuyen sau", "b tree", "spring boot")
+        norm_words = [w for w in re.findall(r'[\w\-]+', norm_q) if len(w) >= 2]
+        candidate_bigrams = []
+        for i in range(len(norm_words) - 1):
+            candidate_bigrams.append(f"{norm_words[i]} {norm_words[i+1]}")
+            candidate_bigrams.append(f"{norm_words[i]}{norm_words[i+1]}")
 
-        # Step 2: Search graph nodes
+        # Step 2: Search graph nodes using accent-normalized matching
         matched_nodes = []
         all_nodes = list(self.graph.nodes)
         
-        for kw in candidate_keywords:
-            kw_lower = kw.lower()
-            for node in all_nodes:
-                node_lower = node.lower()
-                if kw_lower == node_lower or kw_lower in node_lower or node_lower in kw_lower:
+        for node in all_nodes:
+            node_norm = remove_vietnamese_accents(node)
+            for bg in candidate_bigrams:
+                if bg in node_norm or node_norm in bg:
+                    if node not in matched_nodes:
+                        matched_nodes.append(node)
+            for tok in candidate_tokens:
+                if len(tok) >= 3 and (tok == node_norm or tok in node_norm):
                     if node not in matched_nodes:
                         matched_nodes.append(node)
 
@@ -182,27 +211,34 @@ class NetworkXGraphRAG:
 
         subgraph_triples = list(set(subgraph_triples))[:25]
 
-        # Step 4: Search knowledge chunks from knowledge_store.json
+        # Step 4: Search knowledge chunks with dual-layer (word + phrase) scoring
         scored_chunks = []
         if self.knowledge_store:
             for chunk in self.knowledge_store:
                 c_text = chunk.get("text", "")
                 c_text_lower = c_text.lower()
+                c_text_norm = remove_vietnamese_accents(c_text)
                 score = 0
                 
-                # Check keywords match
-                for kw in candidate_keywords:
-                    kw_lower = kw.lower()
-                    if kw_lower in c_text_lower:
+                # Check bigrams / phrases (very high relevance!)
+                for bg in candidate_bigrams:
+                    if bg in c_text_norm:
+                        score += 15
+                
+                # Check individual tokens
+                for tok in candidate_tokens:
+                    if tok in c_text_norm:
+                        score += 2
+                    if tok in c_text_lower:
                         score += 3
-                    if any(kw_lower in str(k).lower() for k in chunk.get("keywords", [])):
-                        score += 5
+                    if any(tok in remove_vietnamese_accents(str(k)) for k in chunk.get("keywords", [])):
+                        score += 6
                 
                 # Boost if session matches (e.g. Buổi 1, Buổi 2)
                 for s_num in range(1, 10):
-                    if f"buổi {s_num}" in lower_q or f"buoi {s_num}" in lower_q or f"bài {s_num}" in lower_q:
+                    if f"buoi {s_num}" in norm_q or f"bai {s_num}" in norm_q:
                         if chunk.get("session") == s_num:
-                            score += 15
+                            score += 20
 
                 if score > 0:
                     scored_chunks.append((score, chunk))
@@ -220,7 +256,7 @@ class NetworkXGraphRAG:
             chunk_texts = []
             for c in top_chunks:
                 header = f"[{c.get('courseTitle', '')} - Buổi {c.get('session', '')} (Trang {c.get('page', '')})]"
-                chunk_texts.append(f"{header}\n{c.get('text', '')[:1200]}")
+                chunk_texts.append(f"{header}\n{c.get('text', '')[:1400]}")
             sections.append("NỘI DUNG CHI TIẾT TỪ GIÁO TRÌNH BÀI GIẢNG CHÍNH THỨC:\n\n" + "\n\n---\n\n".join(chunk_texts))
 
         return "\n\n".join(sections) if sections else ""

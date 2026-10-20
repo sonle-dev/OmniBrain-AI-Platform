@@ -114,23 +114,25 @@ async def _enrich_lms_context(input_messages: list) -> list:
                 lms_facts.append(f"Điểm môn {t['subject_name']} ({t['credits']} TC): C.Cần {t['attendance_score']}, TBCTN {t['process_score']}, TX1 {t['tx1']}, TX2 {t['tx2']}, TX3 {t['tx3']}, TBC {t['avg_score']}, Thi KTHP: {t['exam_eligibility']}")
 
     # 5. Check Course Knowledge / Lecture Documents via GraphRAG
+    from app.services.graph_rag_service import graph_rag_service, remove_vietnamese_accents
     graph_context = ""
     target_ns = "lms"
-    if any(k in lower_msg for k in ["c-101", "java", "spring", "hibernate", "jpa"]):
+    norm_msg = remove_vietnamese_accents(lower_msg)
+
+    if any(k in norm_msg for k in ["c-101", "java", "spring", "hibernate", "jpa"]):
         target_ns = "c-101"
-    elif any(k in lower_msg for k in ["c-102", "postgresql", "postgres", "mvcc", "b-tree", "csdl", "cơ sở dữ liệu"]):
+    elif any(k in norm_msg for k in ["c-102", "postgresql", "postgres", "mvcc", "b-tree", "csdl", "co so du lieu"]):
         target_ns = "c-102"
-    elif any(k in lower_msg for k in ["c-103", "hướng đối tượng", "oop", "clean architecture", "solid", "design pattern"]):
+    elif any(k in norm_msg for k in ["c-103", "huong doi tuong", "oop", "clean architecture", "solid", "design pattern"]):
         target_ns = "c-103"
-    elif any(k in lower_msg for k in ["c-104", "quản lý dự án", "agile", "scrum", "sprint", "kanban", "wbs", "gantt"]):
+    elif any(k in norm_msg for k in ["c-104", "quan ly du an", "mo hinh quan ly", "mohinh quan ly", "agile", "scrum", "sprint", "kanban", "wbs", "gantt", "pmbok", "scope creep", "duong gang", "cpm", "project charter"]):
         target_ns = "c-104"
-    elif any(k in lower_msg for k in ["c-105", "quản trị hệ thống", "linux", "ubuntu", "systemd", "docker", "bash"]):
+    elif any(k in norm_msg for k in ["c-105", "quan tri he thong", "linux", "ubuntu", "systemd", "docker", "bash"]):
         target_ns = "c-105"
 
     try:
-        from app.services.graph_rag_service import graph_rag_service
         graph_context = await graph_rag_service._get_engine(target_ns).aquery(last_user_msg)
-        if not graph_context and target_ns != "lms":
+        if (not graph_context or len(graph_context.strip()) < 50) and target_ns != "lms":
             graph_context = await graph_rag_service._get_engine("lms").aquery(last_user_msg)
         if graph_context:
             logger.info("Retrieved %d chars of grounded GraphRAG lecture context from namespace '%s'", len(graph_context), target_ns)
