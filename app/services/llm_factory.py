@@ -40,8 +40,10 @@ def _inject_dynamic_system_clock(messages: List[Dict[str, str]]) -> List[Dict[st
     weekday_str = weekdays_vi[now.weekday()]
 
     clock_info = (
-        f"THỜI GIAN HỆ THỐNG THỰC TẾ HÔM NAY: {weekday_str}, Ngày {now.strftime('%d/%m/%Y')} | Giờ: {now.strftime('%H:%M:%S')} (Múi giờ Asia/Ho_Chi_Minh, GMT+7).\n"
-        f"LƯU Ý: Năm hiện tại là {now.year}. Bạn luôn nhận biết chính xác thời gian thực tế này để trả lời các câu hỏi về lịch trình, môn học, ngày tháng."
+        f"THỜI GIAN THỰC TẾ: {weekday_str}, Ngày {now.strftime('%d/%m/%Y')} (Múi giờ GMT+7).\n"
+        f"QUY TẮC BẮT BUỘC:\n"
+        f"1. Mốc thời gian trên là ngữ cảnh tham chiếu nội bộ. TUYỆT ĐỐI KHÔNG tự động đọc lại, thông báo hay nhắc đến giờ hệ thống này cho người dùng trừ khi người dùng chủ động hỏi về ngày giờ hôm nay.\n"
+        f"2. Hãy trả lời ngắn gọn, tự nhiên, thân thiện và đi thẳng vào trọng tâm câu hỏi như ChatGPT và Gemini, không thừa thãi các thông tin nội bộ hay host/port."
     )
 
     formatted = list(messages) if messages else []
